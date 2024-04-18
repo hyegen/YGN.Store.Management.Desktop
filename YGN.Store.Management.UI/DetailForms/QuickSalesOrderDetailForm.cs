@@ -75,16 +75,12 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            createOrder();
-            StringBuilder message = new StringBuilder();
+            if (createOrder())
+                MessageBox.Show("Satış İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Satış İşlemi Başarısız.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            foreach (OrderLine orderLine in selectedOrders)
-            {
-                message.AppendLine(orderLine.Item.ItemName);
-            }
-
-            MessageBox.Show(message.ToString(), "Seçili Siparişler", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            this.Close();
         }
         private void selectedItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -108,8 +104,6 @@ namespace YGN.Store.Management.UI.DetailForms
         {
             selectedItemsDataGridView.DataSource = null;
             selectedItemsDataGridView.DataSource = selectedOrders;
-
-
         }
 
         private void getDataForItemsGrid()
@@ -121,7 +115,7 @@ namespace YGN.Store.Management.UI.DetailForms
             var unitPrice = itemManager.GetUnitPrice(itemId);
             return (decimal)(unitPrice * amount);
         }
-        private void createOrder()
+        private bool createOrder()
         {
             Order newOrder = new Order
             {
@@ -138,6 +132,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 OrderLine newOrderLine = new OrderLine
                 {
                     ItemId = itemId,
+
                     Amount = amount,
                     DateTime = DateTime.Now,
                     LineTotal = CalculateTotalPrice(itemId, amount),
@@ -146,9 +141,17 @@ namespace YGN.Store.Management.UI.DetailForms
 
                 newOrder.TotalPrice += newOrderLine.LineTotal;
                 newOrder.OrderLines.Add(newOrderLine);
-
             }
-            orderManager.AddOrder(newOrder);
+
+            if (newOrder.OrderLines.Count > 0 || newOrder.OrderLines.Any(x => x.Amount > 0))
+            {
+                orderManager.AddOrder(newOrder);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         private void UpdateTotalPriceTextBox()
         {
