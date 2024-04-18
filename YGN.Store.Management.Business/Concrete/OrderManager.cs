@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YGN.Store.Management.Business.Abstract;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
 
 namespace YGN.Store.Management.Business.Concrete
 {
@@ -21,6 +22,11 @@ namespace YGN.Store.Management.Business.Concrete
         public void AddOrder(Order order)
         {
             _orderDal.Add(order);
+        }
+
+        public List<OrderLineView> GetOrderLineViews()
+        {
+            return _orderDal.GetOrderLineViews();
         }
     }
 }

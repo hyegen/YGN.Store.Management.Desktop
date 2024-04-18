@@ -13,6 +13,6 @@ namespace YGN.Store.Management.DataAccess.Abstract
         bool AddClient(Client client);
         Client GetClientByName(string clientName);
         int CountOfAllClients();
-        List<Client> GetByName(string searchName);
+        List<Client> GetAllClientsByNameAndSurname();
     }
 }

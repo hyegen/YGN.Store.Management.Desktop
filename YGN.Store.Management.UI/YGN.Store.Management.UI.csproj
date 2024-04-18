@@ -95,6 +95,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListForms\QuickSalesOrderListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForms\QuickSalesOrderListForm.Designer.cs">
+      <DependentUpon>QuickSalesOrderListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DetailForms\ClientsForm.resx">
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForms\QuickSalesOrderListForm.resx">
+      <DependentUpon>QuickSalesOrderListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,6 +148,10 @@
     <ProjectReference Include="..\YGN.Store.Management.Business\YGN.Store.Management.Business.csproj">
       <Project>{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}</Project>
       <Name>YGN.Store.Management.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YGN.Store.Management.Common\YGN.Store.Management.Common.csproj">
+      <Project>{4013B22F-6291-4C09-B360-A41134B7444F}</Project>
+      <Name>YGN.Store.Management.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">
       <Project>{B4FCD00B-582C-4191-ABE3-141B7A9322AC}</Project>

@@ -40,6 +40,15 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
             }
         }
 
+        public List<Client> GetAllClientsByNameAndSurname()
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var clients = context.Clients.ToList();
+                return clients;
+            }
+        }
+
         public Client GetClientByName(string client)
         {
             using (YGNContext context = new YGNContext())
@@ -52,18 +61,5 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<Client> GetByName(string searchName)
-        {
-            using (YGNContext context = new YGNContext())
-            {
-                //var a = context.Set<Client>().Where(entity => entity.ClientName.StartsWith(searchName, StringComparison.OrdinalIgnoreCase)).ToString();
-                //return a;   
-                var result = context.Set<Client>()
-                    .Where(entity => entity.ClientName.IndexOf(searchName, StringComparison.OrdinalIgnoreCase) >= 0) // Büyük küçük harf duyarlılığını dikkate almadan içerme kontrolü yapın
-                    .ToList();
-
-                return result;
-            }
-        }
     }
 }

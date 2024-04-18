@@ -33,7 +33,12 @@
             this.btnQuickSales = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPurchasing = new System.Windows.Forms.Button();
+            this.groupBoxLastTransactions = new System.Windows.Forms.GroupBox();
+            this.lastTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBoxLastTransactions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClients
@@ -74,7 +79,7 @@
             this.groupBox1.Controls.Add(this.btnProducts);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(317, 84);
+            this.groupBox1.Size = new System.Drawing.Size(293, 84);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İşlemler";
@@ -88,16 +93,49 @@
             this.btnPurchasing.Text = "Satınalma";
             this.btnPurchasing.UseVisualStyleBackColor = true;
             // 
+            // groupBoxLastTransactions
+            // 
+            this.groupBoxLastTransactions.Controls.Add(this.lastTransactionDataGridView);
+            this.groupBoxLastTransactions.Location = new System.Drawing.Point(12, 102);
+            this.groupBoxLastTransactions.Name = "groupBoxLastTransactions";
+            this.groupBoxLastTransactions.Size = new System.Drawing.Size(1072, 426);
+            this.groupBoxLastTransactions.TabIndex = 5;
+            this.groupBoxLastTransactions.TabStop = false;
+            this.groupBoxLastTransactions.Text = "Son Hareketler";
+            // 
+            // lastTransactionDataGridView
+            // 
+            this.lastTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lastTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lastTransactionDataGridView.Location = new System.Drawing.Point(3, 16);
+            this.lastTransactionDataGridView.Name = "lastTransactionDataGridView";
+            this.lastTransactionDataGridView.Size = new System.Drawing.Size(1066, 407);
+            this.lastTransactionDataGridView.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(321, 73);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Yenile";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1242, 540);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.groupBoxLastTransactions);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ana Sayfa";
             this.groupBox1.ResumeLayout(false);
+            this.groupBoxLastTransactions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -109,5 +147,8 @@
         private System.Windows.Forms.Button btnQuickSales;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPurchasing;
+        private System.Windows.Forms.GroupBox groupBoxLastTransactions;
+        private System.Windows.Forms.DataGridView lastTransactionDataGridView;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

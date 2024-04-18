@@ -33,9 +33,10 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _clientDal.CountOfAllClients();
         }
-        public List<Client> GetByName(string searchName)
+
+        public List<Client> GetAllClientsByNameAndSurname()
         {
-            return _clientDal.GetByName(searchName);
+            return _clientDal.GetAllClientsByNameAndSurname();
         }
     }
 }

@@ -32,14 +32,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBoxClient = new System.Windows.Forms.GroupBox();
+            this.comboBoxClients = new System.Windows.Forms.ComboBox();
+            this.lblClient = new System.Windows.Forms.Label();
+            this.lblLastPrice = new System.Windows.Forms.Label();
             this.txtLastPrice = new System.Windows.Forms.TextBox();
             this.selectedItemsGroupBox = new System.Windows.Forms.GroupBox();
             this.selectedItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.selectItemGroupBox = new System.Windows.Forms.GroupBox();
             this.itemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.lblLastPrice = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBoxClient.SuspendLayout();
             this.selectedItemsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemsDataGridView)).BeginInit();
             this.selectItemGroupBox.SuspendLayout();
@@ -79,6 +83,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.groupBoxClient);
             this.panel2.Controls.Add(this.lblLastPrice);
             this.panel2.Controls.Add(this.txtLastPrice);
             this.panel2.Controls.Add(this.selectedItemsGroupBox);
@@ -88,6 +93,43 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1680, 706);
             this.panel2.TabIndex = 1;
+            // 
+            // groupBoxClient
+            // 
+            this.groupBoxClient.Controls.Add(this.comboBoxClients);
+            this.groupBoxClient.Controls.Add(this.lblClient);
+            this.groupBoxClient.Location = new System.Drawing.Point(6, 3);
+            this.groupBoxClient.Name = "groupBoxClient";
+            this.groupBoxClient.Size = new System.Drawing.Size(359, 77);
+            this.groupBoxClient.TabIndex = 4;
+            this.groupBoxClient.TabStop = false;
+            this.groupBoxClient.Text = "Cari - Seç";
+            // 
+            // comboBoxClients
+            // 
+            this.comboBoxClients.FormattingEnabled = true;
+            this.comboBoxClients.Location = new System.Drawing.Point(74, 31);
+            this.comboBoxClients.Name = "comboBoxClients";
+            this.comboBoxClients.Size = new System.Drawing.Size(279, 24);
+            this.comboBoxClients.TabIndex = 1;
+            // 
+            // lblClient
+            // 
+            this.lblClient.AutoSize = true;
+            this.lblClient.Location = new System.Drawing.Point(16, 34);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(49, 16);
+            this.lblClient.TabIndex = 0;
+            this.lblClient.Text = "Cariler:";
+            // 
+            // lblLastPrice
+            // 
+            this.lblLastPrice.AutoSize = true;
+            this.lblLastPrice.Location = new System.Drawing.Point(1556, 190);
+            this.lblLastPrice.Name = "lblLastPrice";
+            this.lblLastPrice.Size = new System.Drawing.Size(86, 16);
+            this.lblLastPrice.TabIndex = 3;
+            this.lblLastPrice.Text = "Toplam Fiyat";
             // 
             // txtLastPrice
             // 
@@ -101,9 +143,9 @@
             // 
             this.selectedItemsGroupBox.Controls.Add(this.selectedItemsDataGridView);
             this.selectedItemsGroupBox.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.selectedItemsGroupBox.Location = new System.Drawing.Point(733, 199);
+            this.selectedItemsGroupBox.Location = new System.Drawing.Point(733, 86);
             this.selectedItemsGroupBox.Name = "selectedItemsGroupBox";
-            this.selectedItemsGroupBox.Size = new System.Drawing.Size(803, 507);
+            this.selectedItemsGroupBox.Size = new System.Drawing.Size(803, 620);
             this.selectedItemsGroupBox.TabIndex = 1;
             this.selectedItemsGroupBox.TabStop = false;
             this.selectedItemsGroupBox.Text = "Seçilen Ürünler";
@@ -114,7 +156,7 @@
             this.selectedItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemsDataGridView.Location = new System.Drawing.Point(3, 21);
             this.selectedItemsDataGridView.Name = "selectedItemsDataGridView";
-            this.selectedItemsDataGridView.Size = new System.Drawing.Size(797, 483);
+            this.selectedItemsDataGridView.Size = new System.Drawing.Size(797, 596);
             this.selectedItemsDataGridView.TabIndex = 0;
             this.selectedItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemsDataGridView_CellEndEdit);
             // 
@@ -122,9 +164,9 @@
             // 
             this.selectItemGroupBox.Controls.Add(this.itemsDataGridView);
             this.selectItemGroupBox.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.selectItemGroupBox.Location = new System.Drawing.Point(3, 199);
+            this.selectItemGroupBox.Location = new System.Drawing.Point(3, 86);
             this.selectItemGroupBox.Name = "selectItemGroupBox";
-            this.selectItemGroupBox.Size = new System.Drawing.Size(708, 501);
+            this.selectItemGroupBox.Size = new System.Drawing.Size(708, 614);
             this.selectItemGroupBox.TabIndex = 0;
             this.selectItemGroupBox.TabStop = false;
             this.selectItemGroupBox.Text = "Ürün - Seç";
@@ -135,18 +177,9 @@
             this.itemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsDataGridView.Location = new System.Drawing.Point(3, 21);
             this.itemsDataGridView.Name = "itemsDataGridView";
-            this.itemsDataGridView.Size = new System.Drawing.Size(702, 477);
+            this.itemsDataGridView.Size = new System.Drawing.Size(702, 590);
             this.itemsDataGridView.TabIndex = 0;
             this.itemsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsDataGridView_CellDoubleClick);
-            // 
-            // lblLastPrice
-            // 
-            this.lblLastPrice.AutoSize = true;
-            this.lblLastPrice.Location = new System.Drawing.Point(1556, 190);
-            this.lblLastPrice.Name = "lblLastPrice";
-            this.lblLastPrice.Size = new System.Drawing.Size(86, 16);
-            this.lblLastPrice.TabIndex = 3;
-            this.lblLastPrice.Text = "Toplam Fiyat";
             // 
             // QuickSalesOrderDetailForm
             // 
@@ -161,6 +194,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBoxClient.ResumeLayout(false);
+            this.groupBoxClient.PerformLayout();
             this.selectedItemsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemsDataGridView)).EndInit();
             this.selectItemGroupBox.ResumeLayout(false);
@@ -181,5 +216,8 @@
         private System.Windows.Forms.DataGridView selectedItemsDataGridView;
         private System.Windows.Forms.TextBox txtLastPrice;
         private System.Windows.Forms.Label lblLastPrice;
+        private System.Windows.Forms.GroupBox groupBoxClient;
+        private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.ComboBox comboBoxClients;
     }
 }

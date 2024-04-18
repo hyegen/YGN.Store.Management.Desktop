@@ -7,16 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.UI.DetailForms;
 
 namespace YGN.Store.Management.UI.Forms
 {
     public partial class MainForm : Form
     {
+        #region members
+        OrderManager orderManager = new OrderManager(new EfOrderDal());
+        #endregion
+
         #region constructor
         public MainForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            getDatas();
         }
         #endregion
 
@@ -38,6 +46,17 @@ namespace YGN.Store.Management.UI.Forms
         }
         #endregion
 
+        #region private methods
 
+        private void getDatas()
+        {
+            lastTransactionDataGridView.DataSource = orderManager.GetOrderLineViews();
+        }
+        #endregion
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            getDatas();
+        }
     }
 }

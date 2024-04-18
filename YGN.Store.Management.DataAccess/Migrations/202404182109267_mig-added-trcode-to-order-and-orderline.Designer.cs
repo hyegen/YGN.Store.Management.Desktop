@@ -7,13 +7,13 @@ namespace YGN.Store.Management.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class miginit : IMigrationMetadata
+    public sealed partial class migaddedtrcodetoorderandorderline : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(miginit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migaddedtrcodetoorderandorderline));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404141542318_mig-init"; }
+            get { return "202404182109267_mig-added-trcode-to-order-and-orderline"; }
         }
         
         string IMigrationMetadata.Source

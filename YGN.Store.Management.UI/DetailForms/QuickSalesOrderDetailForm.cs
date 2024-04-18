@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.Common.TransactionCodes;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace YGN.Store.Management.UI.DetailForms
 {
@@ -21,8 +23,8 @@ namespace YGN.Store.Management.UI.DetailForms
         #region members
         private List<OrderLine> selectedOrders = new List<OrderLine>();
         ItemManager itemManager = new ItemManager(new EfItemDal());
-        OrderLineManager orderLineManager = new OrderLineManager(new EfOrderLineDal());
         OrderManager orderManager = new OrderManager(new EfOrderDal());
+        ClientManager clientManager = new ClientManager(new EfClientDal());
         #endregion
 
         #region constructor
@@ -30,7 +32,7 @@ namespace YGN.Store.Management.UI.DetailForms
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            getDataForItemsGrid();
+            getDatas();
         }
 
         #endregion
@@ -105,10 +107,10 @@ namespace YGN.Store.Management.UI.DetailForms
             selectedItemsDataGridView.DataSource = null;
             selectedItemsDataGridView.DataSource = selectedOrders;
         }
-
-        private void getDataForItemsGrid()
+        private void getDatas()
         {
             itemsDataGridView.DataSource = itemManager.GetItems();
+            FillComboBox();
         }
         private decimal CalculateTotalPrice(int itemId, int amount)
         {
@@ -121,7 +123,8 @@ namespace YGN.Store.Management.UI.DetailForms
             {
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
-                OrderLines = new List<OrderLine>()
+                OrderLines = new List<OrderLine>(),
+                TransactionCode=(int)TransactionCodes.Output
             };
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -132,11 +135,11 @@ namespace YGN.Store.Management.UI.DetailForms
                 OrderLine newOrderLine = new OrderLine
                 {
                     ItemId = itemId,
-
                     Amount = amount,
                     DateTime = DateTime.Now,
                     LineTotal = CalculateTotalPrice(itemId, amount),
-                    Order = newOrder
+                    Order = newOrder,
+                    TransactionCode = (int)TransactionCodes.Output
                 };
 
                 newOrder.TotalPrice += newOrderLine.LineTotal;
@@ -145,6 +148,7 @@ namespace YGN.Store.Management.UI.DetailForms
 
             if (newOrder.OrderLines.Count > 0 || newOrder.OrderLines.Any(x => x.Amount > 0))
             {
+                newOrder.Client = GetClientFromCombobox();
                 orderManager.AddOrder(newOrder);
                 return true;
             }
@@ -165,7 +169,17 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             txtLastPrice.Text = total.ToString();
         }
-
+        private void FillComboBox()
+        {
+            List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
+            comboBoxClients.DataSource = clients;
+            comboBoxClients.DisplayMember = "ClientNameSurname"; // ToString metodu kullanılacak
+            comboBoxClients.ValueMember = "Id"; // Cari ID'si değer olarak kullanılacak
+        }
+        private Client GetClientFromCombobox()
+        {
+            return comboBoxClients.SelectedItem as Client;
+        }
         #endregion
     }
 }

@@ -9,7 +9,7 @@ using YGN.Store.Management.Entities.Concrete;
 
 namespace YGN.Store.Management.Business.Concrete
 {
-    public class OrderLineManager : IOrderService
+    public class OrderLineManager : IOrderLineService
     {
         private readonly IOrderLineDal _orderLineDal;
 

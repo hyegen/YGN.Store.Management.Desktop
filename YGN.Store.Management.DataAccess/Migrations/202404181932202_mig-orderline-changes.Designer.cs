@@ -7,13 +7,13 @@ namespace YGN.Store.Management.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class migorderentitychanged : IMigrationMetadata
+    public sealed partial class migorderlinechanges : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migorderentitychanged));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migorderlinechanges));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404141625476_mig-order-entity-changed"; }
+            get { return "202404181932202_mig-orderline-changes"; }
         }
         
         string IMigrationMetadata.Source

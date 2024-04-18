@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YGN.Store.Management.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YGN.Store.Management.Business", "YGN.Store.Management.Business\YGN.Store.Management.Business.csproj", "{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YGN.Store.Management.Common", "YGN.Store.Management.Common", "{8DABA0E2-4399-46E3-9B89-D6B27391BD2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YGN.Store.Management.Common", "YGN.Store.Management.Common\YGN.Store.Management.Common.csproj", "{4013B22F-6291-4C09-B360-A41134B7444F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4013B22F-6291-4C09-B360-A41134B7444F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4013B22F-6291-4C09-B360-A41134B7444F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4013B22F-6291-4C09-B360-A41134B7444F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4013B22F-6291-4C09-B360-A41134B7444F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{4979B612-30D1-48B7-B051-30EED3F21A59} = {877C486F-07B2-43D2-A994-988EF02CDF97}
 		{B4FCD00B-582C-4191-ABE3-141B7A9322AC} = {D3764E95-01C4-443B-8D21-12F53BF605BB}
 		{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B} = {246DDBF2-2A66-4085-B514-504DFEC35079}
+		{4013B22F-6291-4C09-B360-A41134B7444F} = {8DABA0E2-4399-46E3-9B89-D6B27391BD2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B7BC263-707A-4328-B41F-3824BD2439A1}
