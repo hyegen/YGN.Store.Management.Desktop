@@ -1,0 +1,6 @@
+-> n-Tier Architecture
+-> Entity Framework
+-> Fluent Validation
+-> T-SQL
+-> LINQ
+-> Fluent API
