@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202404182109267_mig-added-trcode-to-order-and-orderline.Designer.cs">
       <DependentUpon>202404182109267_mig-added-trcode-to-order-and-orderline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404190924238_mig-changed-order-entity.cs" />
+    <Compile Include="Migrations\202404190924238_mig-changed-order-entity.Designer.cs">
+      <DependentUpon>202404190924238_mig-changed-order-entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404182109267_mig-added-trcode-to-order-and-orderline.resx">
       <DependentUpon>202404182109267_mig-added-trcode-to-order-and-orderline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404190924238_mig-changed-order-entity.resx">
+      <DependentUpon>202404190924238_mig-changed-order-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
