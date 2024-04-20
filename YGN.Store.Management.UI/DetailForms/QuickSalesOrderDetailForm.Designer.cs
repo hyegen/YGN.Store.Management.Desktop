@@ -48,11 +48,6 @@
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCodeS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemNameS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmountS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
@@ -181,12 +176,6 @@
             // selectedItemsDataGridView
             // 
             this.selectedItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.selectedItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemId,
-            this.ItemCodeS,
-            this.ItemNameS,
-            this.AmountS,
-            this.LineTotal});
             this.selectedItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemsDataGridView.Location = new System.Drawing.Point(3, 21);
             this.selectedItemsDataGridView.Name = "selectedItemsDataGridView";
@@ -265,36 +254,6 @@
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
-            // ItemId
-            // 
-            this.ItemId.DataPropertyName = "ItemId";
-            this.ItemId.HeaderText = "ItemId";
-            this.ItemId.Name = "ItemId";
-            // 
-            // ItemCodeS
-            // 
-            this.ItemCodeS.DataPropertyName = "ItemCode";
-            this.ItemCodeS.HeaderText = "Malzeme Kodu";
-            this.ItemCodeS.Name = "ItemCodeS";
-            // 
-            // ItemNameS
-            // 
-            this.ItemNameS.DataPropertyName = "ItemName";
-            this.ItemNameS.HeaderText = "Malzeme Açıklaması";
-            this.ItemNameS.Name = "ItemNameS";
-            // 
-            // AmountS
-            // 
-            this.AmountS.DataPropertyName = "Amount";
-            this.AmountS.HeaderText = "Miktar";
-            this.AmountS.Name = "AmountS";
-            // 
-            // LineTotal
-            // 
-            this.LineTotal.DataPropertyName = "LineTotal";
-            this.LineTotal.HeaderText = "Satır Toplamı";
-            this.LineTotal.Name = "LineTotal";
-            // 
             // QuickSalesOrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,10 +299,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCodeS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemNameS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmountS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LineTotal;
     }
 }

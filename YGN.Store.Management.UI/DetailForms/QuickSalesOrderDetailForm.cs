@@ -86,24 +86,54 @@ namespace YGN.Store.Management.UI.DetailForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             createOrder();
-            
+
             this.Close();
         }
         private void selectedItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == selectedItemsDataGridView.Columns["Amount"].Index && e.RowIndex >= 0)
+            int id = Convert.ToInt32(selectedItemsDataGridView.Rows[e.RowIndex].Cells["ItemId"].Value);
+            int amount = Convert.ToInt32(selectedItemsDataGridView.Rows[e.RowIndex].Cells["Amount"].Value);
+            double unitPrice = itemManager.GetUnitPrice(id);
+
+            decimal totalPrice = (decimal)(amount * unitPrice);
+
+            if (selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value != null)
             {
-                int id = Convert.ToInt32(selectedItemsDataGridView.Rows[e.RowIndex].Cells["ItemId"].Value);
-                int amount = Convert.ToInt32(selectedItemsDataGridView.Rows[e.RowIndex].Cells["Amount"].Value);
-                double unitPrice = itemManager.GetUnitPrice(id);
-
-                decimal totalPrice = (decimal)(amount * unitPrice);
-
                 selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = totalPrice;
-                UpdateTotalPriceTextBox();
+            }
+            else
+            {
+                selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = 0; // Veya istediğiniz varsayılan bir değer
+            }
+            UpdateTotalPriceTextBox();
+        }
+        private void btnDeleteLine_Click(object sender, EventArgs e)
+        {
+            if (selectedItemsDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
+
+                int selectedId = Convert.ToInt32(selectedRow.Cells["ItemId"].Value);
+
+                var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemId == selectedId);
+                if (itemToRemove != null)
+                {
+                    selectedItems.Remove(itemToRemove);
+                    selectedItemsDataGridView.DataSource = null;
+                    selectedItemsDataGridView.DataSource = selectedItems;
+                    selectedItemsDataGridView.Refresh();
+                    UpdateTotalPriceTextBox();
+                }
+                else
+                {
+                    MessageBox.Show("Silme işlemi başarısız oldu.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek istediğiniz bir satırı seçin.");
             }
         }
-
         #endregion
 
         #region private methods
@@ -159,7 +189,7 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             else
             {
-                MessageBox.Show("Satış İşlemi Başarısız Miktar Girişi Yapınız.","Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Satış İşlemi Başarısız Miktar Girişi Yapınız.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void UpdateTotalPriceTextBox()
@@ -195,30 +225,5 @@ namespace YGN.Store.Management.UI.DetailForms
 
         #endregion
 
-        private void btnDeleteLine_Click(object sender, EventArgs e)
-        {
-            if (selectedItemsDataGridView.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
-
-                int selectedId = Convert.ToInt32(selectedRow.Cells["ItemId"].Value);
-
-                var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemId == selectedId);
-                if (itemToRemove != null)
-                {
-                    selectedItems.Remove(itemToRemove); 
-                    selectedItemsDataGridView.DataSource = null; 
-                    selectedItemsDataGridView.DataSource = selectedItems; 
-                }
-                else
-                {
-                    MessageBox.Show("Silme işlemi başarısız oldu.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Lütfen silmek istediğiniz bir satırı seçin.");
-            }
-        }
     }
 }

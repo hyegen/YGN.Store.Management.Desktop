@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonReports\StockAmountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonReports\StockAmountForm.Designer.cs">
+      <DependentUpon>StockAmountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailForms\ClientsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
       <DependentUpon>PrintOrderSlip.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="CommonReports\StockAmountForm.resx">
+      <DependentUpon>StockAmountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailForms\ClientsForm.resx">
       <DependentUpon>ClientsForm.cs</DependentUpon>
     </EmbeddedResource>

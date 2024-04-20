@@ -39,20 +39,15 @@
             this.selectedItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.itemsGroupBox = new System.Windows.Forms.GroupBox();
             this.itemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBoxClient = new System.Windows.Forms.GroupBox();
-            this.clientsComboBox = new System.Windows.Forms.ComboBox();
-            this.lblClient = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UniPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCodeS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemNameS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmountS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LineTotalS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxClient = new System.Windows.Forms.GroupBox();
+            this.clientsComboBox = new System.Windows.Forms.ComboBox();
+            this.lblClient = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.selectedItemsGroupBox.SuspendLayout();
@@ -151,12 +146,6 @@
             // selectedItemsDataGridView
             // 
             this.selectedItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.selectedItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemId,
-            this.ItemCodeS,
-            this.ItemNameS,
-            this.AmountS,
-            this.LineTotalS});
             this.selectedItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemsDataGridView.Location = new System.Drawing.Point(3, 19);
             this.selectedItemsDataGridView.Name = "selectedItemsDataGridView";
@@ -192,35 +181,6 @@
             this.itemsDataGridView.Size = new System.Drawing.Size(532, 470);
             this.itemsDataGridView.TabIndex = 0;
             this.itemsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsDataGridView_CellDoubleClick);
-            // 
-            // groupBoxClient
-            // 
-            this.groupBoxClient.Controls.Add(this.clientsComboBox);
-            this.groupBoxClient.Controls.Add(this.lblClient);
-            this.groupBoxClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxClient.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxClient.Name = "groupBoxClient";
-            this.groupBoxClient.Size = new System.Drawing.Size(372, 77);
-            this.groupBoxClient.TabIndex = 0;
-            this.groupBoxClient.TabStop = false;
-            this.groupBoxClient.Text = "Cari - Seç";
-            // 
-            // clientsComboBox
-            // 
-            this.clientsComboBox.FormattingEnabled = true;
-            this.clientsComboBox.Location = new System.Drawing.Point(72, 34);
-            this.clientsComboBox.Name = "clientsComboBox";
-            this.clientsComboBox.Size = new System.Drawing.Size(286, 24);
-            this.clientsComboBox.TabIndex = 1;
-            // 
-            // lblClient
-            // 
-            this.lblClient.AutoSize = true;
-            this.lblClient.Location = new System.Drawing.Point(22, 37);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(37, 16);
-            this.lblClient.TabIndex = 0;
-            this.lblClient.Text = "Cari: ";
             // 
             // Id
             // 
@@ -264,35 +224,34 @@
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
-            // ItemId
+            // groupBoxClient
             // 
-            this.ItemId.DataPropertyName = "ItemId";
-            this.ItemId.HeaderText = "ItemId";
-            this.ItemId.Name = "ItemId";
+            this.groupBoxClient.Controls.Add(this.clientsComboBox);
+            this.groupBoxClient.Controls.Add(this.lblClient);
+            this.groupBoxClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBoxClient.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxClient.Name = "groupBoxClient";
+            this.groupBoxClient.Size = new System.Drawing.Size(372, 77);
+            this.groupBoxClient.TabIndex = 0;
+            this.groupBoxClient.TabStop = false;
+            this.groupBoxClient.Text = "Cari - Seç";
             // 
-            // ItemCodeS
+            // clientsComboBox
             // 
-            this.ItemCodeS.DataPropertyName = "ItemCode";
-            this.ItemCodeS.HeaderText = "Malzeme Kodu";
-            this.ItemCodeS.Name = "ItemCodeS";
+            this.clientsComboBox.FormattingEnabled = true;
+            this.clientsComboBox.Location = new System.Drawing.Point(72, 34);
+            this.clientsComboBox.Name = "clientsComboBox";
+            this.clientsComboBox.Size = new System.Drawing.Size(286, 24);
+            this.clientsComboBox.TabIndex = 1;
             // 
-            // ItemNameS
+            // lblClient
             // 
-            this.ItemNameS.DataPropertyName = "ItemName";
-            this.ItemNameS.HeaderText = "Malzeme Açıklaması";
-            this.ItemNameS.Name = "ItemNameS";
-            // 
-            // AmountS
-            // 
-            this.AmountS.DataPropertyName = "Amount";
-            this.AmountS.HeaderText = "Miktar";
-            this.AmountS.Name = "AmountS";
-            // 
-            // LineTotalS
-            // 
-            this.LineTotalS.DataPropertyName = "LineTotal";
-            this.LineTotalS.HeaderText = "Satır Toplamı";
-            this.LineTotalS.Name = "LineTotalS";
+            this.lblClient.AutoSize = true;
+            this.lblClient.Location = new System.Drawing.Point(22, 37);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(37, 16);
+            this.lblClient.TabIndex = 0;
+            this.lblClient.Text = "Cari: ";
             // 
             // PurchasingOrderDetailForm
             // 
@@ -338,10 +297,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UniPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCodeS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemNameS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmountS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LineTotalS;
     }
 }

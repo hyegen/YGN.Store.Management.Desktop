@@ -297,6 +297,8 @@ namespace YGN.Store.Management.UI.Report {
             
             private global::System.Data.DataColumn columnAmount;
             
+            private global::System.Data.DataColumn columnUnitPrice;
+            
             private global::System.Data.DataColumn columnLineTotal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -406,6 +408,14 @@ namespace YGN.Store.Management.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UnitPriceColumn {
+                get {
+                    return this.columnUnitPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn LineTotalColumn {
                 get {
                     return this.columnLineTotal;
@@ -449,7 +459,7 @@ namespace YGN.Store.Management.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string OrderId, string ClientCode, string ClientName, string ClientSurname, string Date_, string FirmDescription, string ItemCode, string ItemName, string Amount, string LineTotal) {
+            public DataTable1Row AddDataTable1Row(string OrderId, string ClientCode, string ClientName, string ClientSurname, string Date_, string FirmDescription, string ItemCode, string ItemName, string Amount, string UnitPrice, string LineTotal) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OrderId,
@@ -461,6 +471,7 @@ namespace YGN.Store.Management.UI.Report {
                         ItemCode,
                         ItemName,
                         Amount,
+                        UnitPrice,
                         LineTotal};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
@@ -493,6 +504,7 @@ namespace YGN.Store.Management.UI.Report {
                 this.columnItemCode = base.Columns["ItemCode"];
                 this.columnItemName = base.Columns["ItemName"];
                 this.columnAmount = base.Columns["Amount"];
+                this.columnUnitPrice = base.Columns["UnitPrice"];
                 this.columnLineTotal = base.Columns["LineTotal"];
             }
             
@@ -517,6 +529,8 @@ namespace YGN.Store.Management.UI.Report {
                 base.Columns.Add(this.columnItemName);
                 this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmount);
+                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitPrice);
                 this.columnLineTotal = new global::System.Data.DataColumn("LineTotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLineTotal);
             }
@@ -805,6 +819,22 @@ namespace YGN.Store.Management.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string UnitPrice {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.UnitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UnitPrice\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.UnitPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string LineTotal {
                 get {
                     try {
@@ -925,6 +955,18 @@ namespace YGN.Store.Management.UI.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetAmountNull() {
                 this[this.tableDataTable1.AmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUnitPriceNull() {
+                return this.IsNull(this.tableDataTable1.UnitPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUnitPriceNull() {
+                this[this.tableDataTable1.UnitPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

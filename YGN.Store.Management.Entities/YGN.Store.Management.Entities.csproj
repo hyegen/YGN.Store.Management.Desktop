@@ -63,6 +63,7 @@
     <Compile Include="Views\OrderLineView.cs" />
     <Compile Include="Views\OrderDetailClientForSlip.cs" />
     <Compile Include="Views\SelectedItems.cs" />
+    <Compile Include="Views\StockAmountView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">

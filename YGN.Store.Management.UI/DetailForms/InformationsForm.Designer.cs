@@ -43,6 +43,7 @@
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.informationDataGridView)).BeginInit();
@@ -73,10 +74,12 @@
             this.ItemCode,
             this.ItemName,
             this.Amount,
+            this.UnitPrice,
             this.LineTotal});
             this.informationDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.informationDataGridView.Location = new System.Drawing.Point(3, 21);
             this.informationDataGridView.Name = "informationDataGridView";
+            this.informationDataGridView.ReadOnly = true;
             this.informationDataGridView.Size = new System.Drawing.Size(1081, 274);
             this.informationDataGridView.TabIndex = 1;
             // 
@@ -172,6 +175,12 @@
             this.Amount.HeaderText = "Miktar";
             this.Amount.Name = "Amount";
             // 
+            // UnitPrice
+            // 
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            this.UnitPrice.HeaderText = "Birim Fiyatı";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
             // LineTotal
             // 
             this.LineTotal.DataPropertyName = "LineTotal";
@@ -215,6 +224,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn LineTotal;
     }
 }

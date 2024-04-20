@@ -55,11 +55,13 @@
     <Compile Include="Abstract\IItemDal.cs" />
     <Compile Include="Abstract\IOrderDal.cs" />
     <Compile Include="Abstract\IOrderLineDal.cs" />
+    <Compile Include="Abstract\IReportDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfClientDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfItemDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderLineDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfReportDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
     <Compile Include="Migrations\202404191749292_mig-init.cs" />

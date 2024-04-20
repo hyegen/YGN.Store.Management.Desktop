@@ -68,7 +68,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 if (!isDuplicate)
                 {
                     //selectedOrders.Add(new OrderLine { Id = id, ItemId = id, Amount = 0, DateTime = DateTime.Now, LineTotal = 0 });
-                    selectedItems.Add(new SelectedItems { ItemId = id, ItemCode = itemCode, ItemName = itemName, Amount = 0, LineTotal = 0 });
+                    selectedItems.Add(new SelectedItems { ItemId = id, ItemCode= itemCode, ItemName= itemName, Amount = 0, LineTotal = 0 });
                     RefreshSelectedOrdersDataGridView();
                 }
                 else
