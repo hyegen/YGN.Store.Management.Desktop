@@ -58,7 +58,11 @@
     <Compile Include="Concrete\StockTransaction.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\OrderDetailInformation.cs" />
+    <Compile Include="Views\OrderInformationTotalPrice.cs" />
     <Compile Include="Views\OrderLineView.cs" />
+    <Compile Include="Views\OrderDetailClientForSlip.cs" />
+    <Compile Include="Views\SelectedItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">

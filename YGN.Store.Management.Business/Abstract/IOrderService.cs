@@ -10,5 +10,9 @@ namespace YGN.Store.Management.Business.Abstract
     public interface IOrderService
     {
         List<OrderLineView> GetOrderLineViews();
+        List<OrderDetailInformation> GetOrderDetailInformation(int orderId);
+        List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId);
+        List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId);
+        decimal GetTotalPriceForOrderInformationPrice(int orderId);
     }
 }

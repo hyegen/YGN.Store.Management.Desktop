@@ -12,5 +12,10 @@ namespace YGN.Store.Management.DataAccess.Abstract
     public interface IOrderDal : IEntityRepository<Order>
     {
         List<OrderLineView> GetOrderLineViews();
+        List<OrderDetailInformation> GetOrderDetailInformation(int orderId);
+        List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId);
+        List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId);
+        decimal GetTotalPriceForOrderInformationPrice(int orderId);
+
     }
 }

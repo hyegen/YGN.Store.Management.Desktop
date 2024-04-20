@@ -45,6 +45,27 @@
     <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.11.9.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.3.1684.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfSharp.1.3\lib\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -71,11 +92,23 @@
     <Compile Include="DetailForms\ClientsForm.Designer.cs">
       <DependentUpon>ClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailForms\InformationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForms\InformationsForm.Designer.cs">
+      <DependentUpon>InformationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailForms\ItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DetailForms\ItemsForm.Designer.cs">
       <DependentUpon>ItemsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailForms\PurchasingOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForms\PurchasingOrderDetailForm.Designer.cs">
+      <DependentUpon>PurchasingOrderDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailForms\QuickSalesOrderDetailForm.cs">
       <SubType>Form</SubType>
@@ -103,11 +136,42 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\DataSetGetClient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetGetClient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DataSetGetOrderLastPrice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetGetOrderLastPrice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DataSetOrderDetail.cs">
+      <DependentUpon>DataSetOrderDetail.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DataSetOrderDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetOrderDetail.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\PrintOrderSlip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\PrintOrderSlip.Designer.cs">
+      <DependentUpon>PrintOrderSlip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="DetailForms\ClientsForm.resx">
       <DependentUpon>ClientsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailForms\InformationsForm.resx">
+      <DependentUpon>InformationsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailForms\ItemsForm.resx">
       <DependentUpon>ItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailForms\PurchasingOrderDetailForm.resx">
+      <DependentUpon>PurchasingOrderDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailForms\QuickSalesOrderDetailForm.resx">
       <DependentUpon>QuickSalesOrderDetailForm.cs</DependentUpon>
@@ -130,6 +194,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\PrintOrderSlip.resx">
+      <DependentUpon>PrintOrderSlip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report1.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -140,6 +208,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Report\DataSetGetClient.xsc">
+      <DependentUpon>DataSetGetClient.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetGetClient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetGetClient.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSetGetClient.xss">
+      <DependentUpon>DataSetGetClient.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetGetOrderLastPrice.xsc">
+      <DependentUpon>DataSetGetOrderLastPrice.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetGetOrderLastPrice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetGetOrderLastPrice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSetGetOrderLastPrice.xss">
+      <DependentUpon>DataSetGetOrderLastPrice.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetOrderDetail.xsc">
+      <DependentUpon>DataSetOrderDetail.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetOrderDetail.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetOrderDetail.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSetOrderDetail.xss">
+      <DependentUpon>DataSetOrderDetail.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -165,6 +266,21 @@
       <Project>{4979B612-30D1-48B7-B051-30EED3F21A59}</Project>
       <Name>YGN.Store.Management.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

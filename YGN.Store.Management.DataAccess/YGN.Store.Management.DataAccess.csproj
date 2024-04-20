@@ -62,21 +62,9 @@
     <Compile Include="Concrete\EntityFramework\EfOrderLineDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
-    <Compile Include="Migrations\202404181927324_mig-init.cs" />
-    <Compile Include="Migrations\202404181927324_mig-init.Designer.cs">
-      <DependentUpon>202404181927324_mig-init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202404181932202_mig-orderline-changes.cs" />
-    <Compile Include="Migrations\202404181932202_mig-orderline-changes.Designer.cs">
-      <DependentUpon>202404181932202_mig-orderline-changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202404182109267_mig-added-trcode-to-order-and-orderline.cs" />
-    <Compile Include="Migrations\202404182109267_mig-added-trcode-to-order-and-orderline.Designer.cs">
-      <DependentUpon>202404182109267_mig-added-trcode-to-order-and-orderline.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202404190924238_mig-changed-order-entity.cs" />
-    <Compile Include="Migrations\202404190924238_mig-changed-order-entity.Designer.cs">
-      <DependentUpon>202404190924238_mig-changed-order-entity.cs</DependentUpon>
+    <Compile Include="Migrations\202404191749292_mig-init.cs" />
+    <Compile Include="Migrations\202404191749292_mig-init.Designer.cs">
+      <DependentUpon>202404191749292_mig-init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,17 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202404181927324_mig-init.resx">
-      <DependentUpon>202404181927324_mig-init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404181932202_mig-orderline-changes.resx">
-      <DependentUpon>202404181932202_mig-orderline-changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404182109267_mig-added-trcode-to-order-and-orderline.resx">
-      <DependentUpon>202404182109267_mig-added-trcode-to-order-and-orderline.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404190924238_mig-changed-order-entity.resx">
-      <DependentUpon>202404190924238_mig-changed-order-entity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404191749292_mig-init.resx">
+      <DependentUpon>202404191749292_mig-init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

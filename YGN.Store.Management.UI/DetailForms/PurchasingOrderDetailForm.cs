@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.Design;
 using System.Data;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using YGN.Store.Management.Business.Concrete;
 using YGN.Store.Management.Common.TransactionCodes;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace YGN.Store.Management.UI.DetailForms
 {
-    public partial class QuickSalesOrderDetailForm : Form
+    public partial class PurchasingOrderDetailForm : Form
     {
         #region members
         private List<SelectedItems> selectedItems = new List<SelectedItems>();
@@ -30,13 +25,12 @@ namespace YGN.Store.Management.UI.DetailForms
         #endregion
 
         #region constructor
-        public QuickSalesOrderDetailForm()
+        public PurchasingOrderDetailForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             getDatas();
         }
-
         #endregion
 
         #region events
@@ -53,8 +47,8 @@ namespace YGN.Store.Management.UI.DetailForms
                 int id = Convert.ToInt32(selectedRow.Cells["Id"].Value);
                 string itemCode = selectedRow.Cells["ItemCode"].Value.ToString();
                 string itemName = selectedRow.Cells["ItemName"].Value.ToString();
-                //decimal unitPrice = Convert.ToDecimal(selectedRow.Cells["UnitPrice"].Value);
-                //string brand = selectedRow.Cells["Brand"].Value?.ToString();
+               // decimal unitPrice = Convert.ToDecimal(selectedRow.Cells["UnitPrice"].Value);
+             //   string brand = selectedRow.Cells["Brand"].Value?.ToString();
 
                 bool isDuplicate = false;
                 foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -86,7 +80,7 @@ namespace YGN.Store.Management.UI.DetailForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             createOrder();
-            
+
             this.Close();
         }
         private void selectedItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -103,7 +97,6 @@ namespace YGN.Store.Management.UI.DetailForms
                 UpdateTotalPriceTextBox();
             }
         }
-
         #endregion
 
         #region private methods
@@ -129,7 +122,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
                 OrderLines = new List<OrderLine>(),
-                TransactionCode = (int)TransactionCodes.Output
+                TransactionCode = (int)TransactionCodes.Input
             };
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -144,7 +137,7 @@ namespace YGN.Store.Management.UI.DetailForms
                     DateTime = DateTime.Now,
                     LineTotal = CalculateTotalPrice(itemId, amount),
                     Order = newOrder,
-                    TransactionCode = (int)TransactionCodes.Output
+                    TransactionCode = (int)TransactionCodes.Input
                 };
 
                 newOrder.TotalPrice += newOrderLine.LineTotal;
@@ -155,11 +148,11 @@ namespace YGN.Store.Management.UI.DetailForms
             {
                 newOrder.ClientId = GetClientFromCombobox();
                 orderManager.AddOrder(newOrder);
-                MessageBox.Show("Satış İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Satınalma İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Satış İşlemi Başarısız Miktar Girişi Yapınız.","Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Satınalma İşlemi Başarısız Miktar Girişi Yapınız.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void UpdateTotalPriceTextBox()
@@ -177,13 +170,13 @@ namespace YGN.Store.Management.UI.DetailForms
         private void FillComboBox()
         {
             List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
-            comboBoxClients.DataSource = clients;
-            comboBoxClients.DisplayMember = "ClientNameSurname";
-            comboBoxClients.ValueMember = "Id";
+            clientsComboBox.DataSource = clients;
+            clientsComboBox.DisplayMember = "ClientNameSurname";
+            clientsComboBox.ValueMember = "Id";
         }
         private int GetClientFromCombobox()
         {
-            if (comboBoxClients.SelectedItem is Client selectedClient)
+            if (clientsComboBox.SelectedItem is Client selectedClient)
             {
                 return selectedClient.Id;
             }
@@ -197,6 +190,7 @@ namespace YGN.Store.Management.UI.DetailForms
 
         private void btnDeleteLine_Click(object sender, EventArgs e)
         {
+
             if (selectedItemsDataGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
@@ -206,9 +200,9 @@ namespace YGN.Store.Management.UI.DetailForms
                 var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemId == selectedId);
                 if (itemToRemove != null)
                 {
-                    selectedItems.Remove(itemToRemove); 
-                    selectedItemsDataGridView.DataSource = null; 
-                    selectedItemsDataGridView.DataSource = selectedItems; 
+                    selectedItems.Remove(itemToRemove);
+                    selectedItemsDataGridView.DataSource = null;
+                    selectedItemsDataGridView.DataSource = selectedItems;
                 }
                 else
                 {

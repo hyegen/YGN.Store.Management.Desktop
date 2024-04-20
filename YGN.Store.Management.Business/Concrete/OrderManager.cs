@@ -24,9 +24,29 @@ namespace YGN.Store.Management.Business.Concrete
             _orderDal.Add(order);
         }
 
+        public List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId)
+        {
+            return _orderDal.GetOrderDetailClientForSlip(orderId);
+        }
+
+        public List<OrderDetailInformation> GetOrderDetailInformation(int orderId)
+        {
+            return _orderDal.GetOrderDetailInformation(orderId);
+        }
+
         public List<OrderLineView> GetOrderLineViews()
         {
             return _orderDal.GetOrderLineViews();
+        }
+
+        public List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId)
+        {
+            return _orderDal.GetTotalPriceForOrderInformation(orderId);
+        }
+
+        public decimal GetTotalPriceForOrderInformationPrice(int orderId)
+        {
+            return _orderDal.GetTotalPriceForOrderInformationPrice(orderId);
         }
     }
 }

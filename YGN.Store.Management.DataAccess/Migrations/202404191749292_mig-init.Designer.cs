@@ -7,13 +7,13 @@ namespace YGN.Store.Management.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class migchangedorderentity : IMigrationMetadata
+    public sealed partial class miginit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migchangedorderentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(miginit));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404190924238_mig-changed-order-entity"; }
+            get { return "202404191749292_mig-init"; }
         }
         
         string IMigrationMetadata.Source
