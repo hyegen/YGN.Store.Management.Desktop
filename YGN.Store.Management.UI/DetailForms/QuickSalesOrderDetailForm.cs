@@ -108,7 +108,7 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             else
             {
-                selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = 0; 
+                selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = 0;
             }
             UpdateTotalPriceTextBox();
         }
@@ -217,7 +217,7 @@ namespace YGN.Store.Management.UI.DetailForms
         {
             List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
             comboBoxClients.DataSource = clients;
-            comboBoxClients.DisplayMember = "ClientNameSurname";
+            comboBoxClients.DisplayMember = "ClientCodeAndClientName";
             comboBoxClients.ValueMember = "Id";
             comboBoxClients.SelectedIndex = -1;
         }

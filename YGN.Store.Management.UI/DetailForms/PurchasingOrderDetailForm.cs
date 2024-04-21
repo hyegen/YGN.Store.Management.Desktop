@@ -117,6 +117,7 @@ namespace YGN.Store.Management.UI.DetailForms
                     selectedItems.Remove(itemToRemove);
                     selectedItemsDataGridView.DataSource = null;
                     selectedItemsDataGridView.DataSource = selectedItems;
+                    UpdateTotalPriceTextBox();
                 }
                 else
                 {

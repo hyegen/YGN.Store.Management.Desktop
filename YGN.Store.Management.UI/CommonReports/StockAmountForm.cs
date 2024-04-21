@@ -14,19 +14,23 @@ namespace YGN.Store.Management.UI.CommonReports
 {
     public partial class StockAmountForm : Form
     {
+        #region members
         ReportManager reportManager = new ReportManager(new EfReportDal());
         private DataTable dataTable;
+        #endregion
+
+        #region constructor
         public StockAmountForm()
         {
             InitializeComponent();
-            //getData();
         }
+        #endregion
 
-        private void getData()
+        #region events
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            stockAmountDataGridView.DataSource = reportManager.GetStockAmountEachItem();
+            LoadStockAmount();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -44,6 +48,9 @@ namespace YGN.Store.Management.UI.CommonReports
         {
             LoadStockAmount();
         }
+        #endregion
+
+        #region private methods
         private void LoadStockAmount()
         {
             var results = reportManager.GetStockAmountEachItem();
@@ -60,5 +67,6 @@ namespace YGN.Store.Management.UI.CommonReports
 
             stockAmountDataGridView.DataSource = dataTable;
         }
+        #endregion
     }
 }

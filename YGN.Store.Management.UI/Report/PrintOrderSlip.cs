@@ -28,7 +28,7 @@ namespace YGN.Store.Management.UI.Report
 
         private void btnPrintOrderDetail_Click(object sender, EventArgs e)
         {
-           
+            startOrderInformation();
         }
 
         private void PrintOrderSlip_Shown(object sender, EventArgs e)
@@ -45,25 +45,29 @@ namespace YGN.Store.Management.UI.Report
         }
         private void startOrderInformation()
         {
-            int orderId = Convert.ToInt32(txtOrderId.Text);
-            var reportResult = orderManager.GetOrderDetailInformation(orderId);
-            var clientResult = orderManager.GetOrderDetailClientForSlip(orderId);
-            var lastPriceResult = orderManager.GetTotalPriceForOrderInformation(orderId);
+            if (string.IsNullOrEmpty(txtOrderId.Text))
+            {
+                MessageBox.Show("Lütfen Id Giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int orderId = Convert.ToInt32(txtOrderId.Text);
+                var reportResult = orderManager.GetOrderDetailInformation(orderId);
+                var clientResult = orderManager.GetOrderDetailClientForSlip(orderId);
+                var lastPriceResult = orderManager.GetTotalPriceForOrderInformation(orderId);
 
+                ReportDataSource dataSourceReport = new ReportDataSource("DataSet_Report", reportResult);
+                ReportDataSource dataSourceGetClient = new ReportDataSource("DataSet_GetClient", clientResult);
+                ReportDataSource dataSourceGetLastPrice = new ReportDataSource("DataSetGetOrderLastPrice", lastPriceResult);
 
-            ReportDataSource dataSourceReport = new ReportDataSource("DataSet_Report", reportResult);
-            ReportDataSource dataSourceGetClient = new ReportDataSource("DataSet_GetClient", clientResult);
-            ReportDataSource dataSourceGetLastPrice = new ReportDataSource("DataSetGetOrderLastPrice", lastPriceResult);
+                this.reportViewer1.LocalReport.DataSources.Clear();
 
+                this.reportViewer1.LocalReport.DataSources.Add(dataSourceReport);
+                this.reportViewer1.LocalReport.DataSources.Add(dataSourceGetClient);
+                this.reportViewer1.LocalReport.DataSources.Add(dataSourceGetLastPrice);
 
-            this.reportViewer1.LocalReport.DataSources.Clear();
-
-            this.reportViewer1.LocalReport.DataSources.Add(dataSourceReport);
-            this.reportViewer1.LocalReport.DataSources.Add(dataSourceGetClient);
-            this.reportViewer1.LocalReport.DataSources.Add(dataSourceGetLastPrice);
-
-
-            this.reportViewer1.RefreshReport();
+                this.reportViewer1.RefreshReport();
+            }
         }
     }
 }

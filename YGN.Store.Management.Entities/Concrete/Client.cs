@@ -38,5 +38,6 @@ namespace YGN.Store.Management.Entities.Concrete
         public string FirmDescription { get; set; }
         public string TaxIdentificationNumber { get; set; }
         public string ClientNameSurname => $"{ClientName} {ClientSurname}";
+        public string ClientCodeAndClientName => $"{ClientCode} -- {ClientName} {ClientSurname}";
     }
 }

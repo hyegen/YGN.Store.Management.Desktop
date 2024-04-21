@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.stockAmountDataGridView = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockAmountDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -50,6 +52,14 @@
             // stockAmountDataGridView
             // 
             this.stockAmountDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.stockAmountDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.stockAmountDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stockAmountDataGridView.Location = new System.Drawing.Point(0, 0);
             this.stockAmountDataGridView.Name = "stockAmountDataGridView";
@@ -59,6 +69,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Location = new System.Drawing.Point(12, 19);
             this.panel2.Name = "panel2";
@@ -67,8 +78,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClose.Location = new System.Drawing.Point(3, 3);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.Location = new System.Drawing.Point(76, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(70, 52);
             this.btnClose.TabIndex = 0;
@@ -94,6 +105,17 @@
             this.txtSearch.Size = new System.Drawing.Size(134, 23);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnRefresh.Location = new System.Drawing.Point(3, 5);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(70, 51);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.Text = "Yenile";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // StockAmountForm
             // 
@@ -124,5 +146,6 @@
         private System.Windows.Forms.DataGridView stockAmountDataGridView;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
