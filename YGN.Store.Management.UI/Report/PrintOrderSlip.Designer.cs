@@ -48,6 +48,7 @@
             this.txtOrderId.Name = "txtOrderId";
             this.txtOrderId.Size = new System.Drawing.Size(115, 20);
             this.txtOrderId.TabIndex = 1;
+            this.txtOrderId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrderId_KeyDown);
             // 
             // btnPrintOrderDetail
             // 
@@ -72,6 +73,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sipariş Fişi - Yazdır";
             this.Load += new System.EventHandler(this.PrintOrderSlip_Load);
+            this.Shown += new System.EventHandler(this.PrintOrderSlip_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

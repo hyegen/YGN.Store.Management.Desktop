@@ -33,8 +33,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDeleteLine = new System.Windows.Forms.Button();
-            this.lblLastPrice = new System.Windows.Forms.Label();
-            this.txtLastPrice = new System.Windows.Forms.TextBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.comboBoxClients = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
@@ -48,6 +46,8 @@
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblLastPrice = new System.Windows.Forms.Label();
+            this.txtLastPrice = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
@@ -90,9 +90,9 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnDeleteLine);
             this.panel2.Controls.Add(this.lblLastPrice);
             this.panel2.Controls.Add(this.txtLastPrice);
+            this.panel2.Controls.Add(this.btnDeleteLine);
             this.panel2.Controls.Add(this.groupBoxClient);
             this.panel2.Controls.Add(this.selectedItemsGroupBox);
             this.panel2.Controls.Add(this.selectItemGroupBox);
@@ -113,25 +113,6 @@
             this.btnDeleteLine.Text = "Sil";
             this.btnDeleteLine.UseVisualStyleBackColor = false;
             this.btnDeleteLine.Click += new System.EventHandler(this.btnDeleteLine_Click);
-            // 
-            // lblLastPrice
-            // 
-            this.lblLastPrice.AutoSize = true;
-            this.lblLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLastPrice.Location = new System.Drawing.Point(1095, 86);
-            this.lblLastPrice.Name = "lblLastPrice";
-            this.lblLastPrice.Size = new System.Drawing.Size(118, 24);
-            this.lblLastPrice.TabIndex = 6;
-            this.lblLastPrice.Text = "Toplam Fiyat";
-            // 
-            // txtLastPrice
-            // 
-            this.txtLastPrice.Enabled = false;
-            this.txtLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLastPrice.Location = new System.Drawing.Point(1099, 113);
-            this.txtLastPrice.Name = "txtLastPrice";
-            this.txtLastPrice.Size = new System.Drawing.Size(114, 29);
-            this.txtLastPrice.TabIndex = 5;
             // 
             // groupBoxClient
             // 
@@ -254,6 +235,26 @@
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
+            // lblLastPrice
+            // 
+            this.lblLastPrice.AutoSize = true;
+            this.lblLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblLastPrice.Location = new System.Drawing.Point(709, 18);
+            this.lblLastPrice.Name = "lblLastPrice";
+            this.lblLastPrice.Size = new System.Drawing.Size(130, 24);
+            this.lblLastPrice.TabIndex = 9;
+            this.lblLastPrice.Text = "Toplam Fiyat";
+            // 
+            // txtLastPrice
+            // 
+            this.txtLastPrice.Enabled = false;
+            this.txtLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtLastPrice.Location = new System.Drawing.Point(697, 45);
+            this.txtLastPrice.Name = "txtLastPrice";
+            this.txtLastPrice.ReadOnly = true;
+            this.txtLastPrice.Size = new System.Drawing.Size(155, 29);
+            this.txtLastPrice.TabIndex = 8;
+            // 
             // QuickSalesOrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,8 +293,6 @@
         private System.Windows.Forms.GroupBox groupBoxClient;
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.ComboBox comboBoxClients;
-        private System.Windows.Forms.Label lblLastPrice;
-        private System.Windows.Forms.TextBox txtLastPrice;
         private System.Windows.Forms.Button btnDeleteLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
@@ -301,5 +300,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Label lblLastPrice;
+        private System.Windows.Forms.TextBox txtLastPrice;
     }
 }

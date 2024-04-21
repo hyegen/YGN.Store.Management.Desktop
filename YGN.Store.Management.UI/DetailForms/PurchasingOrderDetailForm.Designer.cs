@@ -116,19 +116,19 @@
             // txtLastPrice
             // 
             this.txtLastPrice.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLastPrice.Location = new System.Drawing.Point(410, 54);
+            this.txtLastPrice.Location = new System.Drawing.Point(742, 45);
             this.txtLastPrice.Name = "txtLastPrice";
             this.txtLastPrice.ReadOnly = true;
-            this.txtLastPrice.Size = new System.Drawing.Size(120, 25);
+            this.txtLastPrice.Size = new System.Drawing.Size(145, 25);
             this.txtLastPrice.TabIndex = 4;
             // 
             // lblTotalPrice
             // 
             this.lblTotalPrice.AutoSize = true;
-            this.lblTotalPrice.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTotalPrice.Location = new System.Drawing.Point(423, 32);
+            this.lblTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTotalPrice.Location = new System.Drawing.Point(749, 18);
             this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(95, 19);
+            this.lblTotalPrice.Size = new System.Drawing.Size(130, 24);
             this.lblTotalPrice.TabIndex = 3;
             this.lblTotalPrice.Text = "Toplam Fiyat";
             // 

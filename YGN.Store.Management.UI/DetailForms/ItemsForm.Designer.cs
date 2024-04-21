@@ -162,7 +162,7 @@
             this.txtItemCode.Location = new System.Drawing.Point(137, 24);
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(289, 20);
-            this.txtItemCode.TabIndex = 9;
+            this.txtItemCode.TabIndex = 1;
             // 
             // label1
             // 
@@ -188,7 +188,7 @@
             this.txtItemDescription.Location = new System.Drawing.Point(137, 54);
             this.txtItemDescription.Name = "txtItemDescription";
             this.txtItemDescription.Size = new System.Drawing.Size(289, 20);
-            this.txtItemDescription.TabIndex = 4;
+            this.txtItemDescription.TabIndex = 2;
             // 
             // label7
             // 
@@ -265,7 +265,7 @@
             this.txtUnitPrice.Location = new System.Drawing.Point(137, 80);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(289, 20);
-            this.txtUnitPrice.TabIndex = 11;
+            this.txtUnitPrice.TabIndex = 3;
             // 
             // btnRefresh
             // 

@@ -146,7 +146,7 @@
             this.txtAddress.Location = new System.Drawing.Point(137, 170);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(289, 20);
-            this.txtAddress.TabIndex = 11;
+            this.txtAddress.TabIndex = 6;
             // 
             // label8
             // 
@@ -171,14 +171,14 @@
             this.txtClientCode.Location = new System.Drawing.Point(137, 24);
             this.txtClientCode.Name = "txtClientCode";
             this.txtClientCode.Size = new System.Drawing.Size(289, 20);
-            this.txtClientCode.TabIndex = 9;
+            this.txtClientCode.TabIndex = 1;
             // 
             // txtClientPhone
             // 
             this.txtClientPhone.Location = new System.Drawing.Point(137, 144);
             this.txtClientPhone.Name = "txtClientPhone";
             this.txtClientPhone.Size = new System.Drawing.Size(289, 20);
-            this.txtClientPhone.TabIndex = 7;
+            this.txtClientPhone.TabIndex = 5;
             // 
             // label1
             // 
@@ -194,7 +194,7 @@
             this.txtClientFirmDescription.Location = new System.Drawing.Point(137, 114);
             this.txtClientFirmDescription.Name = "txtClientFirmDescription";
             this.txtClientFirmDescription.Size = new System.Drawing.Size(289, 20);
-            this.txtClientFirmDescription.TabIndex = 6;
+            this.txtClientFirmDescription.TabIndex = 4;
             // 
             // label2
             // 
@@ -210,7 +210,7 @@
             this.txtClientSurname.Location = new System.Drawing.Point(137, 84);
             this.txtClientSurname.Name = "txtClientSurname";
             this.txtClientSurname.Size = new System.Drawing.Size(289, 20);
-            this.txtClientSurname.TabIndex = 5;
+            this.txtClientSurname.TabIndex = 3;
             // 
             // label3
             // 
@@ -226,7 +226,7 @@
             this.txtClientName.Location = new System.Drawing.Point(137, 54);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(289, 20);
-            this.txtClientName.TabIndex = 4;
+            this.txtClientName.TabIndex = 2;
             // 
             // label4
             // 
