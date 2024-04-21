@@ -134,6 +134,7 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\FormHelper.cs" />
     <Compile Include="ListForms\QuickSalesOrderListForm.cs">
       <SubType>Form</SubType>
     </Compile>

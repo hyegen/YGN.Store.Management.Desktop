@@ -33,7 +33,6 @@ namespace YGN.Store.Management.UI.DetailForms
         public QuickSalesOrderDetailForm()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
             getDatas();
         }
 
@@ -85,9 +84,15 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            createOrder();
-
-            this.Close();
+            if (comboBoxClients.SelectedIndex == -1)
+            {
+                MessageBox.Show("Lütfen Bir Cari Seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                createOrder();
+                this.Close();
+            }
         }
         private void selectedItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -103,7 +108,7 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             else
             {
-                selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = 0; // Veya istediğiniz varsayılan bir değer
+                selectedItemsDataGridView.Rows[e.RowIndex].Cells["LineTotal"].Value = 0; 
             }
             UpdateTotalPriceTextBox();
         }
@@ -134,6 +139,10 @@ namespace YGN.Store.Management.UI.DetailForms
                 MessageBox.Show("Lütfen silmek istediğiniz bir satırı seçin.");
             }
         }
+        private void QuickSalesOrderDetailForm_Load(object sender, EventArgs e)
+        {
+            FillComboBox();
+        }
         #endregion
 
         #region private methods
@@ -145,7 +154,7 @@ namespace YGN.Store.Management.UI.DetailForms
         private void getDatas()
         {
             itemsDataGridView.DataSource = itemManager.GetItems();
-            FillComboBox();
+            //FillComboBox();
         }
         private decimal CalculateTotalPrice(int itemId, int amount)
         {
@@ -210,6 +219,7 @@ namespace YGN.Store.Management.UI.DetailForms
             comboBoxClients.DataSource = clients;
             comboBoxClients.DisplayMember = "ClientNameSurname";
             comboBoxClients.ValueMember = "Id";
+            comboBoxClients.SelectedIndex = -1;
         }
         private int GetClientFromCombobox()
         {
@@ -224,6 +234,7 @@ namespace YGN.Store.Management.UI.DetailForms
         }
 
         #endregion
+
 
     }
 }

@@ -39,7 +39,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(12, 77);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(756, 572);
+            this.reportViewer1.Size = new System.Drawing.Size(853, 689);
             this.reportViewer1.TabIndex = 0;
             // 
             // txtOrderId
@@ -64,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 661);
+            this.ClientSize = new System.Drawing.Size(877, 778);
             this.Controls.Add(this.btnPrintOrderDetail);
             this.Controls.Add(this.txtOrderId);
             this.Controls.Add(this.reportViewer1);

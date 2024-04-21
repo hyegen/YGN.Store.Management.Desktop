@@ -262,6 +262,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "PurchasingOrderDetailForm";
             this.Text = "Satınalma";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.PurchasingOrderDetailForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

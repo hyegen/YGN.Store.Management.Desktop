@@ -17,6 +17,7 @@ using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
 using YGN.Store.Management.UI.CommonReports;
 using YGN.Store.Management.UI.DetailForms;
+using YGN.Store.Management.UI.Helper;
 using YGN.Store.Management.UI.Report;
 
 namespace YGN.Store.Management.UI.Forms
@@ -43,22 +44,31 @@ namespace YGN.Store.Management.UI.Forms
         }
         private void btnStockAmount_Click(object sender, EventArgs e)
         {
-            StockAmountForm stockAmountForm = new StockAmountForm();
-            stockAmountForm.ShowDialog();
+            FormHelper.ShowForm<StockAmountForm>();
         }
         private void btnQuickSales_Click(object sender, EventArgs e)
         {
-            QuickSalesOrderDetailForm detailForm = new QuickSalesOrderDetailForm();
-            detailForm.Show();
+            FormHelper.ShowForm<QuickSalesOrderDetailForm>();
+        }
+        private void btnPurchasing_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<PurchasingOrderDetailForm>();
+        }
+        private void btnCreateOrderSlip_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<PrintOrderSlip>();
+        }
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<ClientsForm>();
+        }
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<ItemsForm>();
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             getDatas();
-        }
-        private void btnPurchasing_Click(object sender, EventArgs e)
-        {
-            PurchasingOrderDetailForm purchasingOrderDetailForm = new PurchasingOrderDetailForm();
-            purchasingOrderDetailForm.Show();
         }
         private void lastTransactionDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -68,21 +78,7 @@ namespace YGN.Store.Management.UI.Forms
                 ShowDetailForm(selectedID);
             }
         }
-        private void btnCreateOrderSlip_Click(object sender, EventArgs e)
-        {
-            PrintOrderSlip printOrderSlip = new PrintOrderSlip();
-            printOrderSlip.Show();
-        }
-        private void btnClients_Click(object sender, EventArgs e)
-        {
-            ClientsForm clientsForm = new ClientsForm();
-            clientsForm.ShowDialog();
-        }
-        private void btnProducts_Click(object sender, EventArgs e)
-        {
-            ItemsForm itemsForm = new ItemsForm();
-            itemsForm.ShowDialog();
-        }
+
         #endregion
 
         #region private methods
@@ -93,8 +89,7 @@ namespace YGN.Store.Management.UI.Forms
         }
         private void ShowDetailForm(int selectedID)
         {
-            InformationsForm detailForm = new InformationsForm(selectedID);
-            detailForm.ShowDialog();
+            FormHelper.ShowParametricForm<InformationsForm>(selectedID);
         }
 
         #endregion

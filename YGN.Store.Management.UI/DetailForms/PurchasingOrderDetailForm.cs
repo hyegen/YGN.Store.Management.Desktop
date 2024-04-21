@@ -12,6 +12,7 @@ using YGN.Store.Management.Common.TransactionCodes;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace YGN.Store.Management.UI.DetailForms
 {
@@ -28,7 +29,6 @@ namespace YGN.Store.Management.UI.DetailForms
         public PurchasingOrderDetailForm()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
             getDatas();
         }
         #endregion
@@ -47,8 +47,8 @@ namespace YGN.Store.Management.UI.DetailForms
                 int id = Convert.ToInt32(selectedRow.Cells["Id"].Value);
                 string itemCode = selectedRow.Cells["ItemCode"].Value.ToString();
                 string itemName = selectedRow.Cells["ItemName"].Value.ToString();
-               // decimal unitPrice = Convert.ToDecimal(selectedRow.Cells["UnitPrice"].Value);
-             //   string brand = selectedRow.Cells["Brand"].Value?.ToString();
+                // decimal unitPrice = Convert.ToDecimal(selectedRow.Cells["UnitPrice"].Value);
+                //   string brand = selectedRow.Cells["Brand"].Value?.ToString();
 
                 bool isDuplicate = false;
                 foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -68,7 +68,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 if (!isDuplicate)
                 {
                     //selectedOrders.Add(new OrderLine { Id = id, ItemId = id, Amount = 0, DateTime = DateTime.Now, LineTotal = 0 });
-                    selectedItems.Add(new SelectedItems { ItemId = id, ItemCode= itemCode, ItemName= itemName, Amount = 0, LineTotal = 0 });
+                    selectedItems.Add(new SelectedItems { ItemId = id, ItemCode = itemCode, ItemName = itemName, Amount = 0, LineTotal = 0 });
                     RefreshSelectedOrdersDataGridView();
                 }
                 else
@@ -79,9 +79,15 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            createOrder();
-
-            this.Close();
+            if (clientsComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Lütfen Bir Cari Seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                createOrder();
+                this.Close();
+            }
         }
         private void selectedItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -97,6 +103,36 @@ namespace YGN.Store.Management.UI.DetailForms
                 UpdateTotalPriceTextBox();
             }
         }
+        private void btnDeleteLine_Click(object sender, EventArgs e)
+        {
+            if (selectedItemsDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
+
+                int selectedId = Convert.ToInt32(selectedRow.Cells["ItemId"].Value);
+
+                var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemId == selectedId);
+                if (itemToRemove != null)
+                {
+                    selectedItems.Remove(itemToRemove);
+                    selectedItemsDataGridView.DataSource = null;
+                    selectedItemsDataGridView.DataSource = selectedItems;
+                }
+                else
+                {
+                    MessageBox.Show("Silme işlemi başarısız oldu.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek istediğiniz bir satırı seçin.");
+            }
+        }
+        private void PurchasingOrderDetailForm_Load(object sender, EventArgs e)
+        {
+            FillComboBox();
+        }
+
         #endregion
 
         #region private methods
@@ -108,7 +144,7 @@ namespace YGN.Store.Management.UI.DetailForms
         private void getDatas()
         {
             itemsDataGridView.DataSource = itemManager.GetItems();
-            FillComboBox();
+            //FillComboBox();
         }
         private decimal CalculateTotalPrice(int itemId, int amount)
         {
@@ -173,6 +209,7 @@ namespace YGN.Store.Management.UI.DetailForms
             clientsComboBox.DataSource = clients;
             clientsComboBox.DisplayMember = "ClientNameSurname";
             clientsComboBox.ValueMember = "Id";
+            clientsComboBox.SelectedIndex = -1;
         }
         private int GetClientFromCombobox()
         {
@@ -188,31 +225,6 @@ namespace YGN.Store.Management.UI.DetailForms
 
         #endregion
 
-        private void btnDeleteLine_Click(object sender, EventArgs e)
-        {
 
-            if (selectedItemsDataGridView.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
-
-                int selectedId = Convert.ToInt32(selectedRow.Cells["ItemId"].Value);
-
-                var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemId == selectedId);
-                if (itemToRemove != null)
-                {
-                    selectedItems.Remove(itemToRemove);
-                    selectedItemsDataGridView.DataSource = null;
-                    selectedItemsDataGridView.DataSource = selectedItems;
-                }
-                else
-                {
-                    MessageBox.Show("Silme işlemi başarısız oldu.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Lütfen silmek istediğiniz bir satırı seçin.");
-            }
-        }
     }
 }

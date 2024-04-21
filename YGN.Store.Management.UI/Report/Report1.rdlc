@@ -21,6 +21,9 @@
         <Left>3.48933cm</Left>
         <Height>0.6cm</Height>
         <Width>3.02917cm</Width>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -51,6 +54,9 @@
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>1</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -77,7 +83,7 @@
         </Paragraphs>
         <rd:DefaultName>Date_</rd:DefaultName>
         <Top>0.27877cm</Top>
-        <Left>11.09957cm</Left>
+        <Left>13.59957cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -109,7 +115,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.27877cm</Top>
-        <Left>8.11952cm</Left>
+        <Left>10.61952cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>3</ZIndex>
@@ -813,12 +819,16 @@
       </Textbox>
     </ReportItems>
     <Height>3.17708in</Height>
-    <Style />
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.61842in</Width>
   <Page>
     <PageHeader>
-      <Height>2.77812cm</Height>
+      <Height>3.05745cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -841,7 +851,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.86995cm</Top>
-          <Left>3.48933cm</Left>
+          <Left>3.85975cm</Left>
           <Height>1.20854cm</Height>
           <Width>9.37917cm</Width>
           <Style>
@@ -854,6 +864,17 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Line Name="Line2">
+          <Top>2.76641cm</Top>
+          <Height>0cm</Height>
+          <Width>16.81078cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
       </ReportItems>
       <Style>
         <Border>
@@ -913,7 +934,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Sayın;</Value>
+                  <Value>Sayın</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
