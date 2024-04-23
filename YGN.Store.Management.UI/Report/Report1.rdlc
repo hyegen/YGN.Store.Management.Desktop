@@ -17,8 +17,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OrderId</rd:DefaultName>
-        <Top>0.27877cm</Top>
-        <Left>3.48933cm</Left>
+        <Top>0.9846cm</Top>
+        <Left>0.55245cm</Left>
         <Height>0.6cm</Height>
         <Width>3.02917cm</Width>
         <Visibility>
@@ -83,7 +83,7 @@
         </Paragraphs>
         <rd:DefaultName>Date_</rd:DefaultName>
         <Top>0.17639cm</Top>
-        <Left>12.76646cm</Left>
+        <Left>12.29021cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -115,7 +115,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.17639cm</Top>
-        <Left>9.78641cm</Left>
+        <Left>9.31016cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>3</ZIndex>
@@ -139,7 +139,7 @@
               <Width>4.08812cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.66689cm</Width>
+              <Width>1.4023cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.02375cm</Width>
@@ -163,11 +163,14 @@
                             <TextRun>
                               <Value>Malzeme Kodu</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -196,11 +199,14 @@
                             <TextRun>
                               <Value>Malzeme Açıklaması</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox6</rd:DefaultName>
@@ -229,11 +235,14 @@
                             <TextRun>
                               <Value>Miktar</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -262,11 +271,14 @@
                             <TextRun>
                               <Value>Birim Fiyat</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -295,11 +307,14 @@
                             <TextRun>
                               <Value>Satır Toplamı</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -332,7 +347,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ItemCode.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -362,7 +379,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ItemName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -392,10 +411,14 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Amount.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Amount</rd:DefaultName>
@@ -422,7 +445,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!UnitPrice.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0.00 '₺';(#,0.00 '₺')</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -438,6 +464,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -452,7 +479,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!LineTotal.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0.00 '₺';(#,0.00 '₺')</Format>
+                                <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -468,6 +499,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -499,7 +531,7 @@
         <Top>2.43155cm</Top>
         <Left>1.56166cm</Left>
         <Height>1.2cm</Height>
-        <Width>12.7485cm</Width>
+        <Width>12.48391cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -535,11 +567,14 @@
                             <TextRun>
                               <Value>Cari Ad</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox17</rd:DefaultName>
@@ -568,11 +603,14 @@
                             <TextRun>
                               <Value>Cari Soyad</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox19</rd:DefaultName>
@@ -601,11 +639,14 @@
                             <TextRun>
                               <Value>Firma</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox21</rd:DefaultName>
@@ -638,7 +679,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ClientName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -668,7 +711,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ClientSurname.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -698,7 +744,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!FirmDescription.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -795,7 +843,7 @@
               <TextRun>
                 <Value>=First(Fields!TotalPrice.Value, "DataSetGetOrderLastPrice")</Value>
                 <Style>
-                  <Format>'₺'0.00;'₺'0.00-</Format>
+                  <Format>#,0.00 '₺';#,0.00 '₺'-</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -820,17 +868,17 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>1.82291in</Height>
+    <Height>1.78124in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>6.733in</Width>
+  <Width>6.18092in</Width>
   <Page>
     <PageHeader>
-      <Height>1.44349cm</Height>
+      <Height>1.07625cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -852,8 +900,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>3.85975cm</Left>
-          <Height>1.20854cm</Height>
+          <Left>3.15828cm</Left>
+          <Height>0.86458cm</Height>
           <Width>9.37917cm</Width>
           <Style>
             <Border>
@@ -866,10 +914,10 @@
           </Style>
         </Textbox>
         <Line Name="Line2">
-          <Top>1.38493cm</Top>
-          <Left>0.55245cm</Left>
+          <Top>0.96477cm</Top>
+          <Left>0.28787cm</Left>
           <Height>0cm</Height>
-          <Width>16.0202cm</Width>
+          <Width>14.90895cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -885,15 +933,15 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.94621cm</Height>
+      <Height>1.13509cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line1">
           <Top>0.17349cm</Top>
-          <Left>0.55245cm</Left>
+          <Left>0.28787cm</Left>
           <Height>0cm</Height>
-          <Width>16.0202cm</Width>
+          <Width>14.90895cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -915,7 +963,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.47308cm</Top>
+          <Top>0.34988cm</Top>
           <Left>6.87599cm</Left>
           <Height>0.6cm</Height>
           <Width>4.66958cm</Width>
@@ -945,7 +993,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox13</rd:DefaultName>
-          <Top>0.47308cm</Top>
+          <Top>0.34988cm</Top>
           <Left>0.55245cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -975,7 +1023,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>FirmDescription1</rd:DefaultName>
-          <Top>0.47308cm</Top>
+          <Top>0.34988cm</Top>
           <Left>3.15828cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>

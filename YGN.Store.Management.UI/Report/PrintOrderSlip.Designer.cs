@@ -65,7 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 778);
+            this.ClientSize = new System.Drawing.Size(764, 748);
             this.Controls.Add(this.btnPrintOrderDetail);
             this.Controls.Add(this.txtOrderId);
             this.Controls.Add(this.reportViewer1);
