@@ -235,6 +235,5 @@ namespace YGN.Store.Management.UI.DetailForms
 
         #endregion
 
-
     }
 }

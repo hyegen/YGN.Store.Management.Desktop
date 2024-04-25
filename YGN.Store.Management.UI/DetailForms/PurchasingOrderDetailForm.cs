@@ -208,7 +208,7 @@ namespace YGN.Store.Management.UI.DetailForms
         {
             List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
             clientsComboBox.DataSource = clients;
-            clientsComboBox.DisplayMember = "ClientNameSurname";
+            clientsComboBox.DisplayMember = "ClientCodeAndClientName";
             clientsComboBox.ValueMember = "Id";
             clientsComboBox.SelectedIndex = -1;
         }
@@ -225,7 +225,6 @@ namespace YGN.Store.Management.UI.DetailForms
         }
 
         #endregion
-
 
     }
 }

@@ -133,19 +133,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.46974cm</Width>
+              <Width>2.8825cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.08812cm</Width>
+              <Width>4.23629cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.4023cm</Width>
+              <Width>1.55047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.02375cm</Width>
+              <Width>2.17192cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.64817cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -163,7 +163,7 @@
                             <TextRun>
                               <Value>Malzeme Kodu</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -199,7 +199,7 @@
                             <TextRun>
                               <Value>Malzeme Açıklaması</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -235,7 +235,7 @@
                             <TextRun>
                               <Value>Miktar</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -271,7 +271,7 @@
                             <TextRun>
                               <Value>Birim Fiyat</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -307,7 +307,7 @@
                             <TextRun>
                               <Value>Satır Toplamı</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -347,9 +347,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ItemCode.Value</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -379,9 +377,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ItemName.Value</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -411,9 +407,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Amount.Value</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -446,8 +440,7 @@
                             <TextRun>
                               <Value>=Fields!UnitPrice.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
-                                <Format>#,0.00 '₺';(#,0.00 '₺')</Format>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -464,7 +457,6 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -480,8 +472,7 @@
                             <TextRun>
                               <Value>=Fields!LineTotal.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
-                                <Format>#,0.00 '₺';(#,0.00 '₺')</Format>
+                                <Format>#,0.00;(#,0.00)</Format>
                                 <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
                               </Style>
                             </TextRun>
@@ -499,7 +490,6 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>tr-TR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -529,9 +519,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet_Report</DataSetName>
         <Top>2.43155cm</Top>
-        <Left>1.56166cm</Left>
+        <Left>0.82083cm</Left>
         <Height>1.2cm</Height>
-        <Width>12.48391cm</Width>
+        <Width>13.48935cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -567,7 +557,7 @@
                             <TextRun>
                               <Value>Cari Ad</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -603,7 +593,7 @@
                             <TextRun>
                               <Value>Cari Soyad</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -639,7 +629,7 @@
                             <TextRun>
                               <Value>Firma</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -679,9 +669,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ClientName.Value</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -712,7 +700,6 @@
                             <TextRun>
                               <Value>=Fields!ClientSurname.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
                               </Style>
                             </TextRun>
@@ -744,9 +731,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!FirmDescription.Value</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -808,7 +793,7 @@
               <TextRun>
                 <Value>Toplam:</Value>
                 <Style>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -843,6 +828,7 @@
               <TextRun>
                 <Value>=First(Fields!TotalPrice.Value, "DataSetGetOrderLastPrice")</Value>
                 <Style>
+                  <FontWeight>Bold</FontWeight>
                   <Format>#,0.00 '₺';#,0.00 '₺'-</Format>
                 </Style>
               </TextRun>
@@ -875,7 +861,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>6.18092in</Width>
+  <Width>6.09759in</Width>
   <Page>
     <PageHeader>
       <Height>1.07625cm</Height>
