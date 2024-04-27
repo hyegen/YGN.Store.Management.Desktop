@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using YGN.Store.Management.Entities.Concrete;
 
-namespace YGN.Store.Management.DataAccess.Context
+namespace YGN.Store.Management.Web.Service.Context
 {
-    public partial class YGNContext : DbContext
+    public class YGNContext: DbContext
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new ClientConfiguration());
             modelBuilder.Configurations.Add(new ItemConfiguration());
+
+
         }
 
         public DbSet<Item> Items { get; set; }

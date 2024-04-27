@@ -1,14 +1,14 @@
 ﻿@model List<string>
 
-
-@{ bool hasData = Model != null && Model.Count() > 0; }
-
+@{ 
+    bool hasData = Model != null && Model.Count() > 0;  
+}
 
 @if (hasData)
 {
-    <p style="color:green">DATA RETURNED TRUE.</p>
+    <p style="color: green; font-size: 30px;"><b>DATA RETURNED TRUE</b></p>
 }
 else
 {
-    <p style="color:red">DATA RETURNED FALSE.</p>
+    <p style="color: red; font-size: 30px;">DATA RETURNED FALSE</p>
 }
