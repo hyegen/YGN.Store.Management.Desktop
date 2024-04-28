@@ -7,13 +7,13 @@ namespace YGN.Store.Management.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class miginit : IMigrationMetadata
+    public sealed partial class migitm1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(miginit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migitm1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404191749292_mig-init"; }
+            get { return "202404281222295_mig-itm1"; }
         }
         
         string IMigrationMetadata.Source

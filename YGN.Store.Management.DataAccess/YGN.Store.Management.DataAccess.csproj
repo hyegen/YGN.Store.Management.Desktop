@@ -82,9 +82,17 @@
     <Compile Include="Concrete\EntityFramework\EfReportDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
-    <Compile Include="Migrations\202404191749292_mig-init.cs" />
-    <Compile Include="Migrations\202404191749292_mig-init.Designer.cs">
-      <DependentUpon>202404191749292_mig-init.cs</DependentUpon>
+    <Compile Include="Migrations\202404281222295_mig-itm1.cs" />
+    <Compile Include="Migrations\202404281222295_mig-itm1.Designer.cs">
+      <DependentUpon>202404281222295_mig-itm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404281230257_mig-grnl-update.cs" />
+    <Compile Include="Migrations\202404281230257_mig-grnl-update.Designer.cs">
+      <DependentUpon>202404281230257_mig-grnl-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404281231138_mig-grnl-update1.cs" />
+    <Compile Include="Migrations\202404281231138_mig-grnl-update1.Designer.cs">
+      <DependentUpon>202404281231138_mig-grnl-update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,8 +112,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202404191749292_mig-init.resx">
-      <DependentUpon>202404191749292_mig-init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404281222295_mig-itm1.resx">
+      <DependentUpon>202404281222295_mig-itm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404281230257_mig-grnl-update.resx">
+      <DependentUpon>202404281230257_mig-grnl-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404281231138_mig-grnl-update1.resx">
+      <DependentUpon>202404281231138_mig-grnl-update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

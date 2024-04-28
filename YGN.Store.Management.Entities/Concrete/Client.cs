@@ -16,12 +16,12 @@ namespace YGN.Store.Management.Entities.Concrete
             Property(x => x.ClientName).IsRequired();
             Property(x => x.ClientName).HasMaxLength(100);
             Property(x => x.ClientSurname).HasMaxLength(100);
-            Property(x => x.Address).HasMaxLength(30);
-            Property(x => x.TelNr1).HasMaxLength(11);
-            Property(x => x.TelNr2).HasMaxLength(11);
+            Property(x => x.Address).HasMaxLength(200);
+            Property(x => x.TelNr1).HasMaxLength(50);
+            Property(x => x.TelNr2).HasMaxLength(50);
             Property(x => x.FirmDescription).HasMaxLength(150);
             Property(x => x.TaxIdentificationNumber).HasMaxLength(50);
-            Property(x => x.ClientCode).HasMaxLength(40);
+            Property(x => x.ClientCode).HasMaxLength(100);
         }
     }
     public class Client : IEntity

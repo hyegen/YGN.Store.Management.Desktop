@@ -7,7 +7,7 @@ using YGN.Store.Management.Entities.Concrete;
 
 namespace YGN.Store.Management.Web.Service.Context
 {
-    public class YGNContext: DbContext
+    public class YGNContext2: DbContext
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -13,9 +13,9 @@ namespace YGN.Store.Management.Entities.Concrete
     {
         public ItemConfiguration()
         {
-            Property(x => x.ItemCode).HasMaxLength(40);
-            Property(x => x.ItemName).HasMaxLength(50);
-            Property(x => x.Brand).HasMaxLength(30);
+            Property(x => x.ItemCode).HasMaxLength(100);
+            Property(x => x.ItemName).HasMaxLength(150);
+            Property(x => x.Brand).HasMaxLength(100);
         }
     }
     public class Item : IEntity

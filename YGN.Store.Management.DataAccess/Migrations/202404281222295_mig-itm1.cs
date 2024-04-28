@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class miginit : DbMigration
+    public partial class migitm1 : DbMigration
     {
         public override void Up()
         {
@@ -29,7 +29,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ItemCode = c.String(maxLength: 40),
-                        ItemName = c.String(maxLength: 50),
+                        ItemName = c.String(maxLength: 150),
                         UnitPrice = c.Double(),
                         Brand = c.String(maxLength: 30),
                         Amount = c.Int(),
