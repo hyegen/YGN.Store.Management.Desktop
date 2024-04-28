@@ -7,6 +7,7 @@ using YGN.Store.Management.Core.DataAccess.EntityFramework;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
 
 namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 {
@@ -32,6 +33,16 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 var result =
                     (from u in context.Users
                      select u.UserName).ToList();
+                return result;
+            }
+        }
+        public List<UserNameView> GetUserNameViews()
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var result =
+                    (from u in context.Users
+                     select u.UserName).ToList().Select(x => new UserNameView { UserName = x }).ToList();
                 return result;
             }
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
 
 namespace YGN.Store.Management.Business.Abstract
 {
@@ -12,5 +13,6 @@ namespace YGN.Store.Management.Business.Abstract
         void AddUser(User user);
         bool Login(string userName, string password);
         List<string> GetAllUsers();
+        List<UserNameView> GetUserNameViews();
     }
 }
