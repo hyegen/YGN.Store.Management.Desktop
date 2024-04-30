@@ -9,5 +9,6 @@ namespace YGN.Store.Management.Entities.Views
     public class OrderInformationTotalPrice
     {
         public decimal TotalPrice { get; set; }
+
     }
 }

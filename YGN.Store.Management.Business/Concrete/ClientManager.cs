@@ -39,4 +39,5 @@ namespace YGN.Store.Management.Business.Concrete
             return _clientDal.GetAllClientsByNameAndSurname();
         }
     }
+
 }

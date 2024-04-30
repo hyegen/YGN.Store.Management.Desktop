@@ -47,4 +47,5 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
             }
         }
     }
+
 }
