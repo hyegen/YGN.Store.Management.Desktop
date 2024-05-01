@@ -8,6 +8,7 @@ using YGN.Store.Management.Core.Entities;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
 
 namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 {
@@ -30,7 +31,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return false;
             }
         }
-
         public int CountOfAllClients()
         {
             using (YGNContext context = new YGNContext())
@@ -39,7 +39,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return count;
             }
         }
-
         public List<Client> GetAllClientsByNameAndSurname()
         {
             using (YGNContext context = new YGNContext())
@@ -48,7 +47,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return clients;
             }
         }
-
         public Client GetClientByName(string client)
         {
             using (YGNContext context = new YGNContext())
@@ -60,6 +58,19 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return query.FirstOrDefault();
             }
         }
+        public List<ClientCodeAndNameAndSurnameView> GetClientCodeAndNameAndSurname()
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var clients = context.Clients.ToList();
+                var result = clients.Select(c => new ClientCodeAndNameAndSurnameView
+                {
+                    ClientId=c.Id,
+                    ClientCodeAndNameAndSurname = $"{c.ClientCode}-{c.ClientName} {c.ClientSurname}"
+                }).ToList();
 
+                return result;
+            }
+        }
     }
 }

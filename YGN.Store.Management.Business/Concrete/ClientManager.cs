@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YGN.Store.Management.Business.Abstract;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
 
 namespace YGN.Store.Management.Business.Concrete
 {
@@ -37,6 +38,11 @@ namespace YGN.Store.Management.Business.Concrete
         public List<Client> GetAllClientsByNameAndSurname()
         {
             return _clientDal.GetAllClientsByNameAndSurname();
+        }
+
+        public List<ClientCodeAndNameAndSurnameView> GetClientCodeAndNameAndSurname()
+        {
+            return _clientDal.GetClientCodeAndNameAndSurname();
         }
     }
 

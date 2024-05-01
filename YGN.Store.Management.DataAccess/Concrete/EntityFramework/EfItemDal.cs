@@ -7,6 +7,8 @@ using YGN.Store.Management.Core.DataAccess.EntityFramework;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 {
@@ -29,7 +31,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return false;
             }
         }
-
         public int CountOfAllItems()
         {
             using (YGNContext context = new YGNContext())
@@ -37,7 +38,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return context.Items.Count();
             }
         }
-
         public List<Item> GetByName(string searchName)
         {
             using (YGNContext context = new YGNContext())
@@ -45,7 +45,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return context.Set<Item>().Where(entity => entity.ItemName.Equals(searchName, StringComparison.OrdinalIgnoreCase)).ToList();
             }
         }
-
         public List<Item> GetItems()
         {
             using (YGNContext context = new YGNContext())
@@ -53,7 +52,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return context.Set<Item>().ToList();
             }
         }
-
         public double GetUnitPrice(int itemId)
         {
             using (YGNContext context = new YGNContext())
@@ -64,5 +62,14 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return (double)result;
             }
         }
+        public List<MobItemSelectionViews> MobGetItemsView()
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var stockAmounts = context.Database.SqlQuery<MobItemSelectionViews>("EXEC YGN_MOB_ITEM_SELECTION_VIEW").ToList();
+                return stockAmounts;
+            }
+        }
+
     }
 }

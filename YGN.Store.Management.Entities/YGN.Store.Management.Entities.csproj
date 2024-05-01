@@ -76,6 +76,8 @@
     <Compile Include="Concrete\StockTransaction.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ClientCodeAndNameAndSurnameView.cs" />
+    <Compile Include="Views\MobViews\MobItemSelectionViews.cs" />
     <Compile Include="Views\OrderDetailInformation.cs" />
     <Compile Include="Views\OrderInformationTotalPrice.cs" />
     <Compile Include="Views\OrderLineView.cs" />
@@ -94,6 +96,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
