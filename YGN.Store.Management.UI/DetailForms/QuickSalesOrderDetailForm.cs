@@ -168,7 +168,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
                 OrderLines = new List<OrderLine>(),
-                TransactionCode = (int)TransactionCodes.Output
+                IOCode = (int)InputOutputCodes.Output
             };
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -183,7 +183,7 @@ namespace YGN.Store.Management.UI.DetailForms
                     DateTime = DateTime.Now,
                     LineTotal = CalculateTotalPrice(itemId, amount),
                     Order = newOrder,
-                    TransactionCode = (int)TransactionCodes.Output
+                    IOCode = (int)InputOutputCodes.Output
                 };
 
                 newOrder.TotalPrice += newOrderLine.LineTotal;

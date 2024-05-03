@@ -17,7 +17,7 @@ namespace YGN.Store.Management.Entities.Concrete
         public DateTime DateTime { get; set; }
         public decimal TotalPrice { get; set; }
         public virtual ICollection<OrderLine> OrderLines { get; set; }
-        public int TransactionCode { get; set; }
+        public int IOCode { get; set; }
         public int ClientId { get; set; }
     }
 }

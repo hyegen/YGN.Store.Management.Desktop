@@ -22,6 +22,6 @@ namespace YGN.Store.Management.Entities.Concrete
         public decimal LineTotal { get; set; }
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
-        public int TransactionCode { get; set; }
+        public int IOCode { get; set; }
     }
 }

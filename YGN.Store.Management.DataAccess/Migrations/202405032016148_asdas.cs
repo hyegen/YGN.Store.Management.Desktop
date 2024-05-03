@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migitm1 : DbMigration
+    public partial class asdas : DbMigration
     {
         public override void Up()
         {
@@ -12,12 +12,12 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ClientCode = c.String(maxLength: 40),
+                        ClientCode = c.String(maxLength: 100),
                         ClientName = c.String(nullable: false, maxLength: 100),
                         ClientSurname = c.String(maxLength: 100),
-                        Address = c.String(maxLength: 30),
-                        TelNr1 = c.String(maxLength: 11),
-                        TelNr2 = c.String(maxLength: 11),
+                        Address = c.String(maxLength: 200),
+                        TelNr1 = c.String(maxLength: 50),
+                        TelNr2 = c.String(maxLength: 50),
                         FirmDescription = c.String(maxLength: 150),
                         TaxIdentificationNumber = c.String(maxLength: 50),
                     })
@@ -28,10 +28,10 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ItemCode = c.String(maxLength: 40),
+                        ItemCode = c.String(maxLength: 100),
                         ItemName = c.String(maxLength: 150),
                         UnitPrice = c.Double(),
-                        Brand = c.String(maxLength: 30),
+                        Brand = c.String(maxLength: 100),
                         Amount = c.Int(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -46,7 +46,7 @@
                         DateTime = c.DateTime(nullable: false),
                         LineTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
                         OrderId = c.Int(nullable: false),
-                        TransactionCode = c.Int(nullable: false),
+                        IOCode = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Items", t => t.ItemId, cascadeDelete: true)
@@ -61,7 +61,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         DateTime = c.DateTime(nullable: false),
                         TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        TransactionCode = c.Int(nullable: false),
+                        IOCode = c.Int(nullable: false),
                         ClientId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
