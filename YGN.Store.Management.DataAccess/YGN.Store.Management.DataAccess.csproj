@@ -86,9 +86,9 @@
     <Compile Include="Migrations\202405032014416_asd.Designer.cs">
       <DependentUpon>202405032014416_asd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202405032016148_asdas.cs" />
-    <Compile Include="Migrations\202405032016148_asdas.Designer.cs">
-      <DependentUpon>202405032016148_asdas.cs</DependentUpon>
+    <Compile Include="Migrations\202405040823017_migfd.cs" />
+    <Compile Include="Migrations\202405040823017_migfd.Designer.cs">
+      <DependentUpon>202405040823017_migfd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="Migrations\202405032014416_asd.resx">
       <DependentUpon>202405032014416_asd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405032016148_asdas.resx">
-      <DependentUpon>202405032016148_asdas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405040823017_migfd.resx">
+      <DependentUpon>202405040823017_migfd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
