@@ -7,6 +7,7 @@ using YGN.Store.Management.Business.Abstract;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.Business.Concrete
 {
@@ -47,6 +48,11 @@ namespace YGN.Store.Management.Business.Concrete
         public decimal GetTotalPriceForOrderInformationPrice(int orderId)
         {
             return _orderDal.GetTotalPriceForOrderInformationPrice(orderId);
+        }
+
+        public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
+        {
+            return _orderDal.MobGetProductByItemCode(itemCode);
         }
     }
 }

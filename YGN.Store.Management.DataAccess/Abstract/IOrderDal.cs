@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YGN.Store.Management.Core.DataAccess;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.DataAccess.Abstract
 {
@@ -16,6 +17,6 @@ namespace YGN.Store.Management.DataAccess.Abstract
         List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId);
         List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId);
         decimal GetTotalPriceForOrderInformationPrice(int orderId);
-
+        MobItemSelectionViews MobGetProductByItemCode(string itemCode);
     }
 }

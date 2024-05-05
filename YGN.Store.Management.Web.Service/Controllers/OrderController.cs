@@ -8,6 +8,7 @@ using YGN.Store.Management.Business.Concrete;
 using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.Web.Service.Controllers
 {
@@ -28,6 +29,20 @@ namespace YGN.Store.Management.Web.Service.Controllers
             {
                 return BadRequest("Invalid order data.");
             }
+        }
+
+        [HttpGet]
+        [Route("api/getProductByItemCode")]
+        public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
+        {
+            if (itemCode != null)
+            {
+                return orderManager.MobGetProductByItemCode(itemCode);
+            }
+            else
+            {
+                return null;
+            }            
         }
     }
 }

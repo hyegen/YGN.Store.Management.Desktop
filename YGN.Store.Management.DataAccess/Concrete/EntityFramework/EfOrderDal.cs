@@ -9,6 +9,7 @@ using YGN.Store.Management.DataAccess.Abstract;
 using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 {
@@ -54,6 +55,21 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return orderViews;
             }
         }
-
+        public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var orderViews = context.Database.SqlQuery<MobItemSelectionViews>("EXEC YGN_MOB_ITEM_SELECTION_PARAMETERIZED {0}", itemCode).FirstOrDefault();
+                return orderViews;
+            }
+        }
+        //public IEnumerable<MobItemSelectionViews> ModGetProductByItemCode(string itemCode)
+        //{
+        //    using (YGNContext context = new YGNContext())
+        //    {
+        //        var orderViews = context.Database.SqlQuery<MobItemSelectionViews>("EXEC YGN_ORDER_DETAIL_FOR_CLIENT_VIEW {0}", itemCode).ToList();
+        //        return orderViews;
+        //    }
+        //}
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Entities.Views;
+using YGN.Store.Management.Entities.Views.MobViews;
 
 namespace YGN.Store.Management.Business.Abstract
 {
@@ -14,5 +15,6 @@ namespace YGN.Store.Management.Business.Abstract
         List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId);
         List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId);
         decimal GetTotalPriceForOrderInformationPrice(int orderId);
+        MobItemSelectionViews MobGetProductByItemCode(string itemCode);
     }
 }
