@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Business.Abstract;
@@ -45,6 +46,11 @@ namespace YGN.Store.Management.Business.Concrete
         public List<MobItemSelectionViews> MobGetItemsView()
         {
             return _itemDal.MobGetItemsView();
+        }
+
+        public int GetItemIdByOrderId(int orderId)
+        {
+           return _itemDal.GetItemIdByOrderId(orderId);
         }
     }
 }

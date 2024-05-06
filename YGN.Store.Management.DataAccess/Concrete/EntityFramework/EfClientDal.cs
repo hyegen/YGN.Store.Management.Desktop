@@ -65,10 +65,18 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 var clients = context.Clients.ToList();
                 var result = clients.Select(c => new ClientCodeAndNameAndSurnameView
                 {
-                    ClientId=c.Id,
+                    ClientId = c.Id,
                     ClientCodeAndNameAndSurname = $"{c.ClientCode}-{c.ClientName} {c.ClientSurname}"
                 }).ToList();
 
+                return result;
+            }
+        }
+        public int GetClientIdByOrderId(int orderId)
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var result = context.Orders.First(x => x.Id == orderId).ClientId;
                 return result;
             }
         }

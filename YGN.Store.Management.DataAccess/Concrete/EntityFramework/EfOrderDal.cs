@@ -63,6 +63,14 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return orderViews;
             }
         }
+        public List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId)
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var orderViews = context.Database.SqlQuery<SelectedItemsInOrder>("EXEC YGN_SELECTED_ITEMS_IN_ORDER {0}", orderId).ToList();
+                return orderViews;
+            }
+        }
         //public IEnumerable<MobItemSelectionViews> ModGetProductByItemCode(string itemCode)
         //{
         //    using (YGNContext context = new YGNContext())

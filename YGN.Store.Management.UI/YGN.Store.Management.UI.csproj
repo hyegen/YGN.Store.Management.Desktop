@@ -103,6 +103,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonReports\ModifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonReports\ModifyForm.Designer.cs">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommonReports\StockAmountForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
       <DependentUpon>PrintOrderSlip.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="CommonReports\ModifyForm.resx">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CommonReports\StockAmountForm.resx">
       <DependentUpon>StockAmountForm.cs</DependentUpon>
     </EmbeddedResource>

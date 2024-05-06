@@ -44,6 +44,11 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _clientDal.GetClientCodeAndNameAndSurname();
         }
+
+        public int GetClientIdByOrderId(int orderId)
+        {
+           return _clientDal.GetClientIdByOrderId(orderId);
+        }
     }
 
 }

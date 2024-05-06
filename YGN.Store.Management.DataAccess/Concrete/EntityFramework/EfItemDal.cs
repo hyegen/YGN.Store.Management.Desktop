@@ -70,6 +70,29 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return stockAmounts;
             }
         }
-
+        public int GetItemIdByOrderId(int orderId)
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var result = (from ord in context.Orders
+                              join orl in context.OrderLines on ord.Id equals orl.OrderId
+                              join itm in context.Items on orl.ItemId equals itm.Id
+                              where ord.Id == orderId
+                              select itm.Id).FirstOrDefault();
+                return result;
+            }
+        }
+        //public int GetItemIdByOrderId(string itemCode)
+        //{
+        //    using (YGNContext context = new YGNContext())
+        //    {
+        //        var result = (from ord in context.Orders
+        //                      join orl in context.OrderLines on ord.Id equals orl.OrderId
+        //                      join itm in context.Items on orl.ItemId equals itm.Id
+        //                      where itm.ItemCode == itemCode
+        //                      select itm.Id).FirstOrDefault();
+        //        return result;
+        //    }
+        //}
     }
 }

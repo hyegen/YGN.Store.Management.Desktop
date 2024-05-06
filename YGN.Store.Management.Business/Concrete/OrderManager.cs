@@ -24,7 +24,10 @@ namespace YGN.Store.Management.Business.Concrete
         {
             _orderDal.Add(order);
         }
-
+        public void UpdateOrder(Order order)
+        {
+            _orderDal.Update(order);
+        }
         public List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId)
         {
             return _orderDal.GetOrderDetailClientForSlip(orderId);
@@ -39,7 +42,6 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _orderDal.GetOrderLineViews();
         }
-
         public List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId)
         {
             return _orderDal.GetTotalPriceForOrderInformation(orderId);
@@ -53,6 +55,10 @@ namespace YGN.Store.Management.Business.Concrete
         public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
         {
             return _orderDal.MobGetProductByItemCode(itemCode);
+        }
+        public List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId)
+        {
+         return _orderDal.GetSelectedItemsInOrder(orderId);
         }
     }
 }

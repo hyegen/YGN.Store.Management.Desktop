@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +15,34 @@ namespace YGN.Store.Management.UI.DetailForms
 {
     public partial class InformationsForm : Form
     {
+        #region members
         OrderManager orderManager = new OrderManager(new EfOrderDal());
+        #endregion
+
+        #region constructor
         public InformationsForm(int selectedID)
         {
             InitializeComponent();
             getDetailsFromDb(selectedID);
         }
-        private void getDetailsFromDb(int selectedID)
-        {
-            informationDataGridView.DataSource = orderManager.GetOrderDetailInformation(selectedID);
-            var totalPrice = orderManager.GetTotalPriceForOrderInformationPrice(selectedID).ToString();
-            lblTotalPrice.Text = string.Format(totalPrice + " TL");
-        }
+        #endregion
 
+        #region events
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
+
+        #region private methods
+        private void getDetailsFromDb(int selectedID)
+        {
+            informationDataGridView.DataSource = orderManager.GetOrderDetailInformation(selectedID);
+            decimal totalPrice = orderManager.GetTotalPriceForOrderInformationPrice(selectedID);
+            string formattedTotalPrice = totalPrice.ToString("#,##0");
+            lblTotalPrice.Text = formattedTotalPrice + " TL";
+        }
+        #endregion
+
     }
 }

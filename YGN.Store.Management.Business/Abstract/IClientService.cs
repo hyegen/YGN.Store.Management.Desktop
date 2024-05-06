@@ -17,5 +17,6 @@ namespace YGN.Store.Management.Business.Abstract
         int CountOfAllClients();
         List<Client> GetAllClientsByNameAndSurname();
         List<ClientCodeAndNameAndSurnameView> GetClientCodeAndNameAndSurname();
+        int GetClientIdByOrderId(int orderId);
     }
 }

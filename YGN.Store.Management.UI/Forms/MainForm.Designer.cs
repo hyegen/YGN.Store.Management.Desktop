@@ -28,12 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnQuickSales = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnStockAmount = new System.Windows.Forms.Button();
             this.btnPurchasing = new System.Windows.Forms.Button();
+            this.btnStockAmount = new System.Windows.Forms.Button();
             this.groupBoxLastTransactions = new System.Windows.Forms.GroupBox();
             this.lastTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClients = new System.Windows.Forms.Button();
+            this.btnProducts = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lastTransactionGridViewContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,18 +53,12 @@
             this.Date_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnCreateOrderSlip = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnClients = new System.Windows.Forms.Button();
-            this.btnProducts = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxLastTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.lastTransactionGridViewContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnQuickSales
@@ -79,17 +84,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İşlemler";
             // 
-            // btnStockAmount
-            // 
-            this.btnStockAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnStockAmount.Location = new System.Drawing.Point(6, 18);
-            this.btnStockAmount.Name = "btnStockAmount";
-            this.btnStockAmount.Size = new System.Drawing.Size(72, 59);
-            this.btnStockAmount.TabIndex = 9;
-            this.btnStockAmount.Text = "Stok Miktar Raporu";
-            this.btnStockAmount.UseVisualStyleBackColor = true;
-            this.btnStockAmount.Click += new System.EventHandler(this.btnStockAmount_Click);
-            // 
             // btnPurchasing
             // 
             this.btnPurchasing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -100,6 +94,17 @@
             this.btnPurchasing.Text = "Satınalma";
             this.btnPurchasing.UseVisualStyleBackColor = true;
             this.btnPurchasing.Click += new System.EventHandler(this.btnPurchasing_Click);
+            // 
+            // btnStockAmount
+            // 
+            this.btnStockAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStockAmount.Location = new System.Drawing.Point(6, 18);
+            this.btnStockAmount.Name = "btnStockAmount";
+            this.btnStockAmount.Size = new System.Drawing.Size(72, 59);
+            this.btnStockAmount.TabIndex = 9;
+            this.btnStockAmount.Text = "Stok Miktar Raporu";
+            this.btnStockAmount.UseVisualStyleBackColor = true;
+            this.btnStockAmount.Click += new System.EventHandler(this.btnStockAmount_Click);
             // 
             // groupBoxLastTransactions
             // 
@@ -131,6 +136,105 @@
             this.lastTransactionDataGridView.Size = new System.Drawing.Size(1066, 400);
             this.lastTransactionDataGridView.TabIndex = 0;
             this.lastTransactionDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lastTransactionDataGridView_CellDoubleClick);
+            this.lastTransactionDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lastTransactionDataGridView_MouseClick);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnRefresh.Location = new System.Drawing.Point(1094, 132);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(77, 48);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Yenile";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(459, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(277, 28);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "BAHAR TOPTAN TEKSTIL";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnClients);
+            this.groupBox2.Controls.Add(this.btnProducts);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox2.Location = new System.Drawing.Point(105, 96);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(144, 84);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tanımlar";
+            // 
+            // btnClients
+            // 
+            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClients.Location = new System.Drawing.Point(6, 19);
+            this.btnClients.Name = "btnClients";
+            this.btnClients.Size = new System.Drawing.Size(62, 59);
+            this.btnClients.TabIndex = 2;
+            this.btnClients.Text = "Cariler";
+            this.btnClients.UseVisualStyleBackColor = true;
+            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
+            // 
+            // btnProducts
+            // 
+            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnProducts.Location = new System.Drawing.Point(74, 19);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Size = new System.Drawing.Size(62, 59);
+            this.btnProducts.TabIndex = 3;
+            this.btnProducts.Text = "Ürünler";
+            this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnStockAmount);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox3.Location = new System.Drawing.Point(464, 96);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(90, 84);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Raporlar";
+            // 
+            // lastTransactionGridViewContextMenuStrip
+            // 
+            this.lastTransactionGridViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.modifyToolStripMenuItem,
+            this.printToolStripMenuItem});
+            this.lastTransactionGridViewContextMenuStrip.Name = "contextMenuStrip1";
+            this.lastTransactionGridViewContextMenuStrip.Size = new System.Drawing.Size(115, 70);
+            this.lastTransactionGridViewContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.lastTransactionGridViewContextMenuStrip_Opening);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.viewToolStripMenuItem.Text = "İncele";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.modifyToolStripMenuItem.Text = "Değiştir";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.printToolStripMenuItem.Text = "Yazdır";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // Id
             // 
@@ -188,84 +292,6 @@
             this.Module.Name = "Module";
             this.Module.ReadOnly = true;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnRefresh.Location = new System.Drawing.Point(1094, 132);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(77, 48);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.Text = "Yenile";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnCreateOrderSlip
-            // 
-            this.btnCreateOrderSlip.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCreateOrderSlip.Location = new System.Drawing.Point(682, 134);
-            this.btnCreateOrderSlip.Name = "btnCreateOrderSlip";
-            this.btnCreateOrderSlip.Size = new System.Drawing.Size(261, 46);
-            this.btnCreateOrderSlip.TabIndex = 7;
-            this.btnCreateOrderSlip.Text = "Sipariş Fişi Yazdır";
-            this.btnCreateOrderSlip.UseVisualStyleBackColor = true;
-            this.btnCreateOrderSlip.Click += new System.EventHandler(this.btnCreateOrderSlip_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(459, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 28);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "BAHAR TOPTAN TEKSTIL";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnClients);
-            this.groupBox2.Controls.Add(this.btnProducts);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(105, 96);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(144, 84);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tanımlar";
-            // 
-            // btnClients
-            // 
-            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClients.Location = new System.Drawing.Point(6, 19);
-            this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(62, 59);
-            this.btnClients.TabIndex = 2;
-            this.btnClients.Text = "Cariler";
-            this.btnClients.UseVisualStyleBackColor = true;
-            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
-            // 
-            // btnProducts
-            // 
-            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnProducts.Location = new System.Drawing.Point(74, 19);
-            this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(62, 59);
-            this.btnProducts.TabIndex = 3;
-            this.btnProducts.Text = "Ürünler";
-            this.btnProducts.UseVisualStyleBackColor = true;
-            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnStockAmount);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox3.Location = new System.Drawing.Point(464, 96);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(90, 84);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Raporlar";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,19 +300,20 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCreateOrderSlip);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.groupBoxLastTransactions);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ana Sayfa";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBoxLastTransactions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.lastTransactionGridViewContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,8 +326,16 @@
         private System.Windows.Forms.GroupBox groupBoxLastTransactions;
         private System.Windows.Forms.DataGridView lastTransactionDataGridView;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnCreateOrderSlip;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnStockAmount;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnClients;
+        private System.Windows.Forms.Button btnProducts;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ContextMenuStrip lastTransactionGridViewContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientName;
@@ -309,10 +344,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Module;
-        private System.Windows.Forms.Button btnStockAmount;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnClients;
-        private System.Windows.Forms.Button btnProducts;
-        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

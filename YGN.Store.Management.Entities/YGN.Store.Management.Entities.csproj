@@ -83,6 +83,7 @@
     <Compile Include="Views\OrderLineView.cs" />
     <Compile Include="Views\OrderDetailClientForSlip.cs" />
     <Compile Include="Views\SelectedItems.cs" />
+    <Compile Include="Views\SelectedItemsInOrder.cs" />
     <Compile Include="Views\StockAmountView.cs" />
     <Compile Include="Views\UserNameView.cs" />
   </ItemGroup>

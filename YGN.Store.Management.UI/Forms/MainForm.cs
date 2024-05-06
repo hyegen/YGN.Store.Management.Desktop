@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -24,13 +25,14 @@ namespace YGN.Store.Management.UI.Forms
     {
         #region members
         OrderManager orderManager = new OrderManager(new EfOrderDal());
+        ClientManager clientManager = new ClientManager(new EfClientDal());
+        private int selectedId;
         #endregion
 
         #region constructor
         public MainForm()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
             getDatas();
         }
         #endregion
@@ -54,7 +56,7 @@ namespace YGN.Store.Management.UI.Forms
         }
         private void btnCreateOrderSlip_Click(object sender, EventArgs e)
         {
-            FormHelper.ShowForm<PrintOrderSlip>();
+            FormHelper.ShowParametricForm<PrintOrderSlip>(selectedId);
         }
         private void btnClients_Click(object sender, EventArgs e)
         {
@@ -73,10 +75,41 @@ namespace YGN.Store.Management.UI.Forms
             if (e.RowIndex >= 0)
             {
                 int selectedID = Convert.ToInt32(lastTransactionDataGridView.Rows[e.RowIndex].Cells["Id"].Value);
-                ShowDetailForm(selectedID);
+                ShowDetailForm();
             }
         }
+        private void lastTransactionDataGridView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                lastTransactionGridViewContextMenuStrip.Show(Cursor.Position);
+            }
+        }
+        private void lastTransactionGridViewContextMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            Point point = lastTransactionDataGridView.PointToClient(Cursor.Position);
+            int rowIndex = lastTransactionDataGridView.HitTest(point.X, point.Y).RowIndex;
 
+            if (rowIndex > -1)
+            {
+                selectedId = Convert.ToInt32(lastTransactionDataGridView.Rows[rowIndex].Cells["Id"].Value);
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedId == null || selectedId == 0)
+                MessageBox.Show("Bir şeyler ters gitti", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                FormHelper.ShowParametricForm<PrintOrderSlip>(selectedId);
+        }
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowDetailForm();
+        }
         #endregion
 
         #region private methods
@@ -85,15 +118,16 @@ namespace YGN.Store.Management.UI.Forms
         {
             lastTransactionDataGridView.DataSource = orderManager.GetOrderLineViews();
         }
-        private void ShowDetailForm(int selectedID)
+        private void ShowDetailForm()
         {
-            FormHelper.ShowParametricForm<InformationsForm>(selectedID);
+            FormHelper.ShowParametricForm<InformationsForm>(selectedId);
         }
 
         #endregion
 
-
-
-
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowParametricForm<ModifyForm>(selectedId);
+        }
     }
 }

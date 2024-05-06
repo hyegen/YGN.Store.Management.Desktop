@@ -18,5 +18,6 @@ namespace YGN.Store.Management.Business.Abstract
         List<Item> GetByName(string searchName);
         double GetUnitPrice(int itemId);
         List<MobItemSelectionViews> MobGetItemsView();
+        int GetItemIdByOrderId(int orderId);
     }
 }
