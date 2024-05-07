@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
 using YGN.Store.Management.Entities.Views.MobViews;
 
@@ -17,5 +18,7 @@ namespace YGN.Store.Management.Business.Abstract
         decimal GetTotalPriceForOrderInformationPrice(int orderId);
         MobItemSelectionViews MobGetProductByItemCode(string itemCode);
         List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId);
+        List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
+        void UpdateOrder(Order order);
     }
 }

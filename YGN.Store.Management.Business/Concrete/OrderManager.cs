@@ -24,10 +24,10 @@ namespace YGN.Store.Management.Business.Concrete
         {
             _orderDal.Add(order);
         }
-        public void UpdateOrder(Order order)
-        {
-            _orderDal.Update(order);
-        }
+        //public void UpdateOrder(Order order)
+        //{
+        //    _orderDal.Update(order);
+        //}
         public List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId)
         {
             return _orderDal.GetOrderDetailClientForSlip(orderId);
@@ -59,6 +59,20 @@ namespace YGN.Store.Management.Business.Concrete
         public List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId)
         {
          return _orderDal.GetSelectedItemsInOrder(orderId);
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            _orderDal.UpdateOrder(order);
+        }
+        public void DeleteOrder(Order order)
+        {
+            _orderDal.Delete(order);
+        }
+
+        public List<SelectedItems> GetSelectedItemsInOrderTest(int orderId)
+        {
+            return _orderDal.GetSelectedItemsInOrderTest(orderId);
         }
     }
 }

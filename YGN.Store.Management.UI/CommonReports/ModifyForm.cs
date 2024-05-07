@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,8 @@ namespace YGN.Store.Management.UI.CommonReports
     public partial class ModifyForm : Form
     {
         #region members
-        private List<SelectedItemsInOrder> selectedItems = new List<SelectedItemsInOrder>();
+        //private List<SelectedItemsInOrder> selectedItems = new List<SelectedItemsInOrder>();
+        private List<SelectedItems> selectedItemsTest = new List<SelectedItems>();
         ItemManager itemManager = new ItemManager(new EfItemDal());
         OrderManager orderManager = new OrderManager(new EfOrderDal());
         ClientManager clientManager = new ClientManager(new EfClientDal());
@@ -75,8 +77,11 @@ namespace YGN.Store.Management.UI.CommonReports
         private void getSelectedItems()
         {
             //selectedItemsDataGridView.DataSource = orderManager.GetOrderDetailInformation(selectedOrderId);
-            selectedItems = orderManager.GetSelectedItemsInOrder(selectedOrderId);
-            selectedItemsDataGridView.DataSource = selectedItems;
+            //selectedItems = orderManager.GetSelectedItemsInOrder(selectedOrderId);
+            //selectedItemsTest = orderManager.GetSelectedItemsInOrder(selectedOrderId);
+            //selectedItemsDataGridView.DataSource = selectedItems;
+            selectedItemsTest = orderManager.GetSelectedItemsInOrderTest(selectedOrderId);
+            selectedItemsDataGridView.DataSource = selectedItemsTest;
             decimal totalPrice = orderManager.GetTotalPriceForOrderInformationPrice(selectedOrderId);
             string formattedTotalPrice = totalPrice.ToString("#,##0");
             txtLastPrice.Text = formattedTotalPrice + " TL";
@@ -89,14 +94,14 @@ namespace YGN.Store.Management.UI.CommonReports
             {
                 DataGridViewRow selectedRow = selectedItemsDataGridView.SelectedRows[0];
 
-                string selectedItemCode = (selectedRow.Cells["ItemCode"].Value).ToString();
+                int selectedItemId = Convert.ToInt32(selectedRow.Cells["ItemId"].Value);
 
-                var itemToRemove = selectedItems.FirstOrDefault(item => item.ItemCode == selectedItemCode);
+                var itemToRemove = selectedItemsTest.FirstOrDefault(item => item.ItemId == selectedItemId);
                 if (itemToRemove != null)
                 {
-                    selectedItems.Remove(itemToRemove);
+                    selectedItemsTest.Remove(itemToRemove);
                     selectedItemsDataGridView.DataSource = null;
-                    selectedItemsDataGridView.DataSource = selectedItems;
+                    selectedItemsDataGridView.DataSource = selectedItemsTest;
                     selectedItemsDataGridView.Refresh();
                     UpdateTotalPriceTextBox();
                 }
@@ -122,16 +127,17 @@ namespace YGN.Store.Management.UI.CommonReports
             }
             txtLastPrice.Text = total.ToString();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             updateOrder();
+            this.Close();
         }
-
         private void updateOrder()
         {
+            var getId = selectedOrderId;
             Order newOrder = new Order
             {
+                Id = getId,
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
                 OrderLines = new List<OrderLine>(),
@@ -140,9 +146,10 @@ namespace YGN.Store.Management.UI.CommonReports
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
             {
-                int itemId = Convert.ToInt32(row.Cells["OrderId"].Value);
+                int orderId = selectedOrderId;
                 //string itemId = (string)row.Cells["OrderId"].Value;
-                int selectItemId = itemManager.GetItemIdByOrderId(itemId);
+                //int selectItemId = itemManager.GetItemIdByOrderId(orderId);
+                int selectItemId = (int)row.Cells["ItemId"].Value;
 
                 int amount = Convert.ToInt32(row.Cells["Amount"].Value);
 
@@ -164,12 +171,12 @@ namespace YGN.Store.Management.UI.CommonReports
             {
                 newOrder.ClientId = GetClientFromCombobox();
                 orderManager.UpdateOrder(newOrder);
-                MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Güncelleme İşlemi Başarısız Miktar Girişi Yapınız.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                orderManager.DeleteOrder(newOrder);
             }
+            MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private decimal CalculateTotalPrice(int itemId, int amount)
         {

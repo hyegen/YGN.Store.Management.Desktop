@@ -19,5 +19,7 @@ namespace YGN.Store.Management.DataAccess.Abstract
         decimal GetTotalPriceForOrderInformationPrice(int orderId);
         MobItemSelectionViews MobGetProductByItemCode(string itemCode);
         List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId);
+        List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
+        void UpdateOrder(Order order);
     }
 }
