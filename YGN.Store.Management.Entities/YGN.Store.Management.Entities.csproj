@@ -73,7 +73,7 @@
     <Compile Include="Concrete\Item.cs" />
     <Compile Include="Concrete\Order.cs" />
     <Compile Include="Concrete\OrderLine.cs" />
-    <Compile Include="Concrete\StockTransaction.cs" />
+    <Compile Include="Concrete\Report.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ClientCodeAndNameAndSurnameView.cs" />

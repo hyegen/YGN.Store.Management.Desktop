@@ -16,13 +16,14 @@ namespace YGN.Store.Management.DataAccess.Context
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new ClientConfiguration());
             modelBuilder.Configurations.Add(new ItemConfiguration());
+            modelBuilder.Configurations.Add(new ReportConfiguration());
         }
 
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<StockTransaction> StockTransactions { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
+        public DbSet<Report> Reports{ get; set; }
     }
 }

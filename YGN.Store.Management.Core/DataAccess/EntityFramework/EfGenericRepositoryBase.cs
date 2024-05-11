@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Core.Entities;
 
+
 namespace YGN.Store.Management.Core.DataAccess.EntityFramework
 {
     public class EfGenericRepositoryBase<TEntity, TContext>
@@ -23,6 +24,8 @@ namespace YGN.Store.Management.Core.DataAccess.EntityFramework
                 context.SaveChanges();
             }
         }
+
+
         public void Update(TEntity entity)
         {
             using (TContext context = new TContext())
@@ -32,7 +35,6 @@ namespace YGN.Store.Management.Core.DataAccess.EntityFramework
                 context.SaveChanges();
             }
         }
-
 
         public void Delete(TEntity entity)
         {

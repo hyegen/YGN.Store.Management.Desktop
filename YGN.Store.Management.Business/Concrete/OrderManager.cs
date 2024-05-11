@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Business.Abstract;
@@ -56,15 +57,7 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _orderDal.MobGetProductByItemCode(itemCode);
         }
-        public List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId)
-        {
-         return _orderDal.GetSelectedItemsInOrder(orderId);
-        }
-
-        public void UpdateOrder(Order order)
-        {
-            _orderDal.UpdateOrder(order);
-        }
+  
         public void DeleteOrder(Order order)
         {
             _orderDal.Delete(order);
@@ -73,6 +66,15 @@ namespace YGN.Store.Management.Business.Concrete
         public List<SelectedItems> GetSelectedItemsInOrderTest(int orderId)
         {
             return _orderDal.GetSelectedItemsInOrderTest(orderId);
+        }
+
+        public Order GetOrderById(int orderId)
+        {
+            return _orderDal.GetOrderById(orderId); 
+        }
+        public void UpdateOrder(Order order)
+        {
+            _orderDal.UpdateOrder(order);
         }
     }
 }

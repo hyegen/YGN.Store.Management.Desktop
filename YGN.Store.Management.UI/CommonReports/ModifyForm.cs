@@ -129,55 +129,106 @@ namespace YGN.Store.Management.UI.CommonReports
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            updateOrder();
+            UpdateOrder(selectedOrderId);
             this.Close();
         }
-        private void updateOrder()
+        /* private void updateOrder()
+         {
+             var getId = selectedOrderId;
+             Order newOrder = new Order
+             {
+                 Id = getId,
+                 DateTime = DateTime.Now,
+                 TotalPrice = 0,
+                 OrderLines = new List<OrderLine>(),
+                 IOCode = (int)InputOutputCodes.Output
+             };
+
+             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
+             {
+                 int orderId = selectedOrderId;
+                 //string itemId = (string)row.Cells["OrderId"].Value;
+                 //int selectItemId = itemManager.GetItemIdByOrderId(orderId);
+                 int selectItemId = (int)row.Cells["ItemId"].Value;
+
+                 int amount = Convert.ToInt32(row.Cells["Amount"].Value);
+
+                 OrderLine newOrderLine = new OrderLine
+                 {
+                     ItemId = selectItemId,
+                     Amount = amount,
+                     DateTime = DateTime.Now,
+                     LineTotal = CalculateTotalPrice(selectItemId, amount),
+                     Order = newOrder,
+                     IOCode = (int)InputOutputCodes.Output
+                 };
+
+                 newOrder.TotalPrice += newOrderLine.LineTotal;
+                 newOrder.OrderLines.Add(newOrderLine);
+             }
+
+             if (newOrder.OrderLines.Count > 0 && newOrder.TotalPrice != 0)
+             {
+                 newOrder.ClientId = GetClientFromCombobox();
+                 //orderManager.UpdateOrder(newOrder);
+             }
+             else
+             {
+                 orderManager.DeleteOrder(newOrder);
+             }
+             MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         }*/
+
+        private void UpdateOrder(int orderId)
         {
-            var getId = selectedOrderId;
-            Order newOrder = new Order
+            Order existingOrder = orderManager.GetOrderById(orderId); // Get the existing order from the database
+
+            if (existingOrder != null)
             {
-                Id = getId,
-                DateTime = DateTime.Now,
-                TotalPrice = 0,
-                OrderLines = new List<OrderLine>(),
-                IOCode = (int)InputOutputCodes.Output
-            };
+                // Update the properties of the existing order
+                existingOrder.DateTime = DateTime.Now;
+                existingOrder.TotalPrice = 0; // Reset the total price
+                existingOrder.OrderLines.Clear(); // Clear existing order lines
 
-            foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
-            {
-                int orderId = selectedOrderId;
-                //string itemId = (string)row.Cells["OrderId"].Value;
-                //int selectItemId = itemManager.GetItemIdByOrderId(orderId);
-                int selectItemId = (int)row.Cells["ItemId"].Value;
-
-                int amount = Convert.ToInt32(row.Cells["Amount"].Value);
-
-                OrderLine newOrderLine = new OrderLine
+                foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
                 {
-                    ItemId = selectItemId,
-                    Amount = amount,
-                    DateTime = DateTime.Now,
-                    LineTotal = CalculateTotalPrice(selectItemId, amount),
-                    Order = newOrder,
-                    IOCode = (int)InputOutputCodes.Output
-                };
+                    int selectItemId = (int)row.Cells["ItemId"].Value;
+                    int amount = Convert.ToInt32(row.Cells["Amount"].Value);
 
-                newOrder.TotalPrice += newOrderLine.LineTotal;
-                newOrder.OrderLines.Add(newOrderLine);
-            }
+                    int orderId2 = existingOrder.Id;
 
-            if (newOrder.OrderLines.Count > 0 && newOrder.TotalPrice != 0)
-            {
-                newOrder.ClientId = GetClientFromCombobox();
-                orderManager.UpdateOrder(newOrder);
+                    OrderLine newOrderLine = new OrderLine
+                    {
+                        ItemId = selectItemId,
+                        Amount = amount,
+                        DateTime = DateTime.Now,
+                        LineTotal = CalculateTotalPrice(selectItemId, amount),
+                        OrderId = orderId2, // Doğru şekilde ilişkilendirin
+                        IOCode = (int)InputOutputCodes.Output
+                    };
+
+                    existingOrder.TotalPrice += newOrderLine.LineTotal;
+                    existingOrder.OrderLines.Add(newOrderLine);
+                }
+
+                if (existingOrder.OrderLines.Count > 0 && existingOrder.TotalPrice != 0)
+                {
+                    existingOrder.ClientId = GetClientFromCombobox();
+                    orderManager.UpdateOrder(existingOrder); // Update the order in the database
+                    MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    orderManager.DeleteOrder(existingOrder); // Delete the order if there are no order lines or total price is zero
+                    MessageBox.Show("Sipariş silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                orderManager.DeleteOrder(newOrder);
+                MessageBox.Show("Sipariş bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private decimal CalculateTotalPrice(int itemId, int amount)
         {
             var unitPrice = itemManager.GetUnitPrice(itemId);

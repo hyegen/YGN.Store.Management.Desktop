@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace YGN.Store.Management.Core.Entities
 {
-    public interface IEntity
+    public class BaseEntity: IEntity
     {
-      
+        public int Id { get; set; }
     }
 }

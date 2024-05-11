@@ -20,6 +20,7 @@ namespace YGN.Store.Management.DataAccess.Abstract
         MobItemSelectionViews MobGetProductByItemCode(string itemCode);
         List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId);
         List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
+        Order GetOrderById(int orderId);
         void UpdateOrder(Order order);
     }
 }

@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\EntityFramework\EfGenericRepositoryBase.cs" />
     <Compile Include="DataAccess\IEntityRepository.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
