@@ -8,6 +8,6 @@ namespace YGN.Store.Management.Core.Entities
 {
     public interface IEntity
     {
-      
+        int Id { get; set; }
     }
 }

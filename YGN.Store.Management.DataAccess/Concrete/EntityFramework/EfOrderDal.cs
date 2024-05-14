@@ -81,42 +81,59 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
         {
             using (YGNContext context = new YGNContext())
             {
-                //var result = (from o in context.Orders
-                //                  where o.Id == orderId
-                //                  select o).FirstOrDefault();
-                //return result;
-                // var a= context.Orders.Include(o => o.OrderLines)
-                //         .FirstOrDefault(o => o.Id == orderId);
-                var order = context.Orders.Include(o => o.OrderLines.Select(ol => ol.Item)).FirstOrDefault(o => o.Id == orderId);
-
-                return order;
+                return context.Orders.Include(o => o.OrderLines).SingleOrDefault(o => o.Id == orderId);
             }
         }
         public List<SelectedItems> GetSelectedItemsInOrderTest(int orderId)
         {
             using (YGNContext context = new YGNContext())
             {
-                var orderViews = context.Database.SqlQuery<SelectedItems>("EXEC YGN_SELECTED_ITEMS_IN_ORDER_TEST {0}", orderId).ToList();
-                return orderViews;
+                //var orderViews = context.Database.SqlQuery<SelectedItems>("EXEC YGN_SELECTED_ITEMS_IN_ORDER_TEST {0}", orderId).ToList();
+                //return orderViews;
+
+                var result = (from ord in context.Orders
+                              join orl in context.OrderLines on ord.Id equals orl.OrderId
+                              join itm in context.Items on orl.ItemId equals itm.Id
+                              where ord.Id == orderId
+                              select new SelectedItems
+                              {
+                                  ItemId = itm.Id,
+                                  ItemCode = itm.ItemCode,
+                                  ItemName = itm.ItemName,
+                                  Amount = orl.Amount,
+                                  LineTotal = orl.LineTotal
+                              }).ToList();
+
+                return result;
+
             }
         }
-        public void UpdateOrder(Order order)
+        public void UpdateOrder(int orderId, List<OrderLine> updatedOrderLines)
         {
             using (YGNContext context = new YGNContext())
             {
-                // / İlişkili varlıkları Include veya Load metoduyla yükleyin
-                // Örnek olarak: context.Entry(entity).Collection(e => e.RelatedEntities).Load();
+                var order = GetOrderById(orderId);
+                var existingOrderLines = order.OrderLines.ToList();
 
-                var existingEntity = context.Set<Order>().Find(order.Id);
-                if (existingEntity != null)
+                UpdateRelatedEntities(existingOrderLines, updatedOrderLines);
+                //UpdateOrderTotalPrice(orderId, updatedOrderLines);
+                context.SaveChanges();
+            }
+        }
+        public void UpdateOrderTotalPrice(int orderId, List<OrderLine> updatedOrderLines)
+        {
+            using (YGNContext context = new YGNContext())
+            {
+                var order = GetOrderById(orderId);
+                decimal updatedTotalPrice = 0;
+                //order.TotalPrice = updatedOrderLines.Select(x=>x.LineTotal).First();
+                foreach (var item in updatedOrderLines.Select(x => x.LineTotal))
                 {
-                    context.Entry(existingEntity).CurrentValues.SetValues(order);
-                    context.SaveChanges();
+                    updatedTotalPrice += item;
                 }
-                else
-                {
-                    // Hata işlemleri veya ekleme işlemleri
-                }
+                order.TotalPrice = updatedTotalPrice;
+                Update(order);
+                //var updatedTotalPrice = updatedOrderLines.Select(x => x.LineTotal).First();
             }
         }
     }

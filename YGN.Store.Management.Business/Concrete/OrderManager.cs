@@ -72,9 +72,9 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _orderDal.GetOrderById(orderId); 
         }
-        public void UpdateOrder(Order order)
+        public void UpdateOrder(int orderId,List<OrderLine> updatedOrderLines)
         {
-            _orderDal.UpdateOrder(order);
+            _orderDal.UpdateOrder(orderId, updatedOrderLines);
         }
     }
 }

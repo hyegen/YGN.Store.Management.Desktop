@@ -21,6 +21,6 @@ namespace YGN.Store.Management.DataAccess.Abstract
         List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId);
         List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
         Order GetOrderById(int orderId);
-        void UpdateOrder(Order order);
+        void UpdateOrder(int id, List<OrderLine> updatedOrderLines);
     }
 }

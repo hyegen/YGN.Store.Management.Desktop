@@ -132,63 +132,17 @@ namespace YGN.Store.Management.UI.CommonReports
             UpdateOrder(selectedOrderId);
             this.Close();
         }
-        /* private void updateOrder()
-         {
-             var getId = selectedOrderId;
-             Order newOrder = new Order
-             {
-                 Id = getId,
-                 DateTime = DateTime.Now,
-                 TotalPrice = 0,
-                 OrderLines = new List<OrderLine>(),
-                 IOCode = (int)InputOutputCodes.Output
-             };
-
-             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
-             {
-                 int orderId = selectedOrderId;
-                 //string itemId = (string)row.Cells["OrderId"].Value;
-                 //int selectItemId = itemManager.GetItemIdByOrderId(orderId);
-                 int selectItemId = (int)row.Cells["ItemId"].Value;
-
-                 int amount = Convert.ToInt32(row.Cells["Amount"].Value);
-
-                 OrderLine newOrderLine = new OrderLine
-                 {
-                     ItemId = selectItemId,
-                     Amount = amount,
-                     DateTime = DateTime.Now,
-                     LineTotal = CalculateTotalPrice(selectItemId, amount),
-                     Order = newOrder,
-                     IOCode = (int)InputOutputCodes.Output
-                 };
-
-                 newOrder.TotalPrice += newOrderLine.LineTotal;
-                 newOrder.OrderLines.Add(newOrderLine);
-             }
-
-             if (newOrder.OrderLines.Count > 0 && newOrder.TotalPrice != 0)
-             {
-                 newOrder.ClientId = GetClientFromCombobox();
-                 //orderManager.UpdateOrder(newOrder);
-             }
-             else
-             {
-                 orderManager.DeleteOrder(newOrder);
-             }
-             MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-         }*/
 
         private void UpdateOrder(int orderId)
         {
-            Order existingOrder = orderManager.GetOrderById(orderId); // Get the existing order from the database
+            Order existingOrder = orderManager.GetOrderById(orderId);
 
             if (existingOrder != null)
             {
-                // Update the properties of the existing order
+
                 existingOrder.DateTime = DateTime.Now;
-                existingOrder.TotalPrice = 0; // Reset the total price
-                existingOrder.OrderLines.Clear(); // Clear existing order lines
+                existingOrder.TotalPrice = 0;
+                existingOrder.OrderLines.Clear();
 
                 foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
                 {
@@ -203,7 +157,7 @@ namespace YGN.Store.Management.UI.CommonReports
                         Amount = amount,
                         DateTime = DateTime.Now,
                         LineTotal = CalculateTotalPrice(selectItemId, amount),
-                        OrderId = orderId2, // Doğru şekilde ilişkilendirin
+                        OrderId = orderId2,
                         IOCode = (int)InputOutputCodes.Output
                     };
 
@@ -214,12 +168,12 @@ namespace YGN.Store.Management.UI.CommonReports
                 if (existingOrder.OrderLines.Count > 0 && existingOrder.TotalPrice != 0)
                 {
                     existingOrder.ClientId = GetClientFromCombobox();
-                    orderManager.UpdateOrder(existingOrder); // Update the order in the database
+                    orderManager.UpdateOrder(orderId, existingOrder.OrderLines.ToList());
                     MessageBox.Show("Sipariş Güncelleme İşlemi Başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    orderManager.DeleteOrder(existingOrder); // Delete the order if there are no order lines or total price is zero
+                    orderManager.DeleteOrder(existingOrder);
                     MessageBox.Show("Sipariş silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
