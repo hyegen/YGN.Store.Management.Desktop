@@ -133,7 +133,6 @@ namespace YGN.Store.Management.UI.DetailForms
         {
             FillComboBox();
         }
-
         #endregion
 
         #region private methods
@@ -145,7 +144,6 @@ namespace YGN.Store.Management.UI.DetailForms
         private void getDatas()
         {
             itemsDataGridView.DataSource = itemManager.GetItems();
-            //FillComboBox();
         }
         private decimal CalculateTotalPrice(int itemId, int amount)
         {
@@ -225,6 +223,5 @@ namespace YGN.Store.Management.UI.DetailForms
         }
 
         #endregion
-
     }
 }

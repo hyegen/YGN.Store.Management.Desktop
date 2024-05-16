@@ -181,9 +181,9 @@
             this.selectedItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemsDataGridView.Location = new System.Drawing.Point(3, 19);
             this.selectedItemsDataGridView.Name = "selectedItemsDataGridView";
-            this.selectedItemsDataGridView.ReadOnly = true;
             this.selectedItemsDataGridView.Size = new System.Drawing.Size(549, 586);
             this.selectedItemsDataGridView.TabIndex = 1;
+            this.selectedItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemsDataGridView_CellEndEdit);
             // 
             // itemsGroupBox
             // 
@@ -212,6 +212,7 @@
             this.itemsDataGridView.ReadOnly = true;
             this.itemsDataGridView.Size = new System.Drawing.Size(549, 586);
             this.itemsDataGridView.TabIndex = 1;
+            this.itemsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsDataGridView_CellDoubleClick);
             // 
             // Id
             // 

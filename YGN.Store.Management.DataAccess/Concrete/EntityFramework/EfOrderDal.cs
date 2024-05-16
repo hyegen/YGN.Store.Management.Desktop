@@ -69,14 +69,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return orderViews;
             }
         }
-        public List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId)
-        {
-            using (YGNContext context = new YGNContext())
-            {
-                var orderViews = context.Database.SqlQuery<SelectedItemsInOrder>("EXEC YGN_SELECTED_ITEMS_IN_ORDER {0}", orderId).ToList();
-                return orderViews;
-            }
-        }
         public Order GetOrderById(int orderId)
         {
             using (YGNContext context = new YGNContext())
@@ -84,7 +76,7 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return context.Orders.Include(o => o.OrderLines).SingleOrDefault(o => o.Id == orderId);
             }
         }
-        public List<SelectedItems> GetSelectedItemsInOrderTest(int orderId)
+        public List<SelectedItems> GetSelectedItemsInOrder(int orderId)
         {
             using (YGNContext context = new YGNContext())
             {
@@ -97,6 +89,7 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                               where ord.Id == orderId
                               select new SelectedItems
                               {
+                                  OrderLineId = orl.Id,
                                   ItemId = itm.Id,
                                   ItemCode = itm.ItemCode,
                                   ItemName = itm.ItemName,
@@ -108,32 +101,67 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 
             }
         }
-        public void UpdateOrder(int orderId, List<OrderLine> updatedOrderLines)
+        public void UpdateOrder(Order updatedOrder)
         {
-            using (YGNContext context = new YGNContext())
+            using (var context = new YGNContext())
             {
-                var order = GetOrderById(orderId);
-                var existingOrderLines = order.OrderLines.ToList();
+                var existingOrder = context.Orders.Include(o => o.OrderLines).SingleOrDefault(o => o.Id == updatedOrder.Id);
 
-                UpdateRelatedEntities(existingOrderLines, updatedOrderLines);
-                //UpdateOrderTotalPrice(orderId, updatedOrderLines);
-                context.SaveChanges();
+                if (existingOrder != null)
+                {
+                    existingOrder.DateTime = updatedOrder.DateTime;
+                    existingOrder.TotalPrice = updatedOrder.TotalPrice;
+                    existingOrder.IOCode = updatedOrder.IOCode;
+                    existingOrder.ClientId = updatedOrder.ClientId;
+
+                    foreach (var updatedOrderLine in updatedOrder.OrderLines)
+                    {
+                        //var existingOrderLine = existingOrder.OrderLines.SingleOrDefault(ol => ol.Id == updatedOrderLine.Id);
+                        var existingOrderLine = existingOrder.OrderLines.SingleOrDefault(ol => ol.ItemId == updatedOrderLine.ItemId);
+                        if (existingOrderLine != null)
+                        {
+                            existingOrderLine.ItemId = updatedOrderLine.ItemId;
+                            existingOrderLine.Amount = updatedOrderLine.Amount;
+                            existingOrderLine.DateTime = updatedOrderLine.DateTime;
+                            existingOrderLine.LineTotal = updatedOrderLine.LineTotal;
+                            existingOrderLine.IOCode = updatedOrderLine.IOCode;
+                        }
+                        else
+                        {
+                            existingOrder.OrderLines.Add(new OrderLine
+                            {
+                                ItemId = updatedOrderLine.ItemId,
+                                Amount = updatedOrderLine.Amount,
+                                DateTime = updatedOrderLine.DateTime,
+                                LineTotal = updatedOrderLine.LineTotal,
+                                IOCode = updatedOrderLine.IOCode,
+                                OrderId = updatedOrder.Id
+                            });
+                        }
+                    }
+
+                    var orderLinesToDelete = existingOrder.OrderLines
+                        .Where(ol => !updatedOrder.OrderLines.Any(uol => uol.Id == ol.Id)).ToList();
+
+                    foreach (var orderLineToDelete in orderLinesToDelete)
+                    {
+                        context.OrderLines.Remove(orderLineToDelete);
+                    }
+
+                    context.SaveChanges();
+                }
             }
         }
-        public void UpdateOrderTotalPrice(int orderId, List<OrderLine> updatedOrderLines)
+        public void DeleteOrderById(int orderId)
         {
-            using (YGNContext context = new YGNContext())
+            using (var context = new YGNContext())
             {
-                var order = GetOrderById(orderId);
-                decimal updatedTotalPrice = 0;
-                //order.TotalPrice = updatedOrderLines.Select(x=>x.LineTotal).First();
-                foreach (var item in updatedOrderLines.Select(x => x.LineTotal))
+                var order = context.Orders.SingleOrDefault(o => o.Id == orderId);
+                if (order != null)
                 {
-                    updatedTotalPrice += item;
+                    context.Orders.Remove(order);
+                    context.SaveChanges();
                 }
-                order.TotalPrice = updatedTotalPrice;
-                Update(order);
-                //var updatedTotalPrice = updatedOrderLines.Select(x => x.LineTotal).First();
             }
         }
     }

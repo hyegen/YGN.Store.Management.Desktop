@@ -18,9 +18,9 @@ namespace YGN.Store.Management.DataAccess.Abstract
         List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId);
         decimal GetTotalPriceForOrderInformationPrice(int orderId);
         MobItemSelectionViews MobGetProductByItemCode(string itemCode);
-        List<SelectedItemsInOrder> GetSelectedItemsInOrder(int orderId);
-        List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
+        List<SelectedItems> GetSelectedItemsInOrder(int orderId);
         Order GetOrderById(int orderId);
-        void UpdateOrder(int id, List<OrderLine> updatedOrderLines);
+        void UpdateOrder(Order order);
+        void DeleteOrderById(int orderId);
     }
 }

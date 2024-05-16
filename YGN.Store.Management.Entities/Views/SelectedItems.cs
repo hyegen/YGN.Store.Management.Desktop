@@ -8,6 +8,7 @@ namespace YGN.Store.Management.Entities.Views
 {
     public class SelectedItems
     {
+        public int OrderLineId { get; set; }
         public int ItemId { get; set; }
         public string ItemCode { get; set; }
         public string ItemName { get; set; }

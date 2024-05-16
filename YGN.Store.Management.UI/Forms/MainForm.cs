@@ -72,11 +72,7 @@ namespace YGN.Store.Management.UI.Forms
         }
         private void lastTransactionDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                int selectedID = Convert.ToInt32(lastTransactionDataGridView.Rows[e.RowIndex].Cells["Id"].Value);
-                ShowDetailForm();
-            }
+
         }
         private void lastTransactionDataGridView_MouseClick(object sender, MouseEventArgs e)
         {
@@ -99,6 +95,10 @@ namespace YGN.Store.Management.UI.Forms
                 e.Cancel = true;
             }
         }
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowParametricForm<ModifyForm>(selectedId);
+        }
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (selectedId == null || selectedId == 0)
@@ -110,10 +110,51 @@ namespace YGN.Store.Management.UI.Forms
         {
             ShowDetailForm();
         }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedId > 0)
+            {
+                DialogResult result = MessageBox.Show(string.Format("{0} numaralı siparişi silmek istediğinize emin misiniz?", selectedId), "Onayla", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in lastTransactionDataGridView.SelectedRows)
+                    {
+                        if (!row.IsNewRow && Convert.ToInt32(row.Cells["Id"].Value) == selectedId)
+                        {
+                            orderManager.DeleteOrderById(selectedId);
+                            getDatas();
+                            break;
+                        }
+                    }
+                }
+            }
+           
+        }
+        private void lastTransactionDataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hitTestInfo = lastTransactionDataGridView.HitTest(e.X, e.Y);
+                if (hitTestInfo.RowIndex >= 0)
+                {
+                    lastTransactionDataGridView.ClearSelection();
+                    lastTransactionDataGridView.Rows[hitTestInfo.RowIndex].Selected = true;
+
+                    int idColumnIndex = lastTransactionDataGridView.Columns["Id"].Index;
+                    var idValue = lastTransactionDataGridView.Rows[hitTestInfo.RowIndex].Cells[idColumnIndex].Value;
+
+                    if (idValue != null)
+                    {
+                        selectedId = Convert.ToInt32(idValue);
+                    }
+
+                    lastTransactionGridViewContextMenuStrip.Show(lastTransactionDataGridView, e.Location);
+                }
+            }
+        }
         #endregion
 
         #region private methods
-
         private void getDatas()
         {
             lastTransactionDataGridView.DataSource = orderManager.GetOrderLineViews();
@@ -122,12 +163,7 @@ namespace YGN.Store.Management.UI.Forms
         {
             FormHelper.ShowParametricForm<InformationsForm>(selectedId);
         }
-
         #endregion
 
-        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormHelper.ShowParametricForm<ModifyForm>(selectedId);
-        }
     }
 }

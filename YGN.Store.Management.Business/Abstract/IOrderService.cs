@@ -19,6 +19,7 @@ namespace YGN.Store.Management.Business.Abstract
         MobItemSelectionViews MobGetProductByItemCode(string itemCode);
         List<SelectedItems> GetSelectedItemsInOrderTest(int orderId);
         Order GetOrderById(int orderId);
-        void UpdateOrder(int id, List<OrderLine> updatedOrderLines);
+        void UpdateOrder(Order order);
+        void DeleteOrderById(int orderId);
     }
 }

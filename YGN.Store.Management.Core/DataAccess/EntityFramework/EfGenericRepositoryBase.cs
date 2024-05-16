@@ -242,33 +242,31 @@ namespace YGN.Store.Management.Core.DataAccess.EntityFramework
                 return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
-        public void UpdateRelatedEntities<T>(IEnumerable<T> existingEntities, IEnumerable<T> updatedEntities) where T : class, IEntity, new()
+        public void UpdateRelatedEntities<T>(IEnumerable<T> existingEntities, IEnumerable<T> updatedEntities, DbContext context) where T : class, IEntity, new()
         {
-            using (TContext context = new TContext())
+            var addedEntities = updatedEntities.Except(existingEntities, new EntityComparer<T>()).ToList();
+            var deletedEntities = existingEntities.Except(updatedEntities, new EntityComparer<T>()).ToList();
+
+            foreach (var addedEntity in addedEntities)
             {
-                var addedEntities = updatedEntities.AsQueryable().Except(existingEntities.AsQueryable(), new EntityComparer<T>());
-                var deletedEntities = existingEntities.AsQueryable().Except(updatedEntities.AsQueryable(), new EntityComparer<T>());
-                var modifiedEntities = updatedEntities.AsQueryable().Except(addedEntities, new EntityComparer<T>());
+                context.Set<T>().Add(addedEntity);
+            }
 
-                addedEntities.ToList().ForEach(x => context.Entry(x).State = EntityState.Added);
-                deletedEntities.ToList().ForEach(x => context.Entry(x).State = EntityState.Deleted);
+            foreach (var deletedEntity in deletedEntities)
+            {
+                context.Set<T>().Remove(deletedEntity);
+            }
 
-                foreach (var entity in modifiedEntities)
+            foreach (var updatedEntity in updatedEntities)
+            {
+                var existingEntity = existingEntities.FirstOrDefault(e => e.Id == updatedEntity.Id);
+                if (existingEntity != null)
                 {
-                    var existingEntity = context.Set<T>().Find(entity.Id);
-
-                    if (existingEntity != null)
-                    {
-                        var contextEntry = context.Entry(existingEntity);
-                        contextEntry.CurrentValues.SetValues(entity);
-                    }
+                    context.Entry(existingEntity).CurrentValues.SetValues(updatedEntity);
                 }
-       
-                context.SaveChanges();
             }
         }
     }
-
     public class EntityComparer<T> : IEqualityComparer<T> where T : IEntity
     {
         public bool Equals(T x, T y)

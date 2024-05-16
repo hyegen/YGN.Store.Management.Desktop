@@ -35,6 +35,14 @@
             this.btnStockAmount = new System.Windows.Forms.Button();
             this.groupBoxLastTransactions = new System.Windows.Forms.GroupBox();
             this.lastTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -45,14 +53,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBoxLastTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).BeginInit();
@@ -135,8 +136,64 @@
             this.lastTransactionDataGridView.ReadOnly = true;
             this.lastTransactionDataGridView.Size = new System.Drawing.Size(1066, 400);
             this.lastTransactionDataGridView.TabIndex = 0;
-            this.lastTransactionDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lastTransactionDataGridView_CellDoubleClick);
             this.lastTransactionDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lastTransactionDataGridView_MouseClick);
+            this.lastTransactionDataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lastTransactionDataGridView_MouseDown);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // ClientCode
+            // 
+            this.ClientCode.DataPropertyName = "ClientCode";
+            this.ClientCode.HeaderText = "Cari Kodu";
+            this.ClientCode.Name = "ClientCode";
+            this.ClientCode.ReadOnly = true;
+            // 
+            // ClientName
+            // 
+            this.ClientName.DataPropertyName = "ClientName";
+            this.ClientName.HeaderText = "Cari Adı";
+            this.ClientName.Name = "ClientName";
+            this.ClientName.ReadOnly = true;
+            // 
+            // ClientSurname
+            // 
+            this.ClientSurname.DataPropertyName = "ClientSurname";
+            this.ClientSurname.HeaderText = "Cari Soyad";
+            this.ClientSurname.Name = "ClientSurname";
+            this.ClientSurname.ReadOnly = true;
+            // 
+            // FirmDescription
+            // 
+            this.FirmDescription.DataPropertyName = "FirmDescription";
+            this.FirmDescription.HeaderText = "Firma";
+            this.FirmDescription.Name = "FirmDescription";
+            this.FirmDescription.ReadOnly = true;
+            // 
+            // Date_
+            // 
+            this.Date_.DataPropertyName = "Date_";
+            this.Date_.HeaderText = "Tarih";
+            this.Date_.Name = "Date_";
+            this.Date_.ReadOnly = true;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.DataPropertyName = "TotalPrice";
+            this.TotalPrice.HeaderText = "Toplam Fiyat";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            // 
+            // Module
+            // 
+            this.Module.DataPropertyName = "Module";
+            this.Module.HeaderText = "Modül";
+            this.Module.Name = "Module";
+            this.Module.ReadOnly = true;
             // 
             // btnRefresh
             // 
@@ -210,9 +267,10 @@
             this.lastTransactionGridViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewToolStripMenuItem,
             this.modifyToolStripMenuItem,
-            this.printToolStripMenuItem});
+            this.printToolStripMenuItem,
+            this.deleteToolStripMenuItem});
             this.lastTransactionGridViewContextMenuStrip.Name = "contextMenuStrip1";
-            this.lastTransactionGridViewContextMenuStrip.Size = new System.Drawing.Size(115, 70);
+            this.lastTransactionGridViewContextMenuStrip.Size = new System.Drawing.Size(115, 92);
             this.lastTransactionGridViewContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.lastTransactionGridViewContextMenuStrip_Opening);
             // 
             // viewToolStripMenuItem
@@ -236,61 +294,12 @@
             this.printToolStripMenuItem.Text = "Yazdır";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
-            // Id
+            // deleteToolStripMenuItem
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // ClientCode
-            // 
-            this.ClientCode.DataPropertyName = "ClientCode";
-            this.ClientCode.HeaderText = "Cari Kodu";
-            this.ClientCode.Name = "ClientCode";
-            this.ClientCode.ReadOnly = true;
-            // 
-            // ClientName
-            // 
-            this.ClientName.DataPropertyName = "ClientName";
-            this.ClientName.HeaderText = "Cari Adı";
-            this.ClientName.Name = "ClientName";
-            this.ClientName.ReadOnly = true;
-            // 
-            // ClientSurname
-            // 
-            this.ClientSurname.DataPropertyName = "ClientSurname";
-            this.ClientSurname.HeaderText = "Cari Soyad";
-            this.ClientSurname.Name = "ClientSurname";
-            this.ClientSurname.ReadOnly = true;
-            // 
-            // FirmDescription
-            // 
-            this.FirmDescription.DataPropertyName = "FirmDescription";
-            this.FirmDescription.HeaderText = "Firma";
-            this.FirmDescription.Name = "FirmDescription";
-            this.FirmDescription.ReadOnly = true;
-            // 
-            // Date_
-            // 
-            this.Date_.DataPropertyName = "Date_";
-            this.Date_.HeaderText = "Tarih";
-            this.Date_.Name = "Date_";
-            this.Date_.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.DataPropertyName = "TotalPrice";
-            this.TotalPrice.HeaderText = "Toplam Fiyat";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            // 
-            // Module
-            // 
-            this.Module.DataPropertyName = "Module";
-            this.Module.HeaderText = "Modül";
-            this.Module.Name = "Module";
-            this.Module.ReadOnly = true;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.deleteToolStripMenuItem.Text = "Sil";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -344,5 +353,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Module;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
