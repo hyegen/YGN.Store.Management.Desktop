@@ -68,12 +68,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBackupService.cs" />
     <Compile Include="Abstract\IClientService.cs" />
     <Compile Include="Abstract\IItemService.cs" />
     <Compile Include="Abstract\IOrderLineService.cs" />
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IReportService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
+    <Compile Include="Concrete\BackupManager.cs" />
     <Compile Include="Concrete\ClientManager.cs" />
     <Compile Include="Concrete\ItemManager.cs" />
     <Compile Include="Concrete\OrderLineManager.cs" />

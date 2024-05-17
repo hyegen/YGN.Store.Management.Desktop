@@ -54,12 +54,15 @@
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backuoGroupBox = new System.Windows.Forms.GroupBox();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxLastTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.lastTransactionGridViewContextMenuStrip.SuspendLayout();
+            this.backuoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnQuickSales
@@ -301,11 +304,34 @@
             this.deleteToolStripMenuItem.Text = "Sil";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // backuoGroupBox
+            // 
+            this.backuoGroupBox.Controls.Add(this.btnBackup);
+            this.backuoGroupBox.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.backuoGroupBox.Location = new System.Drawing.Point(560, 96);
+            this.backuoGroupBox.Name = "backuoGroupBox";
+            this.backuoGroupBox.Size = new System.Drawing.Size(105, 84);
+            this.backuoGroupBox.TabIndex = 12;
+            this.backuoGroupBox.TabStop = false;
+            this.backuoGroupBox.Text = "Yedekleme";
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBackup.Location = new System.Drawing.Point(7, 19);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(92, 58);
+            this.btnBackup.TabIndex = 0;
+            this.btnBackup.Text = "Yedek Al";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 638);
+            this.Controls.Add(this.backuoGroupBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
@@ -323,6 +349,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.lastTransactionGridViewContextMenuStrip.ResumeLayout(false);
+            this.backuoGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +381,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Module;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.GroupBox backuoGroupBox;
+        private System.Windows.Forms.Button btnBackup;
     }
 }

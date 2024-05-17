@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup\Backup.cs" />
     <Compile Include="Concrete\Client.cs" />
     <Compile Include="Concrete\Item.cs" />
     <Compile Include="Concrete\Order.cs" />
