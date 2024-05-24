@@ -27,7 +27,7 @@ namespace YGN.Store.Management.UI.Report
         private void PrintOrderSlip_Load(object sender, EventArgs e)
         {
             this.reportViewer1.RefreshReport();
-        } 
+        }
         private void startOrderInformation()
         {
             var reportResult = orderManager.GetOrderDetailInformation(orderId);

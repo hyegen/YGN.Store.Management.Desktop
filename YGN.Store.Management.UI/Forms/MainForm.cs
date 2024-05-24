@@ -11,12 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.Common.FormHelpers;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
 using YGN.Store.Management.UI.CommonReports;
 using YGN.Store.Management.UI.DetailForms;
-using YGN.Store.Management.UI.Helper;
 using YGN.Store.Management.UI.Report;
 
 namespace YGN.Store.Management.UI.Forms

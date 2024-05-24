@@ -32,6 +32,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.paymentGroupBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxPaymentType = new System.Windows.Forms.ComboBox();
+            this.lblPaymentType = new System.Windows.Forms.Label();
             this.btnDeleteLine = new System.Windows.Forms.Button();
             this.txtLastPrice = new System.Windows.Forms.TextBox();
             this.lblTotalPrice = new System.Windows.Forms.Label();
@@ -44,12 +47,12 @@
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UniPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.clientsComboBox = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.paymentGroupBox.SuspendLayout();
             this.selectedItemsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemsDataGridView)).BeginInit();
             this.itemsGroupBox.SuspendLayout();
@@ -90,6 +93,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.paymentGroupBox);
             this.panel2.Controls.Add(this.btnDeleteLine);
             this.panel2.Controls.Add(this.txtLastPrice);
             this.panel2.Controls.Add(this.lblTotalPrice);
@@ -100,6 +104,35 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1197, 590);
             this.panel2.TabIndex = 1;
+            // 
+            // paymentGroupBox
+            // 
+            this.paymentGroupBox.Controls.Add(this.comboBoxPaymentType);
+            this.paymentGroupBox.Controls.Add(this.lblPaymentType);
+            this.paymentGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.paymentGroupBox.Location = new System.Drawing.Point(390, 12);
+            this.paymentGroupBox.Name = "paymentGroupBox";
+            this.paymentGroupBox.Size = new System.Drawing.Size(314, 77);
+            this.paymentGroupBox.TabIndex = 9;
+            this.paymentGroupBox.TabStop = false;
+            this.paymentGroupBox.Text = "Ödeme";
+            // 
+            // comboBoxPaymentType
+            // 
+            this.comboBoxPaymentType.FormattingEnabled = true;
+            this.comboBoxPaymentType.Location = new System.Drawing.Point(117, 34);
+            this.comboBoxPaymentType.Name = "comboBoxPaymentType";
+            this.comboBoxPaymentType.Size = new System.Drawing.Size(191, 24);
+            this.comboBoxPaymentType.TabIndex = 1;
+            // 
+            // lblPaymentType
+            // 
+            this.lblPaymentType.AutoSize = true;
+            this.lblPaymentType.Location = new System.Drawing.Point(6, 37);
+            this.lblPaymentType.Name = "lblPaymentType";
+            this.lblPaymentType.Size = new System.Drawing.Size(81, 16);
+            this.lblPaymentType.TabIndex = 0;
+            this.lblPaymentType.Text = "Ödeme Tipi:";
             // 
             // btnDeleteLine
             // 
@@ -116,7 +149,7 @@
             // txtLastPrice
             // 
             this.txtLastPrice.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLastPrice.Location = new System.Drawing.Point(742, 45);
+            this.txtLastPrice.Location = new System.Drawing.Point(816, 49);
             this.txtLastPrice.Name = "txtLastPrice";
             this.txtLastPrice.ReadOnly = true;
             this.txtLastPrice.Size = new System.Drawing.Size(145, 25);
@@ -126,7 +159,7 @@
             // 
             this.lblTotalPrice.AutoSize = true;
             this.lblTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTotalPrice.Location = new System.Drawing.Point(749, 18);
+            this.lblTotalPrice.Location = new System.Drawing.Point(823, 22);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(130, 24);
             this.lblTotalPrice.TabIndex = 3;
@@ -172,8 +205,7 @@
             this.ItemCode,
             this.ItemName,
             this.UniPrice,
-            this.Brand,
-            this.Amount});
+            this.Brand});
             this.itemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsDataGridView.Location = new System.Drawing.Point(3, 19);
             this.itemsDataGridView.Name = "itemsDataGridView";
@@ -216,13 +248,6 @@
             this.Brand.HeaderText = "Marka";
             this.Brand.Name = "Brand";
             this.Brand.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.DataPropertyName = "Amount";
-            this.Amount.HeaderText = "Miktar";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
             // 
             // groupBoxClient
             // 
@@ -267,6 +292,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.paymentGroupBox.ResumeLayout(false);
+            this.paymentGroupBox.PerformLayout();
             this.selectedItemsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemsDataGridView)).EndInit();
             this.itemsGroupBox.ResumeLayout(false);
@@ -298,6 +325,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UniPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.GroupBox paymentGroupBox;
+        private System.Windows.Forms.Label lblPaymentType;
+        private System.Windows.Forms.ComboBox comboBoxPaymentType;
     }
 }

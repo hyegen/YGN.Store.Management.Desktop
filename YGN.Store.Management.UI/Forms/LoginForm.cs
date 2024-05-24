@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.Common.FormHelpers;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 
 namespace YGN.Store.Management.UI.Forms
@@ -71,8 +72,7 @@ namespace YGN.Store.Management.UI.Forms
             bool isTrue = userManager.Login(UserName, Password);
             if (isTrue)
             {
-                MainForm mainForm = new MainForm();
-                mainForm.Show();
+                FormHelper.ShowForm<MainForm>();
                 this.Hide();
             }
             else

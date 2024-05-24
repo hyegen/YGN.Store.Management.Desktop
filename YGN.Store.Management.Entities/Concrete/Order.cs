@@ -19,5 +19,6 @@ namespace YGN.Store.Management.Entities.Concrete
         public virtual ICollection<OrderLine> OrderLines { get; set; }
         public int IOCode { get; set; }
         public int ClientId { get; set; }
+        public int PaymentType { get; set; }
     }
 }

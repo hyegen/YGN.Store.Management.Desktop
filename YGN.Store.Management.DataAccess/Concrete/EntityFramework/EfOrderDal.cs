@@ -15,17 +15,16 @@ using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
 using YGN.Store.Management.Entities.Views.MobViews;
-using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
 {
     public class EfOrderDal : EfGenericRepositoryBase<Order, YGNContext>, IOrderDal
     {
-        public List<OrderLineView> GetOrderLineViews()
+        public List<LastTransactionsView> GetOrderLineViews()
         {
             using (YGNContext context = new YGNContext())
             {
-                var orderViews = context.Database.SqlQuery<OrderLineView>("EXEC YGN_ORDERLINE_VIEW").ToList();
+                var orderViews = context.Database.SqlQuery<LastTransactionsView>("EXEC YGN_LAST_TRANSACTIONS_VIEW").ToList();
                 return orderViews;
             }
         }

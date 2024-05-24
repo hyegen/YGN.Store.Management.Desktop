@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IBackupDal.cs" />
     <Compile Include="Abstract\IClientDal.cs" />
+    <Compile Include="Abstract\ICreateDatabaseDal.cs" />
     <Compile Include="Abstract\IItemDal.cs" />
     <Compile Include="Abstract\IOrderDal.cs" />
     <Compile Include="Abstract\IOrderLineDal.cs" />
@@ -79,18 +80,32 @@
     <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfBackupDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfClientDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCreateDatabaseDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfItemDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderLineDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfReportDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
-    <Compile Include="Migrations\202405121918116_mig232.cs" />
-    <Compile Include="Migrations\202405121918116_mig232.Designer.cs">
-      <DependentUpon>202405121918116_mig232.cs</DependentUpon>
+    <Compile Include="Migrations\202405241923147_mig-init.cs" />
+    <Compile Include="Migrations\202405241923147_mig-init.Designer.cs">
+      <DependentUpon>202405241923147_mig-init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405242003144_mig-add-order-entity-new-column.cs" />
+    <Compile Include="Migrations\202405242003144_mig-add-order-entity-new-column.Designer.cs">
+      <DependentUpon>202405242003144_mig-add-order-entity-new-column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405242007019_mig3.cs" />
+    <Compile Include="Migrations\202405242007019_mig3.Designer.cs">
+      <DependentUpon>202405242007019_mig3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">
@@ -107,9 +122,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405121918116_mig232.resx">
-      <DependentUpon>202405121918116_mig232.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405241923147_mig-init.resx">
+      <DependentUpon>202405241923147_mig-init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405242003144_mig-add-order-entity-new-column.resx">
+      <DependentUpon>202405242003144_mig-add-order-entity-new-column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405242007019_mig3.resx">
+      <DependentUpon>202405242007019_mig3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DbInit - Kopya.sql" />
+    <Content Include="DbInit.sql" />
+    <Content Include="DB_INIT_2.sql" />
+    <Content Include="Scripts\init_db.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.Common.OrderEnums;
 using YGN.Store.Management.Common.TransactionCodes;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
@@ -141,7 +142,8 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void QuickSalesOrderDetailForm_Load(object sender, EventArgs e)
         {
-            FillComboBox();
+            FillClientComboBox();
+            FillPaymentTypeComboBox();
         }
         #endregion
 
@@ -168,7 +170,8 @@ namespace YGN.Store.Management.UI.DetailForms
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
                 OrderLines = new List<OrderLine>(),
-                IOCode = (int)InputOutputCodes.Output
+                IOCode = (int)InputOutputCodes.Output,
+                PaymentType = GetPaymentTypeFromCombobox()
             };
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -213,7 +216,7 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             txtLastPrice.Text = total.ToString();
         }
-        private void FillComboBox()
+        private void FillClientComboBox()
         {
             List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
             comboBoxClients.DataSource = clients;
@@ -232,8 +235,20 @@ namespace YGN.Store.Management.UI.DetailForms
                 return -1;
             }
         }
-
+        private void FillPaymentTypeComboBox()
+        {
+            foreach (string paymentType in Enum.GetNames(typeof(PaymentType)))
+            {
+                comboBoxPaymentType.Items.Add(paymentType);
+            }
+        }
+        private int GetPaymentTypeFromCombobox()
+        {
+            PaymentType selectedPaymentType = (PaymentType)Enum.Parse(typeof(PaymentType), comboBoxPaymentType.SelectedItem.ToString());
+            return (int)selectedPaymentType;
+        }
         #endregion
+
 
     }
 }

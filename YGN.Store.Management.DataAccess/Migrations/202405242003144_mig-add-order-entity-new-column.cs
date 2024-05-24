@@ -3,14 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class mig232 : DbMigration
+    public partial class migaddorderentitynewcolumn : DbMigration
     {
         public override void Up()
         {
+            AddColumn("dbo.Orders", "PaymentType", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Orders", "PaymentType");
         }
     }
 }

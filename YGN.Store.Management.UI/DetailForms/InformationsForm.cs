@@ -37,8 +37,13 @@ namespace YGN.Store.Management.UI.DetailForms
         #region private methods
         private void getDetailsFromDb(int selectedID)
         {
-            informationDataGridView.DataSource = orderManager.GetOrderDetailInformation(selectedID);
-            decimal totalPrice = orderManager.GetTotalPriceForOrderInformationPrice(selectedID);
+            var orderInformations = orderManager.GetOrderDetailInformation(selectedID);
+            decimal totalPrice = 0;
+            foreach (var total in orderInformations.Select(x => x.LineTotal))
+            {
+                totalPrice += total;
+            }
+            informationDataGridView.DataSource = orderInformations;
             string formattedTotalPrice = totalPrice.ToString("#,##0");
             lblTotalPrice.Text = formattedTotalPrice + " TL";
         }

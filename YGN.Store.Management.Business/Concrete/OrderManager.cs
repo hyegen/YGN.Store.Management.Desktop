@@ -31,7 +31,7 @@ namespace YGN.Store.Management.Business.Concrete
         {
             return _orderDal.GetOrderDetailInformation(orderId);
         }
-        public List<OrderLineView> GetOrderLineViews()
+        public List<LastTransactionsView> GetOrderLineViews()
         {
             return _orderDal.GetOrderLineViews();
         }

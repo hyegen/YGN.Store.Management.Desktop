@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YGN.Store.Management.Business.Concrete;
+using YGN.Store.Management.Common.OrderEnums;
 using YGN.Store.Management.Common.TransactionCodes;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
 using YGN.Store.Management.Entities.Concrete;
@@ -131,7 +133,8 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void PurchasingOrderDetailForm_Load(object sender, EventArgs e)
         {
-            FillComboBox();
+            FillClientComboBox();
+            FillPaymentTypeComboBox();
         }
         #endregion
 
@@ -152,12 +155,19 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void createOrder()
         {
+            int selectedPaymentId = GetPaymentTypeFromCombobox();
+            if (selectedPaymentId == 0)
+            {
+                MessageBox.Show("Lütfen Bir Ödeme Tipi seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             Order newOrder = new Order
             {
                 DateTime = DateTime.Now,
                 TotalPrice = 0,
                 OrderLines = new List<OrderLine>(),
-                IOCode = (int)InputOutputCodes.Input
+                IOCode = (int)InputOutputCodes.Input,
+                PaymentType = GetPaymentTypeFromCombobox()
             };
 
             foreach (DataGridViewRow row in selectedItemsDataGridView.Rows)
@@ -172,7 +182,7 @@ namespace YGN.Store.Management.UI.DetailForms
                     DateTime = DateTime.Now,
                     LineTotal = CalculateTotalPrice(itemId, amount),
                     Order = newOrder,
-                    IOCode= (int)InputOutputCodes.Input
+                    IOCode = (int)InputOutputCodes.Input
                 };
 
                 newOrder.TotalPrice += newOrderLine.LineTotal;
@@ -202,13 +212,20 @@ namespace YGN.Store.Management.UI.DetailForms
             }
             txtLastPrice.Text = total.ToString();
         }
-        private void FillComboBox()
+        private void FillClientComboBox()
         {
             List<Client> clients = clientManager.GetAllClientsByNameAndSurname();
             clientsComboBox.DataSource = clients;
             clientsComboBox.DisplayMember = "ClientCodeAndClientName";
             clientsComboBox.ValueMember = "Id";
             clientsComboBox.SelectedIndex = -1;
+        }
+        private void FillPaymentTypeComboBox()
+        {
+            foreach (string paymentType in Enum.GetNames(typeof(PaymentType)))
+            {
+                comboBoxPaymentType.Items.Add(paymentType);
+            }
         }
         private int GetClientFromCombobox()
         {
@@ -221,7 +238,15 @@ namespace YGN.Store.Management.UI.DetailForms
                 return -1;
             }
         }
-
+        private int GetPaymentTypeFromCombobox()
+        {
+            if (string.IsNullOrEmpty(comboBoxPaymentType.Text))
+            {
+                return 0;
+            }
+            PaymentType selectedPaymentType = (PaymentType)Enum.Parse(typeof(PaymentType), comboBoxPaymentType.SelectedItem.ToString());
+            return (int)selectedPaymentType;
+        }
         #endregion
     }
 }

@@ -7,7 +7,7 @@ using YGN.Store.Management.Entities.Concrete;
 
 namespace YGN.Store.Management.Entities.Views
 {
-    public class OrderLineView
+    public class LastTransactionsView
     {
         public int Id { get; set; }
         public string ClientCode { get; set; }
@@ -17,5 +17,6 @@ namespace YGN.Store.Management.Entities.Views
         public DateTime Date_ { get; set; }
         public decimal TotalPrice { get; set; }
         public string Module { get; set; }
+        public string PaymentType { get; set; }
     }
 }

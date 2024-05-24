@@ -35,14 +35,6 @@
             this.btnStockAmount = new System.Windows.Forms.Button();
             this.groupBoxLastTransactions = new System.Windows.Forms.GroupBox();
             this.lastTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -56,6 +48,15 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backuoGroupBox = new System.Windows.Forms.GroupBox();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxLastTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lastTransactionDataGridView)).BeginInit();
@@ -132,7 +133,8 @@
             this.FirmDescription,
             this.Date_,
             this.TotalPrice,
-            this.Module});
+            this.Module,
+            this.PaymentType});
             this.lastTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastTransactionDataGridView.Location = new System.Drawing.Point(3, 23);
             this.lastTransactionDataGridView.Name = "lastTransactionDataGridView";
@@ -141,62 +143,6 @@
             this.lastTransactionDataGridView.TabIndex = 0;
             this.lastTransactionDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lastTransactionDataGridView_MouseClick);
             this.lastTransactionDataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lastTransactionDataGridView_MouseDown);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // ClientCode
-            // 
-            this.ClientCode.DataPropertyName = "ClientCode";
-            this.ClientCode.HeaderText = "Cari Kodu";
-            this.ClientCode.Name = "ClientCode";
-            this.ClientCode.ReadOnly = true;
-            // 
-            // ClientName
-            // 
-            this.ClientName.DataPropertyName = "ClientName";
-            this.ClientName.HeaderText = "Cari Adı";
-            this.ClientName.Name = "ClientName";
-            this.ClientName.ReadOnly = true;
-            // 
-            // ClientSurname
-            // 
-            this.ClientSurname.DataPropertyName = "ClientSurname";
-            this.ClientSurname.HeaderText = "Cari Soyad";
-            this.ClientSurname.Name = "ClientSurname";
-            this.ClientSurname.ReadOnly = true;
-            // 
-            // FirmDescription
-            // 
-            this.FirmDescription.DataPropertyName = "FirmDescription";
-            this.FirmDescription.HeaderText = "Firma";
-            this.FirmDescription.Name = "FirmDescription";
-            this.FirmDescription.ReadOnly = true;
-            // 
-            // Date_
-            // 
-            this.Date_.DataPropertyName = "Date_";
-            this.Date_.HeaderText = "Tarih";
-            this.Date_.Name = "Date_";
-            this.Date_.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.DataPropertyName = "TotalPrice";
-            this.TotalPrice.HeaderText = "Toplam Fiyat";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            // 
-            // Module
-            // 
-            this.Module.DataPropertyName = "Module";
-            this.Module.HeaderText = "Modül";
-            this.Module.Name = "Module";
-            this.Module.ReadOnly = true;
             // 
             // btnRefresh
             // 
@@ -308,7 +254,7 @@
             // 
             this.backuoGroupBox.Controls.Add(this.btnBackup);
             this.backuoGroupBox.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.backuoGroupBox.Location = new System.Drawing.Point(560, 96);
+            this.backuoGroupBox.Location = new System.Drawing.Point(810, 96);
             this.backuoGroupBox.Name = "backuoGroupBox";
             this.backuoGroupBox.Size = new System.Drawing.Size(105, 84);
             this.backuoGroupBox.TabIndex = 12;
@@ -325,6 +271,69 @@
             this.btnBackup.Text = "Yedek Al";
             this.btnBackup.UseVisualStyleBackColor = true;
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // ClientCode
+            // 
+            this.ClientCode.DataPropertyName = "ClientCode";
+            this.ClientCode.HeaderText = "Cari Kodu";
+            this.ClientCode.Name = "ClientCode";
+            this.ClientCode.ReadOnly = true;
+            // 
+            // ClientName
+            // 
+            this.ClientName.DataPropertyName = "ClientName";
+            this.ClientName.HeaderText = "Cari Adı";
+            this.ClientName.Name = "ClientName";
+            this.ClientName.ReadOnly = true;
+            // 
+            // ClientSurname
+            // 
+            this.ClientSurname.DataPropertyName = "ClientSurname";
+            this.ClientSurname.HeaderText = "Cari Soyad";
+            this.ClientSurname.Name = "ClientSurname";
+            this.ClientSurname.ReadOnly = true;
+            // 
+            // FirmDescription
+            // 
+            this.FirmDescription.DataPropertyName = "FirmDescription";
+            this.FirmDescription.HeaderText = "Firma";
+            this.FirmDescription.Name = "FirmDescription";
+            this.FirmDescription.ReadOnly = true;
+            // 
+            // Date_
+            // 
+            this.Date_.DataPropertyName = "Date_";
+            this.Date_.HeaderText = "Tarih";
+            this.Date_.Name = "Date_";
+            this.Date_.ReadOnly = true;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.DataPropertyName = "TotalPrice";
+            this.TotalPrice.HeaderText = "Toplam Fiyat";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            // 
+            // Module
+            // 
+            this.Module.DataPropertyName = "Module";
+            this.Module.HeaderText = "Modül";
+            this.Module.Name = "Module";
+            this.Module.ReadOnly = true;
+            // 
+            // PaymentType
+            // 
+            this.PaymentType.DataPropertyName = "PaymentType";
+            this.PaymentType.HeaderText = "Ödeme Tipi";
+            this.PaymentType.Name = "PaymentType";
+            this.PaymentType.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -372,6 +381,9 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.GroupBox backuoGroupBox;
+        private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientName;
@@ -380,8 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Module;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.GroupBox backuoGroupBox;
-        private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentType;
     }
 }

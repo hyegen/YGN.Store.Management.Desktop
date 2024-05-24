@@ -26,6 +26,5 @@ namespace YGN.Store.Management.Entities.Concrete
         public string ItemName { get; set; }
         public double? UnitPrice { get; set; }
         public string Brand { get; set; }
-        public int? Amount { get; set; }
     }
 }

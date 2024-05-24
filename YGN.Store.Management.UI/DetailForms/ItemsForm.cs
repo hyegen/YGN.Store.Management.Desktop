@@ -225,7 +225,7 @@ namespace YGN.Store.Management.UI.DetailForms
 
             foreach (var item in items)
             {
-                dataTable.Rows.Add(item.Id, item.ItemCode, item.ItemName, item.UnitPrice, item.Brand, item.Amount);
+                dataTable.Rows.Add(item.Id, item.ItemCode, item.ItemName, item.UnitPrice, item.Brand);
             }
 
             itemsDataGridView.DataSource = dataTable;
