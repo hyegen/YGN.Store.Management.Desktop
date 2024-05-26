@@ -69,16 +69,26 @@ namespace YGN.Store.Management.UI.Forms
         #region private methods
         private void Login()
         {
-            bool isTrue = userManager.Login(UserName, Password);
-            if (isTrue)
-            {
-                FormHelper.ShowForm<MainForm>();
-                this.Hide();
-            }
-            else
+            var result = userManager.GetUser(UserName, Password);
+            if (result == null)
             {
                 MessageBox.Show("Şifre Hatalı !", "Hata", MessageBoxButtons.RetryCancel);
             }
+            else
+            {
+                FormHelper.ShowParametricForm<MainForm>(result);
+            }
+            
+            //bool isTrue = userManager.Login(UserName, Password);
+            //if (isTrue)
+            //{
+            //    FormHelper.ShowForm<MainForm>();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Şifre Hatalı !", "Hata", MessageBoxButtons.RetryCancel);
+            //}
         }
         #endregion
 

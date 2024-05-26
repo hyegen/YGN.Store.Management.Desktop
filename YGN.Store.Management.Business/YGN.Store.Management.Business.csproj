@@ -85,6 +85,8 @@
     <Compile Include="Abstract\IOrderLineService.cs" />
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IReportService.cs" />
+    <Compile Include="Abstract\IRoleService.cs" />
+    <Compile Include="Abstract\IUserRoleService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
     <Compile Include="Concrete\BackupManager.cs" />
     <Compile Include="Concrete\ClientManager.cs" />
@@ -93,7 +95,9 @@
     <Compile Include="Concrete\OrderLineManager.cs" />
     <Compile Include="Concrete\OrderManager.cs" />
     <Compile Include="Concrete\ReportManager.cs" />
+    <Compile Include="Concrete\RoleManager.cs" />
     <Compile Include="Concrete\UserManager.cs" />
+    <Compile Include="Concrete\UserRoleManager.cs" />
     <Compile Include="FluentValidation\ClientValidator.cs" />
     <Compile Include="FluentValidation\ItemValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

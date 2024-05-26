@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class miginit : DbMigration
+    public partial class init2 : DbMigration
     {
         public override void Up()
         {
@@ -62,6 +62,7 @@
                         TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IOCode = c.Int(nullable: false),
                         ClientId = c.Int(nullable: false),
+                        PaymentType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -74,6 +75,29 @@
                         ReportBinaryData = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Roles",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        RoleName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.UserRoles",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
+                        RoleId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.Users",
@@ -96,11 +120,17 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
+            DropForeignKey("dbo.UserRoles", "UserId", "dbo.Users");
             DropForeignKey("dbo.OrderLines", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.OrderLines", "ItemId", "dbo.Items");
+            DropIndex("dbo.UserRoles", new[] { "RoleId" });
+            DropIndex("dbo.UserRoles", new[] { "UserId" });
             DropIndex("dbo.OrderLines", new[] { "OrderId" });
             DropIndex("dbo.OrderLines", new[] { "ItemId" });
             DropTable("dbo.Users");
+            DropTable("dbo.UserRoles");
+            DropTable("dbo.Roles");
             DropTable("dbo.Reports");
             DropTable("dbo.Orders");
             DropTable("dbo.OrderLines");

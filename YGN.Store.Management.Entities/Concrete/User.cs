@@ -33,6 +33,6 @@ namespace YGN.Store.Management.Entities.Concrete
         public DateTime? CreatedDate { get; set; }
         public string TelNr1 { get; set; }
         public string TelNr2 { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
-
 }

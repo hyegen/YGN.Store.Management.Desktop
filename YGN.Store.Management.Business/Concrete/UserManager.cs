@@ -17,25 +17,26 @@ namespace YGN.Store.Management.Business.Concrete
         {
             _userDal = userDal;
         }
-
-        public void AddUser(User user)
-        {
-            _userDal.Add(user);
-        }
-
         public bool Login(string userName, string password)
         {
             return _userDal.LoginByUsernameAndPassword(userName, password);
         }
-
         public List<string> GetAllUsers()
         {
             return _userDal.GetAllUsers();
         }
-
         public List<UserNameView> GetUserNameViews()
         {
             return _userDal.GetUserNameViews();
+        }
+        public User GetUser(string userName, string password)
+        {
+            var result = _userDal.GetUser(userName, password);
+            if (result != null)
+            {
+                return result;
+            }
+            return null;
         }
     }
 }

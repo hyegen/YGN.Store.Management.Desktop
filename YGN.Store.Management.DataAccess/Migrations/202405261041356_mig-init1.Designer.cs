@@ -7,13 +7,13 @@ namespace YGN.Store.Management.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class migaddorderentitynewcolumn : IMigrationMetadata
+    public sealed partial class miginit1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migaddorderentitynewcolumn));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(miginit1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202405242003144_mig-add-order-entity-new-column"; }
+            get { return "202405261041356_mig-init1"; }
         }
         
         string IMigrationMetadata.Source

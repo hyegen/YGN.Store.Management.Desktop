@@ -61,69 +61,6 @@ namespace YGN.Store.Management.DataAccess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to USE {0}
-        ///GO
-        ////****** Object:  Table [dbo].[Clients]    Script Date: 18.05.2024 17:11:18 ******/
-        ///SET ANSI_NULLS ON
-        ///GO
-        ///SET QUOTED_IDENTIFIER ON
-        ///GO
-        ///CREATE TABLE [dbo].[Clients](
-        ///	[Id] [int] IDENTITY(1,1) NOT NULL,
-        ///	[ClientCode] [nvarchar](100) NULL,
-        ///	[ClientName] [nvarchar](100) NOT NULL,
-        ///	[ClientSurname] [nvarchar](100) NULL,
-        ///	[Address] [nvarchar](200) NULL,
-        ///	[TelNr1] [nvarchar](50) NULL,
-        ///	[TelNr2] [nvarchar](50) NULL,
-        ///	[FirmDescription] [nvarchar](150) NULL,
-        ///	[TaxIdentificationNumber] [nvarchar [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string DB_INIT_2 {
-            get {
-                return ResourceManager.GetString("DB_INIT_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = &apos;{0}&apos;)
-        ///BEGIN
-        ///CREATE DATABASE {0}
-        ///END.
-        /// </summary>
-        internal static string DbInit {
-            get {
-                return ResourceManager.GetString("DbInit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///USE {0}
-        ///GO
-        ////****** Object:  Table [dbo].[Clients]    Script Date: 18.05.2024 15:10:40 ******/
-        ///SET ANSI_NULLS ON
-        ///GO
-        ///SET QUOTED_IDENTIFIER ON
-        ///GO
-        ///CREATE TABLE [dbo].[Clients](
-        ///	[Id] [int] IDENTITY(1,1) NOT NULL,
-        ///	[ClientCode] [nvarchar](100) NULL,
-        ///	[ClientName] [nvarchar](100) NOT NULL,
-        ///	[ClientSurname] [nvarchar](100) NULL,
-        ///	[Address] [nvarchar](200) NULL,
-        ///	[TelNr1] [nvarchar](50) NULL,
-        ///	[TelNr2] [nvarchar](50) NULL,
-        ///	[FirmDescription] [nvarchar](150) NULL,
-        ///	[TaxIdentificationNumber] [nvarch [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string DbInit___Kopya {
-            get {
-                return ResourceManager.GetString("DbInit___Kopya", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to hello.
         /// </summary>
         internal static string merhaba {

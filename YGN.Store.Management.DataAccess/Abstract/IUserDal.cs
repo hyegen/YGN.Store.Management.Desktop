@@ -14,5 +14,6 @@ namespace YGN.Store.Management.DataAccess.Abstract
         bool LoginByUsernameAndPassword(string userName, string password);
         List<string> GetAllUsers();
         List<UserNameView> GetUserNameViews();
+        User GetUser(string userName, string password);
     }
 }

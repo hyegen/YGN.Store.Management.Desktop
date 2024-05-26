@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Data;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -27,14 +28,19 @@ namespace YGN.Store.Management.UI.Forms
         OrderManager orderManager = new OrderManager(new EfOrderDal());
         ClientManager clientManager = new ClientManager(new EfClientDal());
         BackupManager backupManager = new BackupManager(new EfBackupDal());
+        //UserRoleManager userRoleManager = new UserRoleManager(new EfUserRoleDal());
+        RoleManager roleManager = new RoleManager(new EfRoleDal());
         private int selectedId;
+        private User _currentUser;
         #endregion
 
         #region constructor
-        public MainForm()
+        public MainForm(User user)
         {
             InitializeComponent();
+            _currentUser = user;
             getDatas();
+            ConfigurePermissions();
         }
         #endregion
 
@@ -153,6 +159,11 @@ namespace YGN.Store.Management.UI.Forms
                 }
             }
         }
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            var a = backupManager.BackupDatabase();
+            MessageBox.Show(string.Format(a.Message), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         #endregion
 
         #region private methods
@@ -164,13 +175,17 @@ namespace YGN.Store.Management.UI.Forms
         {
             FormHelper.ShowParametricForm<InformationsForm>(selectedId);
         }
-
-        #endregion
-
-        private void btnBackup_Click(object sender, EventArgs e)
+        private void ConfigurePermissions()
         {
-            var a = backupManager.BackupDatabase();
-            MessageBox.Show(string.Format(a.Message),"Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            var roles = roleManager.GetUserRoles(_currentUser);
+
+            var hasPurchasingRole = roles.Any(x => x.RoleName == "Purchasing");
+            btnPurchasing.Enabled = hasPurchasingRole;
+            var hasSalesRole = roles.Any(x => x.RoleName == "Sales");
+            btnQuickSales.Enabled = hasSalesRole;
+            var hasBackUpRole = roles.Any(x => x.RoleName == "Backup");
+            btnBackup.Enabled = hasBackUpRole;
         }
+        #endregion
     }
 }

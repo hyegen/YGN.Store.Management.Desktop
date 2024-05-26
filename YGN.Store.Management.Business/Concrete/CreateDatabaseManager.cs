@@ -18,9 +18,6 @@ namespace YGN.Store.Management.Business.Concrete
             _createDatabaseDal = createDatabaseDal;
         }
 
-        public DatabaseConfig CreateDatabase()
-        {
-            return _createDatabaseDal.CreateDatabase();
-        }
+    
     }
 }
