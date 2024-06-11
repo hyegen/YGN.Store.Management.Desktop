@@ -32,6 +32,8 @@
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
             this.btnMailSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtServer = new System.Windows.Forms.TextBox();
+            this.lblServer = new System.Windows.Forms.Label();
             this.txtIpAddress = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -40,8 +42,6 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblIpAddress = new System.Windows.Forms.Label();
             this.lblDatabaseDescription = new System.Windows.Forms.Label();
-            this.txtServer = new System.Windows.Forms.TextBox();
-            this.lblServer = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,7 @@
             this.btnMailSettings.TabIndex = 0;
             this.btnMailSettings.Text = "Mail Ayarları";
             this.btnMailSettings.UseVisualStyleBackColor = true;
+            this.btnMailSettings.Click += new System.EventHandler(this.btnMailSettings_Click);
             // 
             // groupBox1
             // 
@@ -97,6 +98,24 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bilgiler";
+            // 
+            // txtServer
+            // 
+            this.txtServer.Location = new System.Drawing.Point(128, 20);
+            this.txtServer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(261, 21);
+            this.txtServer.TabIndex = 13;
+            // 
+            // lblServer
+            // 
+            this.lblServer.AutoSize = true;
+            this.lblServer.Location = new System.Drawing.Point(8, 23);
+            this.lblServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServer.Name = "lblServer";
+            this.lblServer.Size = new System.Drawing.Size(52, 15);
+            this.lblServer.TabIndex = 12;
+            this.lblServer.Text = "Sunucu:";
             // 
             // txtIpAddress
             // 
@@ -170,24 +189,6 @@
             this.lblDatabaseDescription.Size = new System.Drawing.Size(65, 15);
             this.lblDatabaseDescription.TabIndex = 4;
             this.lblDatabaseDescription.Text = "Veritabanı:";
-            // 
-            // txtServer
-            // 
-            this.txtServer.Location = new System.Drawing.Point(128, 20);
-            this.txtServer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(261, 21);
-            this.txtServer.TabIndex = 13;
-            // 
-            // lblServer
-            // 
-            this.lblServer.AutoSize = true;
-            this.lblServer.Location = new System.Drawing.Point(8, 23);
-            this.lblServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblServer.Name = "lblServer";
-            this.lblServer.Size = new System.Drawing.Size(52, 15);
-            this.lblServer.TabIndex = 12;
-            this.lblServer.Text = "Sunucu:";
             // 
             // MainForm
             // 

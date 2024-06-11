@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C04DF338-47A1-4D49-97B0-134994C8EC88}</ProjectGuid>
+    <ProjectGuid>{EC9B5DDC-994D-416C-B4B3-6518D2253953}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>YGN.Store.Management.Sys</RootNamespace>
-    <AssemblyName>YGN.Store.Management.Sys</AssemblyName>
+    <RootNamespace>YGN.Store.Management.MailService</RootNamespace>
+    <AssemblyName>YGN.Store.Management.MailService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,86 +44,43 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseConfigurations\DatabaseSetting.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DatabaseConfigurations\DatabaseSetting.Designer.cs">
-      <DependentUpon>DatabaseSetting.cs</DependentUpon>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="MailSetting\MailManager.cs" />
-    <Compile Include="MailSetting\MailSettingsForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="MailService.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MailSetting\MailSettingsForm.Designer.cs">
-      <DependentUpon>MailSettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="MailService.Designer.cs">
+      <DependentUpon>MailService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DatabaseConfigurations\DatabaseSetting.resx">
-      <DependentUpon>DatabaseSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MailSetting\MailSettingsForm.resx">
-      <DependentUpon>MailSettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YGN.Store.Management.Business\YGN.Store.Management.Business.csproj">
-      <Project>{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}</Project>
-      <Name>YGN.Store.Management.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YGN.Store.Management.Common\YGN.Store.Management.Common.csproj">
-      <Project>{4013b22f-6291-4c09-b360-a41134b7444f}</Project>
-      <Name>YGN.Store.Management.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">
-      <Project>{B4FCD00B-582C-4191-ABE3-141B7A9322AC}</Project>
-      <Name>YGN.Store.Management.Core</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\YGN.Store.Management.DataAccess\YGN.Store.Management.DataAccess.csproj">
       <Project>{E8B47F01-FCBE-462B-BABA-BCF6041DDD49}</Project>
       <Name>YGN.Store.Management.DataAccess</Name>
@@ -132,9 +89,6 @@
       <Project>{4979B612-30D1-48B7-B051-30EED3F21A59}</Project>
       <Name>YGN.Store.Management.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

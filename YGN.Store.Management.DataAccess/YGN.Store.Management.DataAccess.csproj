@@ -92,13 +92,9 @@
     <Compile Include="Concrete\EntityFramework\EfUserRoleDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
     <Compile Include="DbInit\YGNDbInitializer.cs" />
-    <Compile Include="Migrations\202405261041356_mig-init1.cs" />
-    <Compile Include="Migrations\202405261041356_mig-init1.Designer.cs">
-      <DependentUpon>202405261041356_mig-init1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405261042460_init2.cs" />
-    <Compile Include="Migrations\202405261042460_init2.Designer.cs">
-      <DependentUpon>202405261042460_init2.cs</DependentUpon>
+    <Compile Include="Migrations\202405311827573_mig3883.cs" />
+    <Compile Include="Migrations\202405311827573_mig3883.Designer.cs">
+      <DependentUpon>202405311827573_mig3883.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,11 +119,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405261041356_mig-init1.resx">
-      <DependentUpon>202405261041356_mig-init1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405261042460_init2.resx">
-      <DependentUpon>202405261042460_init2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405311827573_mig3883.resx">
+      <DependentUpon>202405311827573_mig3883.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

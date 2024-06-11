@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using YGN.Store.Management.Common.FormHelpers;
 using YGN.Store.Management.Sys.DatabaseConfigurations;
+using YGN.Store.Management.Sys.MailSetting;
 
 namespace YGN.Store.Management.Sys.MainForms
 {
@@ -32,6 +33,7 @@ namespace YGN.Store.Management.Sys.MainForms
         #endregion
 
         #region events
+
         private void btnDatabaseSettings_Click(object sender, EventArgs e)
         {
             FormHelper.ShowForm<DatabaseSetting>();
@@ -71,5 +73,9 @@ namespace YGN.Store.Management.Sys.MainForms
         }
         #endregion
 
+        private void btnMailSettings_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<MailSettingsForm>();
+        }
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="Concrete\OrderLine.cs" />
     <Compile Include="Concrete\Report.cs" />
     <Compile Include="Concrete\Role.cs" />
+    <Compile Include="Concrete\SendMail.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Concrete\UserRole.cs" />
     <Compile Include="Database\DatabaseConfig.cs" />

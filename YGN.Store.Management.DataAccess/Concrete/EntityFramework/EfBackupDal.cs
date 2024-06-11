@@ -37,7 +37,7 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                     string backupFileName = $"{DateTime.Now:yyyy.MM.dd - HH.mm}-Tarihli-Yedek.bak";
                     string backupFilePath = Path.Combine(backupFolderPath, backupFileName);
 
-                    string backupQuery = $"BACKUP DATABASE [YGNStoreDb2] TO DISK = '{backupFilePath}'";
+                    string backupQuery = $"BACKUP DATABASE [YGNStoreDbTEST_INIT_DB] TO DISK = '{backupFilePath}'";
 
                     context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, backupQuery);
 

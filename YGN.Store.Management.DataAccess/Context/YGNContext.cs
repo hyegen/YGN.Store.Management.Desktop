@@ -47,5 +47,6 @@ namespace YGN.Store.Management.DataAccess.Context
         public DbSet<Report> Reports { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<SendMail> SendMails { get; set; }
     }
 }
