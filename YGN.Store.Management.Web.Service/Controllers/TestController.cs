@@ -14,7 +14,7 @@ namespace YGN.Store.Management.Web.Service.Controllers
 {
     public class TestController : ApiController
     {
-        private const string SecretKey = "aHVzZXlpbnllZ2Vu";
+        private const string SecretKey = "Qk1XYmV0dGVyYWxsb2Z0aGVt";
         private const string Issuer = "https://192.168.43.16";
         private const string Audience = "https://192.168.43.16";
 

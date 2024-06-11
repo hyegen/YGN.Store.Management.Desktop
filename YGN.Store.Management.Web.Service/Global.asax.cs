@@ -83,7 +83,7 @@
 //        {
 //            var issuer = "http://192.168.43.16";
 //            var audience = "http://192.168.43.16";
-//            var secret = TextEncodings.Base64Url.Decode("aHVzZXlpbnllZ2Vu");
+//            var secret = TextEncodings.Base64Url.Decode("Qk1XYmV0dGVyYWxsb2Z0aGVt");
 
 //            app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
 //            {
@@ -98,7 +98,7 @@
 //        }
 //        public void ConfigureAuth(IAppBuilder app)
 //        {
-//            var key = Encoding.UTF8.GetBytes("aHVzZXlpbnllZ2Vu");
+//            var key = Encoding.UTF8.GetBytes("Qk1XYmV0dGVyYWxsb2Z0aGVt");
 
 //            app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
 //            {
@@ -153,7 +153,7 @@ namespace YGN.Store.Management.Web.Service
 
         public void ConfigureAuth(IAppBuilder app)
         {
-            var key = Encoding.UTF8.GetBytes("aHVzZXlpbnllZ2Vu");
+            var key = Encoding.UTF8.GetBytes("Qk1XYmV0dGVyYWxsb2Z0aGVt");
      
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
             {

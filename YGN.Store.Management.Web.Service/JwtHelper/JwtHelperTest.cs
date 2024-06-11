@@ -11,7 +11,7 @@ namespace YGN.Store.Management.Web.Service.JwtHelper
 {
     public static class JwtHelperTest
     {
-        private static readonly string SecretKey = "aHVzZXlpbnllZ2Vu"; 
+        private static readonly string SecretKey = "Qk1XYmV0dGVyYWxsb2Z0aGVt"; 
 
         public static string GenerateJwtToken(string username)
         {
