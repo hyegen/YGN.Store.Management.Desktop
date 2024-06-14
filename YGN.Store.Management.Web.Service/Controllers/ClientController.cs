@@ -23,5 +23,7 @@ namespace YGN.Store.Management.Web.Service.Controllers
         {
             return clientManager.GetClientCodeAndNameAndSurname();
         }
+
+        //DENEME
     }
 }
