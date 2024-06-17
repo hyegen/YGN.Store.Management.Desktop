@@ -50,6 +50,9 @@
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.clientsComboBox = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
+            this.txtSearchItem = new System.Windows.Forms.TextBox();
+            this.lblSearchItem = new System.Windows.Forms.Label();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.paymentGroupBox.SuspendLayout();
@@ -93,6 +96,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnAddItem);
+            this.panel2.Controls.Add(this.lblSearchItem);
+            this.panel2.Controls.Add(this.txtSearchItem);
             this.panel2.Controls.Add(this.paymentGroupBox);
             this.panel2.Controls.Add(this.btnDeleteLine);
             this.panel2.Controls.Add(this.txtLastPrice);
@@ -169,9 +175,9 @@
             // 
             this.selectedItemsGroupBox.Controls.Add(this.selectedItemsDataGridView);
             this.selectedItemsGroupBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.selectedItemsGroupBox.Location = new System.Drawing.Point(556, 98);
+            this.selectedItemsGroupBox.Location = new System.Drawing.Point(556, 182);
             this.selectedItemsGroupBox.Name = "selectedItemsGroupBox";
-            this.selectedItemsGroupBox.Size = new System.Drawing.Size(587, 492);
+            this.selectedItemsGroupBox.Size = new System.Drawing.Size(587, 408);
             this.selectedItemsGroupBox.TabIndex = 2;
             this.selectedItemsGroupBox.TabStop = false;
             this.selectedItemsGroupBox.Text = "Seçilen  Ürünler";
@@ -182,7 +188,7 @@
             this.selectedItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemsDataGridView.Location = new System.Drawing.Point(3, 19);
             this.selectedItemsDataGridView.Name = "selectedItemsDataGridView";
-            this.selectedItemsDataGridView.Size = new System.Drawing.Size(581, 470);
+            this.selectedItemsDataGridView.Size = new System.Drawing.Size(581, 386);
             this.selectedItemsDataGridView.TabIndex = 0;
             this.selectedItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemsDataGridView_CellEndEdit);
             // 
@@ -278,6 +284,32 @@
             this.lblClient.TabIndex = 0;
             this.lblClient.Text = "Cari: ";
             // 
+            // txtSearchItem
+            // 
+            this.txtSearchItem.Location = new System.Drawing.Point(816, 156);
+            this.txtSearchItem.Name = "txtSearchItem";
+            this.txtSearchItem.Size = new System.Drawing.Size(165, 20);
+            this.txtSearchItem.TabIndex = 10;
+            // 
+            // lblSearchItem
+            // 
+            this.lblSearchItem.AutoSize = true;
+            this.lblSearchItem.Location = new System.Drawing.Point(695, 159);
+            this.lblSearchItem.Name = "lblSearchItem";
+            this.lblSearchItem.Size = new System.Drawing.Size(99, 13);
+            this.lblSearchItem.TabIndex = 11;
+            this.lblSearchItem.Text = "Ürün Kodu İle Ekle:";
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(996, 153);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(54, 23);
+            this.btnAddItem.TabIndex = 12;
+            this.btnAddItem.Text = "Ekle";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
             // PurchasingOrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,5 +360,8 @@
         private System.Windows.Forms.GroupBox paymentGroupBox;
         private System.Windows.Forms.Label lblPaymentType;
         private System.Windows.Forms.ComboBox comboBoxPaymentType;
+        private System.Windows.Forms.Label lblSearchItem;
+        private System.Windows.Forms.TextBox txtSearchItem;
+        private System.Windows.Forms.Button btnAddItem;
     }
 }

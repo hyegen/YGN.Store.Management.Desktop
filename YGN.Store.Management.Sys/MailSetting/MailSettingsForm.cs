@@ -95,6 +95,49 @@ namespace YGN.Store.Management.Sys.MailSetting
         //        MessageBox.Show("Kurulum sırasında hata oluştu: " + ex.Message);
         //    }
         //}
+        //private void InstallService()
+        //{
+        //    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+        //    {
+        //        openFileDialog.Filter = "Executable Files (*.exe)|*.exe";
+        //        openFileDialog.Title = "MailService.exe dosyasını seçin";
+
+        //        if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            string mailServicePath = openFileDialog.FileName;
+        //            string installUtilPath = @"C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe";
+
+        //            if (File.Exists(mailServicePath) && File.Exists(installUtilPath))
+        //            {
+        //                try
+        //                {
+        //                    Process process = new Process();
+        //                    process.StartInfo.FileName = installUtilPath;
+        //                    process.StartInfo.Arguments = "\"" + mailServicePath + "\"";
+        //                    process.Start();
+        //                    process.WaitForExit();
+
+        //                    if (process.ExitCode == 0)
+        //                    {
+        //                        MessageBox.Show("Servis başarıyla kuruldu.");
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Servis kurulurken bir hata oluştu.");
+        //                    }
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    MessageBox.Show("Kurulum sırasında hata oluştu: " + ex.Message);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("InstallUtil.exe veya seçilen dosya bulunamadı.");
+        //            }
+        //        }
+        //    }
+        //}
         private void InstallService()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -114,7 +157,14 @@ namespace YGN.Store.Management.Sys.MailSetting
                             Process process = new Process();
                             process.StartInfo.FileName = installUtilPath;
                             process.StartInfo.Arguments = "\"" + mailServicePath + "\"";
+                            process.StartInfo.RedirectStandardOutput = true;
+                            process.StartInfo.RedirectStandardError = true;
+                            process.StartInfo.UseShellExecute = false;
+                            process.StartInfo.CreateNoWindow = true;
                             process.Start();
+
+                            string output = process.StandardOutput.ReadToEnd();
+                            string error = process.StandardError.ReadToEnd();
                             process.WaitForExit();
 
                             if (process.ExitCode == 0)
@@ -123,7 +173,7 @@ namespace YGN.Store.Management.Sys.MailSetting
                             }
                             else
                             {
-                                MessageBox.Show("Servis kurulurken bir hata oluştu.");
+                                MessageBox.Show("Servis kurulurken bir hata oluştu. Hata kodu: " + process.ExitCode + "\n" + error);
                             }
                         }
                         catch (Exception ex)
@@ -138,6 +188,7 @@ namespace YGN.Store.Management.Sys.MailSetting
                 }
             }
         }
+
         private void UninstallService()
         {
             try

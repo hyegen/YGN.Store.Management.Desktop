@@ -71,6 +71,7 @@ namespace YGN.Store.Management.UI.DetailForms
                 {
                     //selectedOrders.Add(new OrderLine { Id = id, ItemId = id, Amount = 0, DateTime = DateTime.Now, LineTotal = 0 });
                     selectedItems.Add(new SelectedItems { ItemId = id, ItemCode = itemCode, ItemName = itemName, Amount = 0, LineTotal = 0 });
+                    //selectedItems.Add(new SelectedItems { ItemId = 1, ItemCode = "DENEME 31", ItemName = "DONT CRY", Amount = 55, LineTotal = 18500 });
                     RefreshSelectedOrdersDataGridView();
                 }
                 else
@@ -133,6 +134,8 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void PurchasingOrderDetailForm_Load(object sender, EventArgs e)
         {
+            //selectedItems.Add(new SelectedItems { ItemId = 1, ItemCode = "DENEME 31", ItemName = "DONT CRY", Amount = 0, LineTotal = 18500 });
+            //selectedItemsDataGridView.DataSource = selectedItems;
             FillClientComboBox();
             FillPaymentTypeComboBox();
         }
@@ -248,5 +251,10 @@ namespace YGN.Store.Management.UI.DetailForms
             return (int)selectedPaymentType;
         }
         #endregion
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            //   var selectedItemCode = itemManager.
+        }
     }
 }
