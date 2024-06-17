@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnQuickSales = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPurchasing = new System.Windows.Forms.Button();
@@ -317,6 +318,9 @@
             // TotalPrice
             // 
             this.TotalPrice.DataPropertyName = "TotalPrice";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.TotalPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.TotalPrice.HeaderText = "Toplam Fiyat";
             this.TotalPrice.Name = "TotalPrice";
             this.TotalPrice.ReadOnly = true;

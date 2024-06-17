@@ -81,6 +81,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YGN.Store.Management.Business\YGN.Store.Management.Business.csproj">
+      <Project>{7562D9F3-4DA0-47FF-A5AB-8B77A4248D4B}</Project>
+      <Name>YGN.Store.Management.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">
+      <Project>{B4FCD00B-582C-4191-ABE3-141B7A9322AC}</Project>
+      <Name>YGN.Store.Management.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YGN.Store.Management.DataAccess\YGN.Store.Management.DataAccess.csproj">
       <Project>{E8B47F01-FCBE-462B-BABA-BCF6041DDD49}</Project>
       <Name>YGN.Store.Management.DataAccess</Name>

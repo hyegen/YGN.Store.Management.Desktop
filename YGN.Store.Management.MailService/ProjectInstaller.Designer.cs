@@ -1,4 +1,6 @@
-﻿namespace YGN.Store.Management.MailService
+﻿using System.Threading;
+
+namespace YGN.Store.Management.MailService
 {
     partial class ProjectInstaller
     {
@@ -33,11 +35,14 @@
             // 
             // serviceProcessInstaller1
             // 
+            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
             // serviceInstaller1
             // 
+            this.serviceInstaller1.Description = "YGN S-Management Mail Servis";
+            this.serviceInstaller1.DisplayName = "YGNService";
             this.serviceInstaller1.ServiceName = "Service1";
             // 
             // ProjectInstaller
