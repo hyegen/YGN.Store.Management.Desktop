@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration.Install;
 using System.Linq;
+using System.ServiceProcess;
 using System.Threading.Tasks;
 
 namespace YGN.Store.Management.MailService
@@ -14,6 +15,7 @@ namespace YGN.Store.Management.MailService
         public ProjectInstaller()
         {
             InitializeComponent();
+
         }
     }
 }

@@ -22,10 +22,30 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
     {
         public List<LastTransactionsView> GetOrderLineViews()
         {
-            using (YGNContext context = new YGNContext())
+            using (var context = new YGNContext())
             {
-                var orderViews = context.Database.SqlQuery<LastTransactionsView>("EXEC YGN_LAST_TRANSACTIONS_VIEW").ToList();
-                return orderViews;
+                //var orderViews = context.Database.SqlQuery<LastTransactionsView>("EXEC YGN_LAST_TRANSACTIONS_VIEW").ToList();
+                //return orderViews;
+                var result = (from ord in context.Orders
+                              join cl in context.Clients on ord.ClientId equals cl.Id
+                              select new LastTransactionsView
+                              {
+                                  Id = ord.Id,
+                                  ClientCode = cl.ClientCode,
+                                  ClientName = cl.ClientName,
+                                  ClientSurname = cl.ClientSurname,
+                                  FirmDescription = cl.FirmDescription,
+                                  Date_ = ord.DateTime,
+                                  TotalPrice = ord.TotalPrice,
+                                  //Module = ord.IOCode.ToString(),
+                                  Module = (ord.IOCode == 1 ? "SATINALMA" :
+                                            ord.IOCode == 2 ? "SATIŞ" : "BİLİNMİYOR"),
+                                  PaymentType = (
+                                                    ord.PaymentType == 1 ? "Kredi Kartı" :
+                                                    ord.PaymentType == 2 ? "Nakit" :
+                                                    ord.PaymentType == 3 ? "Vadeli" : "BİLİNMİYOR")
+                              }).ToList();
+                return result;
             }
         }
         public List<OrderDetailInformation> GetOrderDetailInformation(int orderId)
@@ -97,7 +117,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                               }).ToList();
 
                 return result;
-
             }
         }
         public void UpdateOrder(Order updatedOrder)

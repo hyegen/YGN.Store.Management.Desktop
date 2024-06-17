@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
@@ -178,6 +179,7 @@ namespace YGN.Store.Management.UI.CommonReports
             //selectedItemsTest = orderManager.GetSelectedItemsInOrder(selectedOrderId);
             //selectedItemsDataGridView.DataSource = selectedItems;
             selectedItemsTest = orderManager.GetSelectedItemsInOrderTest(selectedOrderId);
+
             selectedItemsDataGridView.DataSource = selectedItemsTest;
             decimal totalPrice = orderManager.GetTotalPriceForOrderInformationPrice(selectedOrderId);
             string formattedTotalPrice = totalPrice.ToString("#,##0");
