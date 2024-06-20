@@ -68,7 +68,7 @@ namespace YGN.Store.Management.MailService
                 MailMessage mail = new MailMessage("yegensmtp@gmail.com", recipient, subject, body);
                 SmtpClient client = new SmtpClient("smtp.gmail.com");
                 client.Port = 587;
-                client.Credentials = new NetworkCredential("yegensmtp@gmail.com", "klykhjqdiwuchzip");
+                client.Credentials = new NetworkCredential("yegensmtp@gmail.com", "klykhjqdiwuchzip"); //Ben de biliyorum bunun yanlış olduğunu saygıdeğer Gomtanım :)
                 client.EnableSsl = true;
                 client.Send(mail);
                 EventLog.WriteEntry(string.Format("Gönderilen Mail YGN-S-Management: {0}", mail.Subject.ToString()));
