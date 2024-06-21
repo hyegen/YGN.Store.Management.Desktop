@@ -46,6 +46,7 @@ namespace YGN.Store.Management.UI.DetailForms
             informationDataGridView.DataSource = orderInformations;
             string formattedTotalPrice = totalPrice.ToString("#,##0");
             lblTotalPrice.Text = formattedTotalPrice + " TL";
+            lblOrderId.Text = orderInformations.Select(x=>x.OrderId).FirstOrDefault().ToString();
         }
         #endregion
 

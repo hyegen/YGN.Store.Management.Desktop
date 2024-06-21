@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.informationDataGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.lblOrderId = new System.Windows.Forms.Label();
             this.OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,17 +127,28 @@
             this.lblTotalPrice.Size = new System.Drawing.Size(0, 26);
             this.lblTotalPrice.TabIndex = 4;
             // 
+            // lblOrderId
+            // 
+            this.lblOrderId.AutoSize = true;
+            this.lblOrderId.Location = new System.Drawing.Point(336, 44);
+            this.lblOrderId.Name = "lblOrderId";
+            this.lblOrderId.Size = new System.Drawing.Size(42, 13);
+            this.lblOrderId.TabIndex = 5;
+            this.lblOrderId.Text = "OrderId";
+            this.lblOrderId.Visible = false;
+            // 
             // OrderId
             // 
             this.OrderId.DataPropertyName = "OrderId";
             this.OrderId.HeaderText = "OrderId";
             this.OrderId.Name = "OrderId";
             this.OrderId.ReadOnly = true;
+            this.OrderId.Visible = false;
             // 
             // OrderLineId
             // 
             this.OrderLineId.DataPropertyName = "OrderLineId";
-            this.OrderLineId.HeaderText = "OrderLineId";
+            this.OrderLineId.HeaderText = "Sipariş Satır Id";
             this.OrderLineId.Name = "OrderLineId";
             this.OrderLineId.ReadOnly = true;
             // 
@@ -206,9 +218,9 @@
             // LineTotal
             // 
             this.LineTotal.DataPropertyName = "LineTotal";
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.LineTotal.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.LineTotal.DefaultCellStyle = dataGridViewCellStyle4;
             this.LineTotal.HeaderText = "Satır Toplamı";
             this.LineTotal.Name = "LineTotal";
             this.LineTotal.ReadOnly = true;
@@ -218,6 +230,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 627);
+            this.Controls.Add(this.lblOrderId);
             this.Controls.Add(this.lblTotalPrice);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -241,6 +254,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotalPrice;
+        private System.Windows.Forms.Label lblOrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderLineId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientCode;
