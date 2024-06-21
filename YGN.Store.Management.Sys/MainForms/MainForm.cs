@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -29,6 +30,7 @@ namespace YGN.Store.Management.Sys.MainForms
         public MainForm()
         {
             InitializeComponent();
+            CheckAndCreateConfigFile();
         }
         #endregion
 
@@ -76,6 +78,37 @@ namespace YGN.Store.Management.Sys.MainForms
         private void btnMailSettings_Click(object sender, EventArgs e)
         {
             FormHelper.ShowForm<MailSettingsForm>();
+        }
+        private void CheckAndCreateConfigFile()
+        {
+            string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "YGNConfiguration.config");
+
+            if (!File.Exists(configFilePath))
+            {
+                try
+                {
+                    using (FileStream fs = File.Create(configFilePath))
+                    {
+                        using (StreamWriter writer = new StreamWriter(fs))
+                        {
+                            writer.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+                            writer.WriteLine("<configuration>");
+                            writer.WriteLine("  <appSettings>");
+                            writer.WriteLine("    <add key=\"MailAddress\" value=\"ornek@gmail.com\" />");
+                            writer.WriteLine("    <add key=\"Password\" value=\"123\" />");
+                            writer.WriteLine("    <add key=\"MailPort\" value=\"587\" />");
+                            writer.WriteLine("    <add key=\"Ssl\" value=\"True\" />");
+                            writer.WriteLine("  </appSettings>");
+                            writer.WriteLine("</configuration>");
+                        }
+                    }
+                    MessageBox.Show("YGNConfiguration.config dosyası oluşturuldu.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("YGNConfiguration.config dosyası oluşturulurken bir hata meydana geldi: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

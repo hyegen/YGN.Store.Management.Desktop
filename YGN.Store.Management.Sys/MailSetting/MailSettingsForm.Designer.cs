@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInstallMailService = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sslCheckBox = new System.Windows.Forms.CheckBox();
@@ -39,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnInstallMailService = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(699, 85);
             this.panel1.TabIndex = 0;
+            // 
+            // btnInstallMailService
+            // 
+            this.btnInstallMailService.Location = new System.Drawing.Point(97, 4);
+            this.btnInstallMailService.Name = "btnInstallMailService";
+            this.btnInstallMailService.Size = new System.Drawing.Size(86, 77);
+            this.btnInstallMailService.TabIndex = 1;
+            this.btnInstallMailService.Text = "Mail Servis Kur";
+            this.btnInstallMailService.UseVisualStyleBackColor = true;
+            this.btnInstallMailService.Click += new System.EventHandler(this.btnInstallMailService_Click);
             // 
             // btnSave
             // 
@@ -147,16 +157,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mail Adresi:";
             // 
-            // btnInstallMailService
-            // 
-            this.btnInstallMailService.Location = new System.Drawing.Point(97, 4);
-            this.btnInstallMailService.Name = "btnInstallMailService";
-            this.btnInstallMailService.Size = new System.Drawing.Size(86, 77);
-            this.btnInstallMailService.TabIndex = 1;
-            this.btnInstallMailService.Text = "Mail Servis Kur";
-            this.btnInstallMailService.UseVisualStyleBackColor = true;
-            this.btnInstallMailService.Click += new System.EventHandler(this.btnInstallMailService_Click);
-            // 
             // MailSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -169,6 +169,7 @@
             this.Name = "MailSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mail - Ayarlar";
+            this.Load += new System.EventHandler(this.MailSettingsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

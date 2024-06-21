@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace YGN.Store.Management.Sys.MailSetting
             InitializeComponent();
             LoadMailInformations();
         }
-        public string MailAddres
+        public string MailAddress_
         {
             get { return txtMailAddress.Text; }
             set
@@ -58,19 +59,19 @@ namespace YGN.Store.Management.Sys.MailSetting
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var settings = new (string Key, string Value)[]
+            try
             {
-                ("MailAddres", MailAddres),
-                ("Password", Password),
-                ("MailPort", MailPort),
-            };
+                MailManager.SaveMailInformations("MailAddress", MailAddress_);
+                MailManager.SaveMailInformations("Password", Password);
+                MailManager.SaveMailInformations("MailPort", MailPort);
+                MailManager.SaveMailInformations("Ssl", Ssl.ToString());
 
-            foreach (var setting in settings)
-            {
-                MailManager.SaveMailInformations(setting.Key, setting.Value);
+                MessageBox.Show("Değerler başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            MessageBox.Show("Ayarlar kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void LoadMailInformations()
         {
@@ -199,6 +200,22 @@ namespace YGN.Store.Management.Sys.MailSetting
             catch (Exception ex)
             {
                 MessageBox.Show("Kaldırma sırasında hata oluştu: " + ex.Message);
+            }
+        }
+
+        private void MailSettingsForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                MailAddress_ = MailManager.GetMailInformation("MailAddress") ?? "Mail Adresi Giriniz.";
+                Password = MailManager.GetMailInformation("Password") ?? "Şifre Giriniz.";
+                MailPort = MailManager.GetMailInformation("MailPort") ?? "Port Numarası Giriniz.";
+                bool.TryParse(MailManager.GetMailInformation("Ssl"), out bool ssl);
+                Ssl = ssl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
