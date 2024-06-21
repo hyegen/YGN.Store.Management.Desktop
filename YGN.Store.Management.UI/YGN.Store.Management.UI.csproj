@@ -164,7 +164,6 @@
     <Compile Include="ListForms\QuickSalesOrderListForm.Designer.cs">
       <DependentUpon>QuickSalesOrderListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Managers\ModifyManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\DataSetGetClient.Designer.cs">

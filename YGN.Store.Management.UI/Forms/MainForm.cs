@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using YGN.Store.Management.Business.Concrete;
 using YGN.Store.Management.Common.FormHelpers;
 using YGN.Store.Management.DataAccess.Concrete.EntityFramework;
+using YGN.Store.Management.DataAccess.Context;
 using YGN.Store.Management.Entities.Concrete;
 using YGN.Store.Management.Entities.Views;
 using YGN.Store.Management.UI.CommonReports;
@@ -41,14 +42,11 @@ namespace YGN.Store.Management.UI.Forms
             _currentUser = user;
             getDatas();
             ConfigurePermissions();
+
         }
         #endregion
 
         #region events
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Process.GetCurrentProcess().Kill();
-        }
         private void btnStockAmount_Click(object sender, EventArgs e)
         {
             FormHelper.ShowForm<StockAmountForm>();
@@ -187,5 +185,15 @@ namespace YGN.Store.Management.UI.Forms
             btnBackup.Enabled = hasBackUpRole;
         }
         #endregion
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Kapatmak İstediğnize Eminmisiniz ? ", "Uyarı", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                GC.Collect();
+                Application.Exit();
+            }
+        }
     }
 }

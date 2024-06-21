@@ -11,9 +11,13 @@ namespace YGN.Store.Management.Sys.MailSetting
     {
         public static void SaveMailInformations(string key, string value)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string configPath = AppDomain.CurrentDomain.BaseDirectory + "YGNConfiguration.config";
 
-            if (ConfigurationManager.AppSettings[key] != null)
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = configPath;
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+            if (config.AppSettings.Settings[key] != null)
             {
                 config.AppSettings.Settings[key].Value = value;
             }
@@ -23,8 +27,24 @@ namespace YGN.Store.Management.Sys.MailSetting
             }
 
             config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(config.AppSettings.SectionInformation.Name);
+        }
+        public static string GetMailInformation(string key)
+        {
+            string configPath = AppDomain.CurrentDomain.BaseDirectory + "YGNConfiguration.config";
 
-            ConfigurationManager.RefreshSection("appSettings");
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = configPath;
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+            if (config.AppSettings.Settings[key] != null)
+            {
+                return config.AppSettings.Settings[key].Value;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
