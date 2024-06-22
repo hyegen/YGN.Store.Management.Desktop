@@ -192,6 +192,7 @@ namespace YGN.Store.Management.Sys.MailSetting
 
             if (sc != null)
             {
+<<<<<<< HEAD
                 switch (sc.Status)
                 {
                     case ServiceControllerStatus.Running:
@@ -207,6 +208,20 @@ namespace YGN.Store.Management.Sys.MailSetting
                     default:
                         return "Varsayılan";
                 }
+=======
+                case ServiceControllerStatus.Running:
+                    return "Çalışıyor";
+                case ServiceControllerStatus.Stopped:
+                    return "Durdu";
+                case ServiceControllerStatus.Paused:
+                    return "Duraklatıldı";
+                case ServiceControllerStatus.StopPending:       
+                    return "Beklemeyi Durduruyor";
+                case ServiceControllerStatus.StartPending:
+                    return "Bekleme Başlatılıyor";             //bekleme başlatılıyor :D Tureng yalancısıyım.
+                default:
+                    return "Varsayılan";
+>>>>>>> 16e1c3854e8d92385ce87626604ba28a0281f5d3
             }
 
             return "";
