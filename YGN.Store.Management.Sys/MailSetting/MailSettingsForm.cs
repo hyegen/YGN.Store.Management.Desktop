@@ -190,21 +190,26 @@ namespace YGN.Store.Management.Sys.MailSetting
         {
             ServiceController sc = new ServiceController("YGN-Mail-Service");
 
-            switch (sc.Status)
+            if (sc != null)
             {
-                case ServiceControllerStatus.Running:
-                    return "Çalışıyor";
-                case ServiceControllerStatus.Stopped:
-                    return "Durdu";
-                case ServiceControllerStatus.Paused:
-                    return "Duraklatıldı";
-                case ServiceControllerStatus.StopPending:
-                    return "Durduruluyor";
-                case ServiceControllerStatus.StartPending:
-                    return "Durdurma Başlatılıyor";
-                default:
-                    return "Varsayılan";
+                switch (sc.Status)
+                {
+                    case ServiceControllerStatus.Running:
+                        return "Çalışıyor";
+                    case ServiceControllerStatus.Stopped:
+                        return "Durdu";
+                    case ServiceControllerStatus.Paused:
+                        return "Duraklatıldı";
+                    case ServiceControllerStatus.StopPending:
+                        return "Beklemeyi Durduruyor";
+                    case ServiceControllerStatus.StartPending:
+                        return "Bekleme Başlatılıyor";             //bekleme başlatılıyor :D Tureng yalancısıyım.
+                    default:
+                        return "Varsayılan";
+                }
             }
+
+            return "";
         }
         #endregion
 
