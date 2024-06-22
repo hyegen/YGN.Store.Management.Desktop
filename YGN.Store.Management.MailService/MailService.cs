@@ -74,7 +74,7 @@ namespace YGN.Store.Management.MailService
                 foreach (var key in mailKeys)
                 {
                     var info = ConfigManager.GetMailInformation(key);
-                    EventLog.WriteEntry($"Config Bilgileri: {info}", EventLogEntryType.Information); // Log retrieved configuration info
+                    EventLog.WriteEntry($"Config Bilgileri: {info}", EventLogEntryType.Information); 
 
                     if (!string.IsNullOrEmpty(info))
                     {
@@ -100,15 +100,13 @@ namespace YGN.Store.Management.MailService
                     else
                     {
                         EventLog.WriteEntry($"Missing or incomplete configuration key: {key}", EventLogEntryType.Error);
-                        // Handle missing configuration keys here, like throwing an exception or returning null
                     }
                 }
 
-                // Validate the configuration before returning
                 if (string.IsNullOrEmpty(config.SmtpServer) || string.IsNullOrEmpty(config.FromMailAddress) || string.IsNullOrEmpty(config.Password))
                 {
                     EventLog.WriteEntry("Incomplete mail configuration detected.", EventLogEntryType.Error);
-                    return null; // Or throw an exception depending on your error handling strategy
+                    return null; 
                 }
 
                 return config;
@@ -116,7 +114,7 @@ namespace YGN.Store.Management.MailService
             catch (Exception ex)
             {
                 EventLog.WriteEntry($"Error in GetMailInformation: {ex.Message}", EventLogEntryType.Error);
-                return null; // Return null in case of any exception
+                return null; 
             }
         }
         private byte[] GeneratePdf(string title, List<StockAmountView> data)
