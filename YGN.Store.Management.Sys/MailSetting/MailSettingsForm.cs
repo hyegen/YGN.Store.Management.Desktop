@@ -198,10 +198,10 @@ namespace YGN.Store.Management.Sys.MailSetting
                     return "Durdu";
                 case ServiceControllerStatus.Paused:
                     return "Duraklatıldı";
-                case ServiceControllerStatus.StopPending:
-                    return "Durduruluyor";
+                case ServiceControllerStatus.StopPending:       
+                    return "Beklemeyi Durduruyor";
                 case ServiceControllerStatus.StartPending:
-                    return "Durdurma Başlatılıyor";
+                    return "Bekleme Başlatılıyor";             //bekleme başlatılıyor :D Tureng yalancısıyım.
                 default:
                     return "Varsayılan";
             }
