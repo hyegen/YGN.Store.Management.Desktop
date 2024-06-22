@@ -36,17 +36,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,12 +71,17 @@
     <Compile Include="DatabaseConfigurations\DatabaseSetting.Designer.cs">
       <DependentUpon>DatabaseSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="MailSetting\MailManager.cs" />
     <Compile Include="MailSetting\MailSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MailSetting\MailSettingsForm.Designer.cs">
       <DependentUpon>MailSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailSetting\ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailSetting\ReportsForm.Designer.cs">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\MainForm.cs">
       <SubType>Form</SubType>
@@ -77,6 +89,7 @@
     <Compile Include="MainForms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ServiceManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DatabaseConfigurations\DatabaseSetting.resx">
@@ -84,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MailSetting\MailSettingsForm.resx">
       <DependentUpon>MailSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailSetting\ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -133,9 +149,7 @@
       <Name>YGN.Store.Management.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

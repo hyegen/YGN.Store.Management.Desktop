@@ -41,9 +41,9 @@ namespace YGN.Store.Management.MailService
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "YGN S-Management Mail Servis";
-            this.serviceInstaller1.DisplayName = "YGNService";
-            this.serviceInstaller1.ServiceName = "Service1";
+            this.serviceInstaller1.Description = "YGN S-Management Mail Gönderme Servisi";
+            this.serviceInstaller1.DisplayName = "YGNMailService";
+            this.serviceInstaller1.ServiceName = "YGN-Mail-Service";
             // 
             // ProjectInstaller
             // 

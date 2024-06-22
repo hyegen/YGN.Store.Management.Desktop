@@ -83,6 +83,7 @@
     <Compile Include="Abstract\IClientService.cs" />
     <Compile Include="Abstract\ICreateDatabaseService.cs" />
     <Compile Include="Abstract\IItemService.cs" />
+    <Compile Include="Abstract\IMailContentService.cs" />
     <Compile Include="Abstract\IOrderLineService.cs" />
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IReportService.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Concrete\ClientManager.cs" />
     <Compile Include="Concrete\CreateDatabaseManager.cs" />
     <Compile Include="Concrete\ItemManager.cs" />
+    <Compile Include="Concrete\MailContentManager.cs" />
     <Compile Include="Concrete\OrderLineManager.cs" />
     <Compile Include="Concrete\OrderManager.cs" />
     <Compile Include="Concrete\ReportManager.cs" />

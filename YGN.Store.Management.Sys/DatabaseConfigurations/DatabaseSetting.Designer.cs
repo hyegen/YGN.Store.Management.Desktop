@@ -32,13 +32,13 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.txtDatabaseName = new System.Windows.Forms.TextBox();
-            this.txtDatabaseUsername = new System.Windows.Forms.TextBox();
-            this.txtServer = new System.Windows.Forms.TextBox();
+            this.txtServerUserName = new System.Windows.Forms.TextBox();
+            this.txtServerDescription = new System.Windows.Forms.TextBox();
             this.lblDatabaseName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.lblDatabaseUsername = new System.Windows.Forms.Label();
+            this.lblServerUsername = new System.Windows.Forms.Label();
             this.lblServer = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,6 +61,7 @@
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Kapat";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -70,56 +71,57 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Kaydet";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.txtServerPassword);
             this.groupBox1.Controls.Add(this.txtDatabaseName);
-            this.groupBox1.Controls.Add(this.txtDatabaseUsername);
-            this.groupBox1.Controls.Add(this.txtServer);
+            this.groupBox1.Controls.Add(this.txtServerUserName);
+            this.groupBox1.Controls.Add(this.txtServerDescription);
             this.groupBox1.Controls.Add(this.lblDatabaseName);
             this.groupBox1.Controls.Add(this.lblPassword);
-            this.groupBox1.Controls.Add(this.lblDatabaseUsername);
+            this.groupBox1.Controls.Add(this.lblServerUsername);
             this.groupBox1.Controls.Add(this.lblServer);
             this.groupBox1.Location = new System.Drawing.Point(12, 96);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 144);
+            this.groupBox1.Size = new System.Drawing.Size(490, 140);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Veritabanı Ayarla";
             // 
-            // txtPassword
+            // txtServerPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(169, 82);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(281, 20);
-            this.txtPassword.TabIndex = 7;
+            this.txtServerPassword.Location = new System.Drawing.Point(169, 80);
+            this.txtServerPassword.Name = "txtServerPassword";
+            this.txtServerPassword.Size = new System.Drawing.Size(281, 20);
+            this.txtServerPassword.TabIndex = 2;
             // 
             // txtDatabaseName
             // 
-            this.txtDatabaseName.Location = new System.Drawing.Point(169, 110);
+            this.txtDatabaseName.Location = new System.Drawing.Point(169, 106);
             this.txtDatabaseName.Name = "txtDatabaseName";
             this.txtDatabaseName.Size = new System.Drawing.Size(281, 20);
-            this.txtDatabaseName.TabIndex = 6;
+            this.txtDatabaseName.TabIndex = 3;
             // 
-            // txtDatabaseUsername
+            // txtServerUserName
             // 
-            this.txtDatabaseUsername.Location = new System.Drawing.Point(169, 54);
-            this.txtDatabaseUsername.Name = "txtDatabaseUsername";
-            this.txtDatabaseUsername.Size = new System.Drawing.Size(281, 20);
-            this.txtDatabaseUsername.TabIndex = 5;
+            this.txtServerUserName.Location = new System.Drawing.Point(169, 54);
+            this.txtServerUserName.Name = "txtServerUserName";
+            this.txtServerUserName.Size = new System.Drawing.Size(281, 20);
+            this.txtServerUserName.TabIndex = 1;
             // 
-            // txtServer
+            // txtServerDescription
             // 
-            this.txtServer.Location = new System.Drawing.Point(169, 26);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(281, 20);
-            this.txtServer.TabIndex = 4;
+            this.txtServerDescription.Location = new System.Drawing.Point(169, 26);
+            this.txtServerDescription.Name = "txtServerDescription";
+            this.txtServerDescription.Size = new System.Drawing.Size(281, 20);
+            this.txtServerDescription.TabIndex = 0;
             // 
             // lblDatabaseName
             // 
             this.lblDatabaseName.AutoSize = true;
-            this.lblDatabaseName.Location = new System.Drawing.Point(18, 113);
+            this.lblDatabaseName.Location = new System.Drawing.Point(18, 109);
             this.lblDatabaseName.Name = "lblDatabaseName";
             this.lblDatabaseName.Size = new System.Drawing.Size(57, 13);
             this.lblDatabaseName.TabIndex = 3;
@@ -128,20 +130,20 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(18, 85);
+            this.lblPassword.Location = new System.Drawing.Point(18, 83);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(88, 13);
+            this.lblPassword.Size = new System.Drawing.Size(78, 13);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Veritabanı Şifresi:";
+            this.lblPassword.Text = "Sunucu Şifresi:";
             // 
-            // lblDatabaseUsername
+            // lblServerUsername
             // 
-            this.lblDatabaseUsername.AutoSize = true;
-            this.lblDatabaseUsername.Location = new System.Drawing.Point(18, 57);
-            this.lblDatabaseUsername.Name = "lblDatabaseUsername";
-            this.lblDatabaseUsername.Size = new System.Drawing.Size(117, 13);
-            this.lblDatabaseUsername.TabIndex = 1;
-            this.lblDatabaseUsername.Text = "Veritabanı Kullanıcı Adı:";
+            this.lblServerUsername.AutoSize = true;
+            this.lblServerUsername.Location = new System.Drawing.Point(18, 57);
+            this.lblServerUsername.Name = "lblServerUsername";
+            this.lblServerUsername.Size = new System.Drawing.Size(107, 13);
+            this.lblServerUsername.TabIndex = 1;
+            this.lblServerUsername.Text = "Sunucu Kullanıcı Adı:";
             // 
             // lblServer
             // 
@@ -156,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 249);
+            this.ClientSize = new System.Drawing.Size(514, 259);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "DatabaseSetting";
@@ -175,13 +177,13 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtServerPassword;
         private System.Windows.Forms.TextBox txtDatabaseName;
-        private System.Windows.Forms.TextBox txtDatabaseUsername;
-        private System.Windows.Forms.TextBox txtServer;
+        private System.Windows.Forms.TextBox txtServerUserName;
+        private System.Windows.Forms.TextBox txtServerDescription;
         private System.Windows.Forms.Label lblDatabaseName;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblDatabaseUsername;
+        private System.Windows.Forms.Label lblServerUsername;
         private System.Windows.Forms.Label lblServer;
     }
 }

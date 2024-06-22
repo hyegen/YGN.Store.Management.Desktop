@@ -1,28 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Configuration.Install;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net.Mail;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceProcess;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using YGN.Store.Management.Common.ConfigHelpers;
+using YGN.Store.Management.Common.FormHelpers;
+using YGN.Store.Management.Sys.Managers;
 
 namespace YGN.Store.Management.Sys.MailSetting
 {
     public partial class MailSettingsForm : Form
     {
-        public MailSettingsForm()
+        #region members
+        private ServiceController serviceController;
+        #endregion
+
+        #region properties
+        public string SmtpServer
         {
-            InitializeComponent();
-            LoadMailInformations();
+            get { return txtSmtpServer.Text; }
+            set
+            {
+                txtSmtpServer.Text = value;
+            }
         }
         public string MailAddress_
         {
@@ -56,15 +59,27 @@ namespace YGN.Store.Management.Sys.MailSetting
                 sslCheckBox.Checked = value;
             }
         }
+        #endregion
 
+        #region constructor
+        public MailSettingsForm()
+        {
+            InitializeComponent();
+            LoadMailInformations();
+            serviceController = new ServiceController("YGN-Mail-Service");
+        }
+        #endregion
+
+        #region events
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                MailManager.SaveMailInformations("MailAddress", MailAddress_);
-                MailManager.SaveMailInformations("Password", Password);
-                MailManager.SaveMailInformations("MailPort", MailPort);
-                MailManager.SaveMailInformations("Ssl", Ssl.ToString());
+                ConfigManager.SaveMailInformations("SmtpServer", SmtpServer);
+                ConfigManager.SaveMailInformations("MailAddress", MailAddress_);
+                ConfigManager.SaveMailInformations("Password", Password);
+                ConfigManager.SaveMailInformations("MailPort", MailPort);
+                ConfigManager.SaveMailInformations("Ssl", Ssl.ToString());
 
                 MessageBox.Show("Değerler başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -73,72 +88,33 @@ namespace YGN.Store.Management.Sys.MailSetting
                 MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnInstallMailService_Click(object sender, EventArgs e)
+        {
+            InstallService();
+        }
+        private void btnUninstallMailService_Click(object sender, EventArgs e)
+        {
+            UninstallService();
+        }
+        private void MailSettingsForm_Load(object sender, EventArgs e)
+        {
+            GetServerInformations();
+            lblServiceStatusDescription.Text = GetMailServiceStatus();
+        }
+        private void btnSendMailReports_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm<ReportsForm>();
+        }
+
+        #endregion
+
+        #region private methods
         private void LoadMailInformations()
         {
             txtMailAddress.Text = ConfigurationManager.AppSettings["MailAddres"] ?? "Mail Adresi Bulunamadı";
             txtMailPassword.Text = ConfigurationManager.AppSettings["Password"] ?? "Şifre Bulunamadı";
             txtPort.Text = ConfigurationManager.AppSettings["MailPort"] ?? "Mail Portu Bulunamadı";
         }
-
-        private void btnInstallMailService_Click(object sender, EventArgs e)
-        {
-            InstallService();
-        }
-        //private void InstallService()
-        //{
-        //    try
-        //    {
-        //        ManagedInstallerClass.InstallHelper(new string[] { Assembly.GetExecutingAssembly().Location });
-        //        MessageBox.Show("Servis başarıyla kuruldu.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Kurulum sırasında hata oluştu: " + ex.Message);
-        //    }
-        //}
-        //private void InstallService()
-        //{
-        //    using (OpenFileDialog openFileDialog = new OpenFileDialog())
-        //    {
-        //        openFileDialog.Filter = "Executable Files (*.exe)|*.exe";
-        //        openFileDialog.Title = "MailService.exe dosyasını seçin";
-
-        //        if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //        {
-        //            string mailServicePath = openFileDialog.FileName;
-        //            string installUtilPath = @"C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe";
-
-        //            if (File.Exists(mailServicePath) && File.Exists(installUtilPath))
-        //            {
-        //                try
-        //                {
-        //                    Process process = new Process();
-        //                    process.StartInfo.FileName = installUtilPath;
-        //                    process.StartInfo.Arguments = "\"" + mailServicePath + "\"";
-        //                    process.Start();
-        //                    process.WaitForExit();
-
-        //                    if (process.ExitCode == 0)
-        //                    {
-        //                        MessageBox.Show("Servis başarıyla kuruldu.");
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show("Servis kurulurken bir hata oluştu.");
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    MessageBox.Show("Kurulum sırasında hata oluştu: " + ex.Message);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("InstallUtil.exe veya seçilen dosya bulunamadı.");
-        //            }
-        //        }
-        //    }
-        //}
         private void InstallService()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -170,7 +146,7 @@ namespace YGN.Store.Management.Sys.MailSetting
 
                             if (process.ExitCode == 0)
                             {
-                                MessageBox.Show("Servis başarıyla kuruldu.");
+                                MessageBox.Show("Servis başarıyla kuruldu.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -189,34 +165,95 @@ namespace YGN.Store.Management.Sys.MailSetting
                 }
             }
         }
-
         private void UninstallService()
         {
-            try
-            {
-                ManagedInstallerClass.InstallHelper(new string[] { "/u", Assembly.GetExecutingAssembly().Location });
-                MessageBox.Show("Servis başarıyla kaldırıldı.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kaldırma sırasında hata oluştu: " + ex.Message);
-            }
+            ServiceManager serviceManager = new ServiceManager("YGN-Mail-Service");
+            serviceManager.UninstallService();
         }
-
-        private void MailSettingsForm_Load(object sender, EventArgs e)
+        private void GetServerInformations()
         {
             try
             {
-                MailAddress_ = MailManager.GetMailInformation("MailAddress") ?? "Mail Adresi Giriniz.";
-                Password = MailManager.GetMailInformation("Password") ?? "Şifre Giriniz.";
-                MailPort = MailManager.GetMailInformation("MailPort") ?? "Port Numarası Giriniz.";
-                bool.TryParse(MailManager.GetMailInformation("Ssl"), out bool ssl);
+                SmtpServer = ConfigManager.GetMailInformation("SmtpServer") ?? "Smtp Sunucusu Giriniz.";
+                MailAddress_ = ConfigManager.GetMailInformation("MailAddress") ?? "Mail Adresi Giriniz.";
+                Password = ConfigManager.GetMailInformation("Password") ?? "Şifre Giriniz.";
+                MailPort = ConfigManager.GetMailInformation("MailPort") ?? "Port Numarası Giriniz.";
+                bool.TryParse(ConfigManager.GetMailInformation("Ssl"), out bool ssl);
                 Ssl = ssl;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private string GetMailServiceStatus()
+        {
+            ServiceController sc = new ServiceController("YGN-Mail-Service");
+
+            switch (sc.Status)
+            {
+                case ServiceControllerStatus.Running:
+                    return "Çalışıyor";
+                case ServiceControllerStatus.Stopped:
+                    return "Durdu";
+                case ServiceControllerStatus.Paused:
+                    return "Duraklatıldı";
+                case ServiceControllerStatus.StopPending:
+                    return "Durduruluyor";
+                case ServiceControllerStatus.StartPending:
+                    return "Durdurma Başlatılıyor";
+                default:
+                    return "Varsayılan";
+            }
+        }
+        #endregion
+
+        private void btnStartMailService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serviceController.Status == ServiceControllerStatus.Stopped)
+                {
+                    serviceController.Start();
+                    serviceController.WaitForStatus(ServiceControllerStatus.Running);
+                    MessageBox.Show("Servis Başlatıldı.");
+                    GetMailServiceStatus();
+                }
+                else
+                {
+                    MessageBox.Show("Servis zaten çalışıyor.");
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Başlatma sırasında hata: " + ex.Message);
+            }
+           
+        }
+
+        private void btnStopMailService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serviceController.Status == ServiceControllerStatus.Running)
+                {
+                    serviceController.Stop();
+                    serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
+                    MessageBox.Show("Servis Durduruldu.");
+                    GetMailServiceStatus();
+                }
+                else
+                {
+                    MessageBox.Show("Servis zaten durdurulmuş.");
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Durdurma sırasında hata: " + ex.Message);
+            }
+            
         }
     }
 }

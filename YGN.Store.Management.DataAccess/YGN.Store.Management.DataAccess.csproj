@@ -74,6 +74,7 @@
     <Compile Include="Abstract\IClientDal.cs" />
     <Compile Include="Abstract\ICreateDatabaseDal.cs" />
     <Compile Include="Abstract\IItemDal.cs" />
+    <Compile Include="Abstract\IMailContentDal.cs" />
     <Compile Include="Abstract\IOrderDal.cs" />
     <Compile Include="Abstract\IOrderLineDal.cs" />
     <Compile Include="Abstract\IReportDal.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Concrete\EntityFramework\EfClientDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCreateDatabaseDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfItemDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfMailContentDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfOrderLineDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfReportDal.cs" />
@@ -92,9 +94,13 @@
     <Compile Include="Concrete\EntityFramework\EfUserRoleDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
     <Compile Include="DbInit\YGNDbInitializer.cs" />
-    <Compile Include="Migrations\202405311827573_mig3883.cs" />
-    <Compile Include="Migrations\202405311827573_mig3883.Designer.cs">
-      <DependentUpon>202405311827573_mig3883.cs</DependentUpon>
+    <Compile Include="Migrations\202406221504304_mig-init-maill.cs" />
+    <Compile Include="Migrations\202406221504304_mig-init-maill.Designer.cs">
+      <DependentUpon>202406221504304_mig-init-maill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406221645388_mig-relation-mailling.cs" />
+    <Compile Include="Migrations\202406221645388_mig-relation-mailling.Designer.cs">
+      <DependentUpon>202406221645388_mig-relation-mailling.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,8 +125,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405311827573_mig3883.resx">
-      <DependentUpon>202405311827573_mig3883.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406221504304_mig-init-maill.resx">
+      <DependentUpon>202406221504304_mig-init-maill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406221645388_mig-relation-mailling.resx">
+      <DependentUpon>202406221645388_mig-relation-mailling.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -32,11 +32,17 @@ namespace YGN.Store.Management.DataAccess.Context
             modelBuilder.Entity<UserRole>()
                 .HasRequired(ur => ur.User)
                 .WithMany(u => u.UserRoles)
-                .HasForeignKey(ur => ur.UserId);   
+                .HasForeignKey(ur => ur.UserId);
             modelBuilder.Entity<UserRole>()
                 .HasRequired(ur => ur.Role)
                 .WithMany(r => r.UserRoles)
-                .HasForeignKey(ur => ur.RoleId);    
+                .HasForeignKey(ur => ur.RoleId);
+            modelBuilder.Entity<SendMailContent>()
+                .Property(p => p.Content)
+                .HasColumnType("varbinary(max)");
+            modelBuilder.Entity<SendMailContent>()
+                .HasRequired(smc => smc.Report)
+                .WithRequiredPrincipal(r => r.SendMailContent);
         }
 
         public DbSet<Item> Items { get; set; }
@@ -48,5 +54,6 @@ namespace YGN.Store.Management.DataAccess.Context
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<SendMail> SendMails { get; set; }
+        public DbSet<SendMailContent> SendMailContents { get; set; }
     }
 }

@@ -32,12 +32,12 @@
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
             this.btnMailSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtServer = new System.Windows.Forms.TextBox();
+            this.txtServerDescription = new System.Windows.Forms.TextBox();
             this.lblServer = new System.Windows.Forms.Label();
             this.txtIpAddress = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtDatabase = new System.Windows.Forms.TextBox();
+            this.txtServerPassword = new System.Windows.Forms.TextBox();
+            this.txtServerUserName = new System.Windows.Forms.TextBox();
+            this.txtDatabaseName = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblIpAddress = new System.Windows.Forms.Label();
@@ -80,14 +80,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtServer);
+            this.groupBox1.Controls.Add(this.txtServerDescription);
             this.groupBox1.Controls.Add(this.lblServer);
-            this.groupBox1.Controls.Add(this.txtIpAddress);
-            this.groupBox1.Controls.Add(this.txtPassword);
-            this.groupBox1.Controls.Add(this.txtUsername);
-            this.groupBox1.Controls.Add(this.txtDatabase);
-            this.groupBox1.Controls.Add(this.lblPassword);
+            this.groupBox1.Controls.Add(this.txtServerUserName);
             this.groupBox1.Controls.Add(this.lblUserName);
+            this.groupBox1.Controls.Add(this.txtIpAddress);
+            this.groupBox1.Controls.Add(this.txtServerPassword);
+            this.groupBox1.Controls.Add(this.txtDatabaseName);
+            this.groupBox1.Controls.Add(this.lblPassword);
             this.groupBox1.Controls.Add(this.lblIpAddress);
             this.groupBox1.Controls.Add(this.lblDatabaseDescription);
             this.groupBox1.Location = new System.Drawing.Point(14, 96);
@@ -99,18 +99,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bilgiler";
             // 
-            // txtServer
+            // txtServerDescription
             // 
-            this.txtServer.Location = new System.Drawing.Point(128, 20);
-            this.txtServer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(261, 21);
-            this.txtServer.TabIndex = 13;
+            this.txtServerDescription.Enabled = false;
+            this.txtServerDescription.Location = new System.Drawing.Point(189, 20);
+            this.txtServerDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtServerDescription.Name = "txtServerDescription";
+            this.txtServerDescription.ReadOnly = true;
+            this.txtServerDescription.Size = new System.Drawing.Size(261, 21);
+            this.txtServerDescription.TabIndex = 13;
             // 
             // lblServer
             // 
             this.lblServer.AutoSize = true;
-            this.lblServer.Location = new System.Drawing.Point(8, 23);
+            this.lblServer.Location = new System.Drawing.Point(21, 23);
             this.lblServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServer.Name = "lblServer";
             this.lblServer.Size = new System.Drawing.Size(52, 15);
@@ -119,61 +121,69 @@
             // 
             // txtIpAddress
             // 
-            this.txtIpAddress.Location = new System.Drawing.Point(128, 164);
+            this.txtIpAddress.Enabled = false;
+            this.txtIpAddress.Location = new System.Drawing.Point(189, 164);
             this.txtIpAddress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIpAddress.Name = "txtIpAddress";
+            this.txtIpAddress.ReadOnly = true;
             this.txtIpAddress.Size = new System.Drawing.Size(261, 21);
             this.txtIpAddress.TabIndex = 11;
             // 
-            // txtPassword
+            // txtServerPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(128, 128);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(261, 21);
-            this.txtPassword.TabIndex = 10;
+            this.txtServerPassword.Enabled = false;
+            this.txtServerPassword.Location = new System.Drawing.Point(189, 92);
+            this.txtServerPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtServerPassword.Name = "txtServerPassword";
+            this.txtServerPassword.PasswordChar = '*';
+            this.txtServerPassword.ReadOnly = true;
+            this.txtServerPassword.Size = new System.Drawing.Size(261, 21);
+            this.txtServerPassword.TabIndex = 10;
             // 
-            // txtUsername
+            // txtServerUserName
             // 
-            this.txtUsername.Location = new System.Drawing.Point(128, 92);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(261, 21);
-            this.txtUsername.TabIndex = 9;
+            this.txtServerUserName.Enabled = false;
+            this.txtServerUserName.Location = new System.Drawing.Point(189, 56);
+            this.txtServerUserName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtServerUserName.Name = "txtServerUserName";
+            this.txtServerUserName.ReadOnly = true;
+            this.txtServerUserName.Size = new System.Drawing.Size(261, 21);
+            this.txtServerUserName.TabIndex = 9;
             // 
-            // txtDatabase
+            // txtDatabaseName
             // 
-            this.txtDatabase.Location = new System.Drawing.Point(128, 56);
-            this.txtDatabase.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(261, 21);
-            this.txtDatabase.TabIndex = 8;
+            this.txtDatabaseName.Enabled = false;
+            this.txtDatabaseName.Location = new System.Drawing.Point(189, 128);
+            this.txtDatabaseName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDatabaseName.Name = "txtDatabaseName";
+            this.txtDatabaseName.ReadOnly = true;
+            this.txtDatabaseName.Size = new System.Drawing.Size(261, 21);
+            this.txtDatabaseName.TabIndex = 8;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(8, 131);
+            this.lblPassword.Location = new System.Drawing.Point(21, 95);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(32, 15);
+            this.lblPassword.Size = new System.Drawing.Size(89, 15);
             this.lblPassword.TabIndex = 7;
-            this.lblPassword.Text = "Şifre";
+            this.lblPassword.Text = "Sunucu Şifresi:";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(8, 95);
+            this.lblUserName.Location = new System.Drawing.Point(21, 59);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(77, 15);
+            this.lblUserName.Size = new System.Drawing.Size(122, 15);
             this.lblUserName.TabIndex = 6;
-            this.lblUserName.Text = "Kullanıcı Adı:";
+            this.lblUserName.Text = "Sunucu Kullanıcı Adı:";
             // 
             // lblIpAddress
             // 
             this.lblIpAddress.AutoSize = true;
-            this.lblIpAddress.Location = new System.Drawing.Point(8, 167);
+            this.lblIpAddress.Location = new System.Drawing.Point(21, 167);
             this.lblIpAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIpAddress.Name = "lblIpAddress";
             this.lblIpAddress.Size = new System.Drawing.Size(97, 15);
@@ -183,7 +193,7 @@
             // lblDatabaseDescription
             // 
             this.lblDatabaseDescription.AutoSize = true;
-            this.lblDatabaseDescription.Location = new System.Drawing.Point(8, 59);
+            this.lblDatabaseDescription.Location = new System.Drawing.Point(21, 131);
             this.lblDatabaseDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDatabaseDescription.Name = "lblDatabaseDescription";
             this.lblDatabaseDescription.Size = new System.Drawing.Size(65, 15);
@@ -221,10 +231,10 @@
         private System.Windows.Forms.Label lblIpAddress;
         private System.Windows.Forms.Label lblDatabaseDescription;
         private System.Windows.Forms.TextBox txtIpAddress;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtDatabase;
-        private System.Windows.Forms.TextBox txtServer;
+        private System.Windows.Forms.TextBox txtServerPassword;
+        private System.Windows.Forms.TextBox txtServerUserName;
+        private System.Windows.Forms.TextBox txtDatabaseName;
+        private System.Windows.Forms.TextBox txtServerDescription;
         private System.Windows.Forms.Label lblServer;
     }
 }
