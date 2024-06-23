@@ -34,12 +34,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtServerDescription = new System.Windows.Forms.TextBox();
             this.lblServer = new System.Windows.Forms.Label();
+            this.txtDatabaseUserName = new System.Windows.Forms.TextBox();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.txtIpAddress = new System.Windows.Forms.TextBox();
-            this.txtServerPassword = new System.Windows.Forms.TextBox();
-            this.txtServerUserName = new System.Windows.Forms.TextBox();
+            this.txtDatabasePassword = new System.Windows.Forms.TextBox();
             this.txtDatabaseName = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
             this.lblIpAddress = new System.Windows.Forms.Label();
             this.lblDatabaseDescription = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -82,10 +82,10 @@
             // 
             this.groupBox1.Controls.Add(this.txtServerDescription);
             this.groupBox1.Controls.Add(this.lblServer);
-            this.groupBox1.Controls.Add(this.txtServerUserName);
+            this.groupBox1.Controls.Add(this.txtDatabaseUserName);
             this.groupBox1.Controls.Add(this.lblUserName);
             this.groupBox1.Controls.Add(this.txtIpAddress);
-            this.groupBox1.Controls.Add(this.txtServerPassword);
+            this.groupBox1.Controls.Add(this.txtDatabasePassword);
             this.groupBox1.Controls.Add(this.txtDatabaseName);
             this.groupBox1.Controls.Add(this.lblPassword);
             this.groupBox1.Controls.Add(this.lblIpAddress);
@@ -119,6 +119,27 @@
             this.lblServer.TabIndex = 12;
             this.lblServer.Text = "Sunucu:";
             // 
+            // txtDatabaseUserName
+            // 
+            this.txtDatabaseUserName.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDatabaseUserName.Enabled = false;
+            this.txtDatabaseUserName.Location = new System.Drawing.Point(189, 56);
+            this.txtDatabaseUserName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDatabaseUserName.Name = "txtDatabaseUserName";
+            this.txtDatabaseUserName.ReadOnly = true;
+            this.txtDatabaseUserName.Size = new System.Drawing.Size(261, 21);
+            this.txtDatabaseUserName.TabIndex = 9;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(21, 59);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(135, 15);
+            this.lblUserName.TabIndex = 6;
+            this.lblUserName.Text = "Veritabanı Kullanıcı Adı:";
+            // 
             // txtIpAddress
             // 
             this.txtIpAddress.Enabled = false;
@@ -129,26 +150,16 @@
             this.txtIpAddress.Size = new System.Drawing.Size(261, 21);
             this.txtIpAddress.TabIndex = 11;
             // 
-            // txtServerPassword
+            // txtDatabasePassword
             // 
-            this.txtServerPassword.Enabled = false;
-            this.txtServerPassword.Location = new System.Drawing.Point(189, 92);
-            this.txtServerPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtServerPassword.Name = "txtServerPassword";
-            this.txtServerPassword.PasswordChar = '*';
-            this.txtServerPassword.ReadOnly = true;
-            this.txtServerPassword.Size = new System.Drawing.Size(261, 21);
-            this.txtServerPassword.TabIndex = 10;
-            // 
-            // txtServerUserName
-            // 
-            this.txtServerUserName.Enabled = false;
-            this.txtServerUserName.Location = new System.Drawing.Point(189, 56);
-            this.txtServerUserName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtServerUserName.Name = "txtServerUserName";
-            this.txtServerUserName.ReadOnly = true;
-            this.txtServerUserName.Size = new System.Drawing.Size(261, 21);
-            this.txtServerUserName.TabIndex = 9;
+            this.txtDatabasePassword.Enabled = false;
+            this.txtDatabasePassword.Location = new System.Drawing.Point(189, 92);
+            this.txtDatabasePassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDatabasePassword.Name = "txtDatabasePassword";
+            this.txtDatabasePassword.PasswordChar = '*';
+            this.txtDatabasePassword.ReadOnly = true;
+            this.txtDatabasePassword.Size = new System.Drawing.Size(261, 21);
+            this.txtDatabasePassword.TabIndex = 10;
             // 
             // txtDatabaseName
             // 
@@ -166,19 +177,9 @@
             this.lblPassword.Location = new System.Drawing.Point(21, 95);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(89, 15);
+            this.lblPassword.Size = new System.Drawing.Size(102, 15);
             this.lblPassword.TabIndex = 7;
-            this.lblPassword.Text = "Sunucu Şifresi:";
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(21, 59);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(122, 15);
-            this.lblUserName.TabIndex = 6;
-            this.lblUserName.Text = "Sunucu Kullanıcı Adı:";
+            this.lblPassword.Text = "Veritabanı Şifresi:";
             // 
             // lblIpAddress
             // 
@@ -231,8 +232,8 @@
         private System.Windows.Forms.Label lblIpAddress;
         private System.Windows.Forms.Label lblDatabaseDescription;
         private System.Windows.Forms.TextBox txtIpAddress;
-        private System.Windows.Forms.TextBox txtServerPassword;
-        private System.Windows.Forms.TextBox txtServerUserName;
+        private System.Windows.Forms.TextBox txtDatabasePassword;
+        private System.Windows.Forms.TextBox txtDatabaseUserName;
         private System.Windows.Forms.TextBox txtDatabaseName;
         private System.Windows.Forms.TextBox txtServerDescription;
         private System.Windows.Forms.Label lblServer;

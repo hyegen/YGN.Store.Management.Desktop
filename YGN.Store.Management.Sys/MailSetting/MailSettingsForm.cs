@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Configuration.Install;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.ServiceProcess;
@@ -99,7 +100,8 @@ namespace YGN.Store.Management.Sys.MailSetting
         private void MailSettingsForm_Load(object sender, EventArgs e)
         {
             GetServerInformations();
-            lblServiceStatusDescription.Text = GetMailServiceStatus();
+            lblServiceStatusDescription.Text = GetMailServiceStatus().Status;
+            lblServiceStatusDescription.ForeColor = GetMailServiceStatus().color;
         }
         private void btnSendMailReports_Click(object sender, EventArgs e)
         {
@@ -113,18 +115,17 @@ namespace YGN.Store.Management.Sys.MailSetting
                 {
                     serviceController.Start();
                     serviceController.WaitForStatus(ServiceControllerStatus.Running);
-                    MessageBox.Show("Servis Başlatıldı.");
-                    GetMailServiceStatus();
+                    MessageBox.Show("Servis Başlatıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Servis zaten çalışıyor.");
+                    MessageBox.Show("Servis zaten çalışıyor.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Başlatma sırasında hata: " + ex.Message);
+                MessageBox.Show(string.Format("Başlatma sırasında hata: " + ex.Message), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -136,18 +137,17 @@ namespace YGN.Store.Management.Sys.MailSetting
                 {
                     serviceController.Stop();
                     serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
-                    MessageBox.Show("Servis Durduruldu.");
-                    GetMailServiceStatus();
+                    MessageBox.Show("Servis Durduruldu.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Servis zaten durdurulmuş.");
+                    MessageBox.Show("Servis zaten durdurulmuş.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Durdurma sırasında hata: " + ex.Message);
+                MessageBox.Show(string.Format("Durdurma sırasında hata: " + ex.Message), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -195,17 +195,17 @@ namespace YGN.Store.Management.Sys.MailSetting
                             }
                             else
                             {
-                                MessageBox.Show("Servis kurulurken bir hata oluştu. Hata kodu: " + process.ExitCode + "\n" + error);
+                                MessageBox.Show(string.Format("Servis kurulurken bir hata oluştu. Hata kodu: " + process.ExitCode + "\n" + error), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Kurulum sırasında hata oluştu: " + ex.Message);
+                            MessageBox.Show(string.Format("Kurulum sırasında hata oluştu: " + ex.Message), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("InstallUtil.exe veya seçilen dosya bulunamadı.");
+                        MessageBox.Show("InstallUtil.exe veya seçilen dosya bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -231,8 +231,9 @@ namespace YGN.Store.Management.Sys.MailSetting
                 MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private string GetMailServiceStatus()
+        private SetMailStatusDescription GetMailServiceStatus()
         {
+            SetMailStatusDescription setMailStatus = new SetMailStatusDescription();
             try
             {
                 ServiceController sc = new ServiceController("YGN-Mail-Service");
@@ -242,29 +243,47 @@ namespace YGN.Store.Management.Sys.MailSetting
                     switch (sc.Status)
                     {
                         case ServiceControllerStatus.Running:
-                            return "Çalışıyor";
+                            setMailStatus.Status = "Çalışıyor";
+                            setMailStatus.color = Color.Green;
+                            return setMailStatus;
                         case ServiceControllerStatus.Stopped:
-                            return "Durdu";
+                            setMailStatus.Status = "Durdu";
+                            setMailStatus.color = Color.Red;
+                            return setMailStatus;
                         case ServiceControllerStatus.Paused:
-                            return "Duraklatıldı";
+                            setMailStatus.Status = "Durduruldu";
+                            setMailStatus.color = Color.Red;
+                            return setMailStatus;
                         case ServiceControllerStatus.StopPending:
-                            return "Beklemeyi Durduruyor";
+                            setMailStatus.Status = "Bekleme Bırakıldı";
+                            setMailStatus.color = Color.Green;
+                            return setMailStatus;
                         case ServiceControllerStatus.StartPending:
-                            return "Bekleme Başlatılıyor";
+                            setMailStatus.Status = "Beklemeye Başlatıldı";
+                            setMailStatus.color = Color.Green;
+                            return setMailStatus;
                         default:
-                            return "Varsayılan";
+                            setMailStatus.Status = "Varsayılan Durum";
+                            setMailStatus.color = Color.White;
+                            return setMailStatus;
                     }
                 }
             }
             catch (InvalidOperationException)
             {
-                return "Servis Yüklü Değil";
+                setMailStatus.Status = "Servis Yüklü Değil";
+                setMailStatus.color = Color.Red;
+                return setMailStatus;
             }
 
-            return "";
+            return new SetMailStatusDescription() { Status = "Hata!", color = Color.Red };
         }
         #endregion
 
-
     }
+}
+public class SetMailStatusDescription
+{
+    public string Status { get; set; }
+    public Color color { get; set; }
 }

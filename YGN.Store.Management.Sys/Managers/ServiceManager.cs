@@ -50,16 +50,16 @@ namespace YGN.Store.Management.Sys.Managers
 
                 if (scProcess.ExitCode == 0)
                 {
-                    MessageBox.Show("Servis başarıyla kaldırıldı.");
+                    MessageBox.Show("Servis başarıyla kaldırıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show($"Kaldırma sırasında hata oluştu: {error}");
+                    MessageBox.Show($"Kaldırma sırasında hata oluştu: {error}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Kaldırma sırasında hata oluştu: " + ex.Message);
+                MessageBox.Show(string.Format("Kaldırma sırasında hata oluştu: " + ex.Message), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

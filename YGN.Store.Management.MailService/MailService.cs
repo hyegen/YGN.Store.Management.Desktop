@@ -144,7 +144,7 @@ namespace YGN.Store.Management.MailService
                     table.AddCell(new Phrase(item.ItemName.ToString()));
                     table.AddCell(new Phrase(item.StockAmount.ToString()));
                 }
-                writelog(data.Count().ToString(),EventLogEntryType.Error);
+
                 doc.Add(table);
 
                 doc.Close();

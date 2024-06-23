@@ -23,7 +23,7 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
                 txtServerDescription.Text = value;
             }
         }
-        public string ServerUserName
+        public string DatabaseUserName
         {
             get { return txtServerUserName.Text; }
             set
@@ -31,7 +31,7 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
                 txtServerUserName.Text = value;
             }
         }
-        public string ServerPassword
+        public string DatabasePassword
         {
             get { return txtServerPassword.Text; }
             set
@@ -62,8 +62,8 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
             try
             {
                 ConfigManager.SaveDatabaseInformations("ServerDescription", ServerDescription);
-                ConfigManager.SaveDatabaseInformations("ServerUserName", ServerUserName);
-                ConfigManager.SaveDatabaseInformations("ServerPassword", ServerPassword);
+                ConfigManager.SaveDatabaseInformations("DatabaseUserName", DatabaseUserName);
+                ConfigManager.SaveDatabaseInformations("DatabasePassword", DatabasePassword);
                 ConfigManager.SaveDatabaseInformations("DatabaseDesc", DatabaseDesc);
 
                 MessageBox.Show("Sunucu ve Veritabanı Bilgileri başarıyla Configuration dosyasına kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

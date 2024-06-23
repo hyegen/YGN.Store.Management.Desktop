@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStopMailService = new System.Windows.Forms.Button();
+            this.btnStartMailService = new System.Windows.Forms.Button();
             this.btnUninstallMailService = new System.Windows.Forms.Button();
             this.btnSendMailReports = new System.Windows.Forms.Button();
             this.btnInstallMailService = new System.Windows.Forms.Button();
@@ -47,11 +49,12 @@
             this.lblServiceStatus = new System.Windows.Forms.Label();
             this.groupBoxMailServiceStatuses = new System.Windows.Forms.GroupBox();
             this.lblServiceStatusDescription = new System.Windows.Forms.Label();
-            this.btnStartMailService = new System.Windows.Forms.Button();
-            this.btnStopMailService = new System.Windows.Forms.Button();
+            this.groupBoxInformation = new System.Windows.Forms.GroupBox();
+            this.lblMailServiceImportantInformation = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxMailServiceStatuses.SuspendLayout();
+            this.groupBoxInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,6 +70,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(878, 85);
             this.panel1.TabIndex = 0;
+            // 
+            // btnStopMailService
+            // 
+            this.btnStopMailService.Location = new System.Drawing.Point(772, 5);
+            this.btnStopMailService.Name = "btnStopMailService";
+            this.btnStopMailService.Size = new System.Drawing.Size(76, 76);
+            this.btnStopMailService.TabIndex = 11;
+            this.btnStopMailService.Text = "Mail Servisi Durdur";
+            this.btnStopMailService.UseVisualStyleBackColor = true;
+            this.btnStopMailService.Click += new System.EventHandler(this.btnStopMailService_Click);
+            // 
+            // btnStartMailService
+            // 
+            this.btnStartMailService.Location = new System.Drawing.Point(690, 5);
+            this.btnStartMailService.Name = "btnStartMailService";
+            this.btnStartMailService.Size = new System.Drawing.Size(76, 76);
+            this.btnStartMailService.TabIndex = 10;
+            this.btnStartMailService.Text = "Mail Servisi Başlat";
+            this.btnStartMailService.UseVisualStyleBackColor = true;
+            this.btnStartMailService.Click += new System.EventHandler(this.btnStartMailService_Click);
             // 
             // btnUninstallMailService
             // 
@@ -212,7 +235,7 @@
             // lblServiceStatus
             // 
             this.lblServiceStatus.AutoSize = true;
-            this.lblServiceStatus.Location = new System.Drawing.Point(25, 53);
+            this.lblServiceStatus.Location = new System.Drawing.Point(11, 32);
             this.lblServiceStatus.Name = "lblServiceStatus";
             this.lblServiceStatus.Size = new System.Drawing.Size(95, 17);
             this.lblServiceStatus.TabIndex = 9;
@@ -224,7 +247,7 @@
             this.groupBoxMailServiceStatuses.Controls.Add(this.lblServiceStatus);
             this.groupBoxMailServiceStatuses.Location = new System.Drawing.Point(436, 105);
             this.groupBoxMailServiceStatuses.Name = "groupBoxMailServiceStatuses";
-            this.groupBoxMailServiceStatuses.Size = new System.Drawing.Size(284, 215);
+            this.groupBoxMailServiceStatuses.Size = new System.Drawing.Size(284, 65);
             this.groupBoxMailServiceStatuses.TabIndex = 10;
             this.groupBoxMailServiceStatuses.TabStop = false;
             this.groupBoxMailServiceStatuses.Text = "Mail Servis Durum";
@@ -232,37 +255,40 @@
             // lblServiceStatusDescription
             // 
             this.lblServiceStatusDescription.AutoSize = true;
-            this.lblServiceStatusDescription.Location = new System.Drawing.Point(135, 53);
+            this.lblServiceStatusDescription.Location = new System.Drawing.Point(121, 32);
             this.lblServiceStatusDescription.Name = "lblServiceStatusDescription";
             this.lblServiceStatusDescription.Size = new System.Drawing.Size(20, 17);
             this.lblServiceStatusDescription.TabIndex = 10;
             this.lblServiceStatusDescription.Text = "??";
             // 
-            // btnStartMailService
+            // groupBoxInformation
             // 
-            this.btnStartMailService.Location = new System.Drawing.Point(690, 5);
-            this.btnStartMailService.Name = "btnStartMailService";
-            this.btnStartMailService.Size = new System.Drawing.Size(76, 76);
-            this.btnStartMailService.TabIndex = 10;
-            this.btnStartMailService.Text = "Mail Servisi Başlat";
-            this.btnStartMailService.UseVisualStyleBackColor = true;
-            this.btnStartMailService.Click += new System.EventHandler(this.btnStartMailService_Click);
+            this.groupBoxInformation.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBoxInformation.Controls.Add(this.lblMailServiceImportantInformation);
+            this.groupBoxInformation.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBoxInformation.Location = new System.Drawing.Point(436, 263);
+            this.groupBoxInformation.Name = "groupBoxInformation";
+            this.groupBoxInformation.Size = new System.Drawing.Size(508, 57);
+            this.groupBoxInformation.TabIndex = 11;
+            this.groupBoxInformation.TabStop = false;
+            this.groupBoxInformation.Text = "ÖNEMLİ BİLGİ";
             // 
-            // btnStopMailService
+            // lblMailServiceImportantInformation
             // 
-            this.btnStopMailService.Location = new System.Drawing.Point(772, 5);
-            this.btnStopMailService.Name = "btnStopMailService";
-            this.btnStopMailService.Size = new System.Drawing.Size(76, 76);
-            this.btnStopMailService.TabIndex = 11;
-            this.btnStopMailService.Text = "Mail Servisi Durdur";
-            this.btnStopMailService.UseVisualStyleBackColor = true;
-            this.btnStopMailService.Click += new System.EventHandler(this.btnStopMailService_Click);
+            this.lblMailServiceImportantInformation.AutoSize = true;
+            this.lblMailServiceImportantInformation.Location = new System.Drawing.Point(11, 26);
+            this.lblMailServiceImportantInformation.Name = "lblMailServiceImportantInformation";
+            this.lblMailServiceImportantInformation.Size = new System.Drawing.Size(478, 17);
+            this.lblMailServiceImportantInformation.TabIndex = 0;
+            this.lblMailServiceImportantInformation.Text = "* Mail Servis\'in kurulabilmesi için Sys\'nin yönetici olarak çalışması gerekmekted" +
+    "ir.";
             // 
             // MailSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 332);
+            this.ClientSize = new System.Drawing.Size(956, 332);
+            this.Controls.Add(this.groupBoxInformation);
             this.Controls.Add(this.groupBoxMailServiceStatuses);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -277,6 +303,8 @@
             this.panel2.PerformLayout();
             this.groupBoxMailServiceStatuses.ResumeLayout(false);
             this.groupBoxMailServiceStatuses.PerformLayout();
+            this.groupBoxInformation.ResumeLayout(false);
+            this.groupBoxInformation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +332,7 @@
         private System.Windows.Forms.Label lblServiceStatusDescription;
         private System.Windows.Forms.Button btnStopMailService;
         private System.Windows.Forms.Button btnStartMailService;
+        private System.Windows.Forms.GroupBox groupBoxInformation;
+        private System.Windows.Forms.Label lblMailServiceImportantInformation;
     }
 }

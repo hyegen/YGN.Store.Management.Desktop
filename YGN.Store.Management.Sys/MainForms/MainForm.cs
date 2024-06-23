@@ -34,20 +34,20 @@ namespace YGN.Store.Management.Sys.MainForms
                 txtServerDescription.Text = value;
             }
         }
-        public string ServerUserName
+        public string DatabaseUserName
         {
-            get { return txtServerUserName.Text; }
+            get { return txtDatabaseUserName.Text; }
             set
             {
-                txtServerUserName.Text = value;
+                txtDatabaseUserName.Text = value;
             }
         }
-        public string ServerPassword
+        public string DatabasePassword
         {
-            get { return txtServerPassword.Text; }
+            get { return txtDatabasePassword.Text; }
             set
             {
-                txtServerPassword.Text = value;
+                txtDatabasePassword.Text = value;
             }
         }
         public string DatabaseDesc
@@ -90,8 +90,8 @@ namespace YGN.Store.Management.Sys.MainForms
             try
             {
                 ServerDescription = ConfigManager.GetMailInformation("ServerDescription") ?? "Sunucu Bilgisi Giriniz.";
-                ServerUserName = ConfigManager.GetMailInformation("ServerUserName") ?? "Sunucu Kullanıcı Adı Giriniz.";
-                ServerPassword = ConfigManager.GetMailInformation("ServerPassword") ?? "Sunucu Şifresi Giriniz.";
+                DatabaseUserName = ConfigManager.GetMailInformation("DatabaseUserName") ?? "Sunucu Kullanıcı Adı Giriniz.";
+                DatabasePassword = ConfigManager.GetMailInformation("DatabasePassword") ?? "Sunucu Şifresi Giriniz.";
                 DatabaseDesc = ConfigManager.GetMailInformation("DatabaseDesc") ?? "Veritabanı Açıklaması Giriniz.";
             }
             catch (Exception ex)
