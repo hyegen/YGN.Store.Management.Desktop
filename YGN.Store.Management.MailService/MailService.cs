@@ -200,18 +200,18 @@ namespace YGN.Store.Management.MailService
         {
             var emailsToSend = dbContext.SendMails.ToList();
 
-            EventLog.WriteEntry(string.Format("E-mail Sayısı: {0}", emailsToSend.Count().ToString()), EventLogEntryType.Information);
-
             foreach (var email in emailsToSend)
             {
                 if ((DateTime.Now - email.LastSent).TotalMinutes >= email.Frequency)
                 {
                     var data = reportManager.GetStockAmountEachItem();
+                    if (data == null)
+                    {
+                        writelog(string.Format("Sorgu içeriği boş geldi."),EventLogEntryType.Warning);
+                        return;
+                    }
 
-                   // var pdfAttachment = GeneratePdf(email.Subject, data);
                     var pdfAttachment = GeneratePdf(email.Subject, data);
-
-                    writelog(pdfAttachment.Count().ToString(), EventLogEntryType.Warning);
 
                     SendEmailWithAttachment(email.Recipient, email.Subject, email.Body, pdfAttachment);
                     email.LastSent = DateTime.Now;

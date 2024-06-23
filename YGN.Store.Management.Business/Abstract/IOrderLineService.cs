@@ -8,6 +8,5 @@ namespace YGN.Store.Management.Business.Abstract
 {
     public interface IOrderLineService
     {
-        int getLastOrderId();
     }
 }

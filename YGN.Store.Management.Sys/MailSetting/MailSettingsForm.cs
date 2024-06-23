@@ -105,7 +105,52 @@ namespace YGN.Store.Management.Sys.MailSetting
         {
             FormHelper.ShowForm<ReportsForm>();
         }
+        private void btnStartMailService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serviceController.Status == ServiceControllerStatus.Stopped)
+                {
+                    serviceController.Start();
+                    serviceController.WaitForStatus(ServiceControllerStatus.Running);
+                    MessageBox.Show("Servis Başlatıldı.");
+                    GetMailServiceStatus();
+                }
+                else
+                {
+                    MessageBox.Show("Servis zaten çalışıyor.");
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Başlatma sırasında hata: " + ex.Message);
+            }
+
+        }
+        private void btnStopMailService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serviceController.Status == ServiceControllerStatus.Running)
+                {
+                    serviceController.Stop();
+                    serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
+                    MessageBox.Show("Servis Durduruldu.");
+                    GetMailServiceStatus();
+                }
+                else
+                {
+                    MessageBox.Show("Servis zaten durdurulmuş.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Durdurma sırasında hata: " + ex.Message);
+            }
+
+        }
         #endregion
 
         #region private methods
@@ -188,76 +233,38 @@ namespace YGN.Store.Management.Sys.MailSetting
         }
         private string GetMailServiceStatus()
         {
-            ServiceController sc = new ServiceController("YGN-Mail-Service");
-
-            if (sc != null)
+            try
             {
-                switch (sc.Status)
+                ServiceController sc = new ServiceController("YGN-Mail-Service");
+
+                if (sc != null)
                 {
-                    case ServiceControllerStatus.Running:
-                        return "Çalışıyor";
-                    case ServiceControllerStatus.Stopped:
-                        return "Durdu";
-                    case ServiceControllerStatus.Paused:
-                        return "Duraklatıldı";
-                    case ServiceControllerStatus.StopPending:
-                        return "Beklemeyi Durduruyor";
-                    case ServiceControllerStatus.StartPending:
-                        return "Bekleme Başlatılıyor";             //bekleme başlatılıyor :D Tureng yalancısıyım.
-                    default:
-                        return "Varsayılan";
+                    switch (sc.Status)
+                    {
+                        case ServiceControllerStatus.Running:
+                            return "Çalışıyor";
+                        case ServiceControllerStatus.Stopped:
+                            return "Durdu";
+                        case ServiceControllerStatus.Paused:
+                            return "Duraklatıldı";
+                        case ServiceControllerStatus.StopPending:
+                            return "Beklemeyi Durduruyor";
+                        case ServiceControllerStatus.StartPending:
+                            return "Bekleme Başlatılıyor";
+                        default:
+                            return "Varsayılan";
+                    }
                 }
             }
+            catch (InvalidOperationException)
+            {
+                return "Servis Yüklü Değil";
+            }
+
             return "";
         }
         #endregion
 
-        private void btnStartMailService_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (serviceController.Status == ServiceControllerStatus.Stopped)
-                {
-                    serviceController.Start();
-                    serviceController.WaitForStatus(ServiceControllerStatus.Running);
-                    MessageBox.Show("Servis Başlatıldı.");
-                    GetMailServiceStatus();
-                }
-                else
-                {
-                    MessageBox.Show("Servis zaten çalışıyor.");
-                }
-              
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Başlatma sırasında hata: " + ex.Message);
-            }
-           
-        }
 
-        private void btnStopMailService_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (serviceController.Status == ServiceControllerStatus.Running)
-                {
-                    serviceController.Stop();
-                    serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
-                    MessageBox.Show("Servis Durduruldu.");
-                    GetMailServiceStatus();
-                }
-                else
-                {
-                    MessageBox.Show("Servis zaten durdurulmuş.");
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Durdurma sırasında hata: " + ex.Message);
-            }
-            
-        }
     }
 }

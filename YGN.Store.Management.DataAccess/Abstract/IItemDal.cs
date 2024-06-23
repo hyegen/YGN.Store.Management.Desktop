@@ -14,8 +14,6 @@ namespace YGN.Store.Management.DataAccess.Abstract
     {
         bool AddItem(Item item);
         List<Item> GetItems();
-        int CountOfAllItems();
-        List<Item> GetByName(string searchName);
         double GetUnitPrice(int itemId);
         List<MobItemSelectionViews> MobGetItemsView();
         int GetItemIdByOrderId(int orderId);

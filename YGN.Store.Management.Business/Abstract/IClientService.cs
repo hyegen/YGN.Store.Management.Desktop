@@ -14,7 +14,6 @@ namespace YGN.Store.Management.Business.Abstract
         List<Client> GetClients();
         void UpdateClient(Client client);
         void DeleteClient(Client client);
-        int CountOfAllClients();
         List<Client> GetAllClientsByNameAndSurname();
         List<ClientCodeAndNameAndSurnameView> GetClientCodeAndNameAndSurname();
         int GetClientIdByOrderId(int orderId);

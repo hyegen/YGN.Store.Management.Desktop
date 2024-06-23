@@ -17,7 +17,5 @@ namespace YGN.Store.Management.Business.Concrete
         {
             _createDatabaseDal = createDatabaseDal;
         }
-
-    
     }
 }

@@ -208,7 +208,7 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void getNumberOfItemsCount()
         {
-            lblCountOfItems.Text = manager.CountOfAllItems().ToString();
+            lblCountOfItems.Text = itemsDataGridView.Rows.Count.ToString();
             lblCountOfItems.Visible = true;
         }
         private void LoadItems()

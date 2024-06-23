@@ -35,14 +35,7 @@ namespace YGN.Store.Management.Web.Service.Controllers
         [Route("api/getProductByItemCode")]
         public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
         {
-            if (itemCode != null)
-            {
-                return orderManager.MobGetProductByItemCode(itemCode);
-            }
-            else
-            {
-                return null;
-            }            
+            return orderManager.MobGetProductByItemCode(itemCode);
         }
     }
 }

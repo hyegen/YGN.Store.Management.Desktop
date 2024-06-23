@@ -243,7 +243,6 @@ namespace YGN.Store.Management.UI.DetailForms
         }
         private void getNumberOfClientCount()
         {
-            //  lblCountOfClient.Text = manager.CountOfAllClients().ToString();
             lblCountOfClient.Text = clientsDataGridView.Rows.Count.ToString();
             lblCountOfClient.Visible = true;
         }

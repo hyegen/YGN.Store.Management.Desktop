@@ -21,51 +21,135 @@ namespace YGN.Store.Management.Business.Concrete
         }
         public void AddOrder(Order order)
         {
-            _orderDal.Add(order);
+            if (order != null && order.OrderLines.Count() > 0)
+            {
+                _orderDal.Add(order);
+            }
+            else
+            {
+                return;
+            }
         }
         public List<OrderDetailClientForSlip> GetOrderDetailClientForSlip(int orderId)
         {
-            return _orderDal.GetOrderDetailClientForSlip(orderId);
+            if (orderId != 0)
+            {
+                var result = _orderDal.GetOrderDetailClientForSlip(orderId);
+                if (result != null && result.Count() > 0)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
         public List<OrderDetailInformation> GetOrderDetailInformation(int orderId)
         {
-            return _orderDal.GetOrderDetailInformation(orderId);
+            if (orderId != 0)
+            {
+                var result = _orderDal.GetOrderDetailInformation(orderId);
+                if (result != null && result.Count() > 0)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
         public List<LastTransactionsView> GetOrderLineViews()
         {
-            return _orderDal.GetOrderLineViews();
+            var result = _orderDal.GetOrderLineViews();
+            if (result != null && result.Count() > 0)
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
         public List<OrderInformationTotalPrice> GetTotalPriceForOrderInformation(int orderId)
         {
-            return _orderDal.GetTotalPriceForOrderInformation(orderId);
+            if (orderId != 0 && orderId > 0)
+            {
+                var result = _orderDal.GetTotalPriceForOrderInformation(orderId);
+                if (result != null && result.Count() > 0)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
         public decimal GetTotalPriceForOrderInformationPrice(int orderId)
         {
-            return _orderDal.GetTotalPriceForOrderInformationPrice(orderId);
+            if (orderId != 0 && orderId > 0)
+            {
+                var result = _orderDal.GetTotalPriceForOrderInformationPrice(orderId);
+                if (result != 0)
+                {
+                    return result;
+                }
+            }
+            return 0;
         }
         public MobItemSelectionViews MobGetProductByItemCode(string itemCode)
         {
+            if (string.IsNullOrEmpty(itemCode))
+            {
+                return null;
+            }
             return _orderDal.MobGetProductByItemCode(itemCode);
         }
         public void DeleteOrder(Order order)
         {
-            _orderDal.Delete(order);
+            if (order != null)
+            {
+                _orderDal.Delete(order);
+            }
         }
         public List<SelectedItems> GetSelectedItemsInOrderTest(int orderId)
         {
-            return _orderDal.GetSelectedItemsInOrder(orderId);
+            if (orderId != 0 && orderId > 0)
+            {
+                var result = _orderDal.GetSelectedItemsInOrder(orderId);
+                if (result != null && result.Count() > 0)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
         public Order GetOrderById(int orderId)
         {
-            return _orderDal.GetOrderById(orderId);
+            if (orderId != 0 && orderId > 0)
+            {
+                var result = _orderDal.GetOrderById(orderId);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
         public void UpdateOrder(Order order)
         {
-            _orderDal.UpdateOrder(order);
+            if (order != null)
+            {
+                _orderDal.UpdateOrder(order);
+            }
+            else
+            {
+                return;
+            }
         }
         public void DeleteOrderById(int orderId)
         {
-            _orderDal.DeleteOrderById(orderId);
+            if (orderId != 0 && orderId > 0)
+            {
+                _orderDal.DeleteOrderById(orderId);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

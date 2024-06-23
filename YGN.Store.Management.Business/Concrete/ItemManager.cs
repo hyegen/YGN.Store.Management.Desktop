@@ -20,37 +20,59 @@ namespace YGN.Store.Management.Business.Concrete
         }
         public bool AddItem(Item item)
         {
-            return _itemDal.AddItem(item);
-        }
-        public int CountOfAllItems()
-        {
-            return _itemDal.CountOfAllItems();
+            if (item != null)
+            {
+                return _itemDal.AddItem(item) ? true : false;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void DeleteItem(Item item)
         {
-            _itemDal.Delete(item);
-        }
-        public List<Item> GetByName(string searchName)
-        {
-            return _itemDal.GetByName(searchName);
+            if (item != null)
+            {
+                _itemDal.Delete(item);
+            }
+            else
+            {
+                return;
+            }
         }
         public List<Item> GetItems() => _itemDal.GetItems();
         public double GetUnitPrice(int itemId)
         {
-            return _itemDal.GetUnitPrice(itemId);
+            if (itemId != 0)
+            {
+                var result = _itemDal.GetUnitPrice(itemId);
+                if (result != 0.0)
+                {
+                    return result;
+                }
+            }
+            return 0.0;
         }
         public void UpdateItem(Item item)
         {
-            _itemDal.Update(item);
+            if (item != null)
+            {
+                _itemDal.Update(item);
+            }
+            else
+            {
+                return;
+            }
         }
         public List<MobItemSelectionViews> MobGetItemsView()
         {
-            return _itemDal.MobGetItemsView();
+            var result = _itemDal.MobGetItemsView();
+            if (result.Count() >= 0)
+            {
+                return result;
+            }
+            return null;
         }
 
-        public int GetItemIdByOrderId(int orderId)
-        {
-           return _itemDal.GetItemIdByOrderId(orderId);
-        }
     }
 }

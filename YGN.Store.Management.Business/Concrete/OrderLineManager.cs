@@ -17,14 +17,5 @@ namespace YGN.Store.Management.Business.Concrete
         {
             _orderLineDal = orderLineDal;
         }
-
-        public int getLastOrderId()
-        {
-            return _orderLineDal.getLastOrderId();
-        }
-        public void AddOrderLine(OrderLine orderLine)
-        {
-            _orderLineDal.Add(orderLine);
-        }
     }
 }

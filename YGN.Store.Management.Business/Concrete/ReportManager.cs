@@ -20,7 +20,12 @@ namespace YGN.Store.Management.Business.Concrete
 
         public List<StockAmountView> GetStockAmountEachItem()
         {
-            return _reportDal.GetStockAmountEachItem();
+            var result = _reportDal.GetStockAmountEachItem();
+            if (result.Count() <= 0 || result == null)
+            {
+                return null;
+            }
+            return result;
         }
     }
 }

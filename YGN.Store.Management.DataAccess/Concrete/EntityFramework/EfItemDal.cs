@@ -31,20 +31,6 @@ namespace YGN.Store.Management.DataAccess.Concrete.EntityFramework
                 return false;
             }
         }
-        public int CountOfAllItems()
-        {
-            using (YGNContext context = new YGNContext())
-            {
-                return context.Items.Count();
-            }
-        }
-        public List<Item> GetByName(string searchName)
-        {
-            using (YGNContext context = new YGNContext())
-            {
-                return context.Set<Item>().Where(entity => entity.ItemName.Equals(searchName, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-        }
         public List<Item> GetItems()
         {
             using (YGNContext context = new YGNContext())

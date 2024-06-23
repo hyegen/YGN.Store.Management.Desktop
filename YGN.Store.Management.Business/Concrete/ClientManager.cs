@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using YGN.Store.Management.Business.Abstract;
@@ -19,35 +20,54 @@ namespace YGN.Store.Management.Business.Concrete
         }
         public bool AddClient(Client client)
         {
-            return _clientDal.AddClient(client);
+            bool result = _clientDal.AddClient(client);
+            return result ? true : false;
         }
         public List<Client> GetClients() => _clientDal.GetAll();
         public void UpdateClient(Client client)
         {
-            _clientDal.Update(client);
+            if (client != null)
+            {
+                _clientDal.Update(client);
+            }
+            else
+            {
+                return;
+            }
         }
         public void DeleteClient(Client client)
         {
-            _clientDal.Delete(client);
+            if (client != null)
+            {
+                _clientDal.Delete(client);
+            }
         }
-        public int CountOfAllClients()
-        {
-            return _clientDal.CountOfAllClients();
-        }
-
         public List<Client> GetAllClientsByNameAndSurname()
         {
             return _clientDal.GetAllClientsByNameAndSurname();
         }
-
         public List<ClientCodeAndNameAndSurnameView> GetClientCodeAndNameAndSurname()
         {
-            return _clientDal.GetClientCodeAndNameAndSurname();
+            var result = _clientDal.GetClientCodeAndNameAndSurname();
+            if (result.Count() > 0 || result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
-
         public int GetClientIdByOrderId(int orderId)
         {
-           return _clientDal.GetClientIdByOrderId(orderId);
+            if (orderId != 0)
+            {
+                return _clientDal.GetClientIdByOrderId(orderId);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 
