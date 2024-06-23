@@ -21,6 +21,6 @@ namespace YGN.Store.Management.Entities.Concrete
         [Key]
         public int Id { get; set; }
         public string ReportName { get; set; }
-        public virtual SendMailContent SendMailContent { get; set; }
+        public byte[] BinaryData { get; set; }
     }
 }

@@ -94,13 +94,9 @@
     <Compile Include="Concrete\EntityFramework\EfUserRoleDal.cs" />
     <Compile Include="Context\YGNContext.cs" />
     <Compile Include="DbInit\YGNDbInitializer.cs" />
-    <Compile Include="Migrations\202406221504304_mig-init-maill.cs" />
-    <Compile Include="Migrations\202406221504304_mig-init-maill.Designer.cs">
-      <DependentUpon>202406221504304_mig-init-maill.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202406221645388_mig-relation-mailling.cs" />
-    <Compile Include="Migrations\202406221645388_mig-relation-mailling.Designer.cs">
-      <DependentUpon>202406221645388_mig-relation-mailling.cs</DependentUpon>
+    <Compile Include="Migrations\202406231017556_mig-init.cs" />
+    <Compile Include="Migrations\202406231017556_mig-init.Designer.cs">
+      <DependentUpon>202406231017556_mig-init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,11 +121,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202406221504304_mig-init-maill.resx">
-      <DependentUpon>202406221504304_mig-init-maill.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202406221645388_mig-relation-mailling.resx">
-      <DependentUpon>202406221645388_mig-relation-mailling.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406231017556_mig-init.resx">
+      <DependentUpon>202406231017556_mig-init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

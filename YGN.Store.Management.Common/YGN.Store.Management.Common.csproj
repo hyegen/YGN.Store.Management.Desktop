@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigHelpers\ConfigManager.cs" />
+    <Compile Include="DatabaseHelpers\DatabaseHelper.cs" />
     <Compile Include="FormHelpers\FormHelper.cs" />
     <Compile Include="MaillingHelpers\PdfManager.cs" />
     <Compile Include="OrderEnums\PaymentType.cs" />

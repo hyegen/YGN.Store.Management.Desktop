@@ -36,9 +36,11 @@
             this.txtParameters = new System.Windows.Forms.TextBox();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
             this.lblParameter = new System.Windows.Forms.Label();
+            this.reportsDataGridView = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxParameters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -112,11 +114,20 @@
             this.lblParameter.TabIndex = 3;
             this.lblParameter.Text = "Parametre:";
             // 
+            // reportsDataGridView
+            // 
+            this.reportsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.reportsDataGridView.Location = new System.Drawing.Point(413, 105);
+            this.reportsDataGridView.Name = "reportsDataGridView";
+            this.reportsDataGridView.Size = new System.Drawing.Size(388, 327);
+            this.reportsDataGridView.TabIndex = 4;
+            // 
             // ReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 590);
+            this.ClientSize = new System.Drawing.Size(844, 590);
+            this.Controls.Add(this.reportsDataGridView);
             this.Controls.Add(this.groupBoxParameters);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -128,6 +139,7 @@
             this.panel2.ResumeLayout(false);
             this.groupBoxParameters.ResumeLayout(false);
             this.groupBoxParameters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +154,6 @@
         private System.Windows.Forms.TextBox txtParameters;
         private System.Windows.Forms.GroupBox groupBoxParameters;
         private System.Windows.Forms.Label lblParameter;
+        private System.Windows.Forms.DataGridView reportsDataGridView;
     }
 }

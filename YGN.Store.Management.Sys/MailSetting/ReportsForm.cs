@@ -25,6 +25,7 @@ namespace YGN.Store.Management.Sys.MailSetting
     public partial class ReportsForm : Form
     {
         MailContentManager mailContentManager = new MailContentManager(new EfMailContentDal());
+        ReportManager reportManager = new ReportManager(new EfReportDal());
         public ReportsForm()
         {
             InitializeComponent();
@@ -32,17 +33,22 @@ namespace YGN.Store.Management.Sys.MailSetting
 
         private void ReportsForm_Load(object sender, EventArgs e)
         {
+            //reportManager.SaveReportToDatabase("Stok Miktar Raporu", "YGN_STOCK_AMOUNT_VIEW");
+            //var results = mailContentManager.GetStoredProcedures();
+            //foreach (var item in results)
+            //{
+            //    checkedListBoxReports.Items.Add(item);
+            //}
+
             var results = mailContentManager.GetStoredProcedures();
-            foreach (var item in results)
-            {
-                checkedListBoxReports.Items.Add(item);
-            }
+        
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             var selectedProcedure = checkedListBoxReports.SelectedItem.ToString();
-           
+
             var parameters = txtParameters.Text;
 
             var reportData = ExecuteStoredProcedure(selectedProcedure, parameters);
@@ -80,10 +86,10 @@ namespace YGN.Store.Management.Sys.MailSetting
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Hata");
+                MessageBox.Show(ex.Message, "Hata");
                 return null;
             }
-           return null;
+            return null;
         }
         public byte[] GeneratePdf(string title, DataTable data)
         {

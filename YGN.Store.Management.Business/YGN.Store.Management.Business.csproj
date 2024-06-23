@@ -107,6 +107,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YGN.Store.Management.Common\YGN.Store.Management.Common.csproj">
+      <Project>{4013b22f-6291-4c09-b360-a41134b7444f}</Project>
+      <Name>YGN.Store.Management.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YGN.Store.Management.Core\YGN.Store.Management.Core.csproj">
       <Project>{B4FCD00B-582C-4191-ABE3-141B7A9322AC}</Project>
       <Name>YGN.Store.Management.Core</Name>

@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,45 +14,40 @@ namespace YGN.Store.Management.Common.MaillingHelpers
 {
     public class PdfManager
     {
-        public byte[] GeneratePdf(string title, List<DynamicReportData> data)
+        public byte[] GeneratePdfReport(string reportName, DataTable dataTable)
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                Document doc = new Document(PageSize.A4);
-                PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-                doc.Open();
+                Document document = new Document(PageSize.A4);
+                PdfWriter.GetInstance(document, ms);
+                document.Open();
 
-                Paragraph heading = new Paragraph(title, new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
-                heading.Alignment = Element.ALIGN_CENTER;
-                doc.Add(heading);
+                // Rapor ismini ekle
+                Paragraph title = new Paragraph(reportName, new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
+                title.Alignment = Element.ALIGN_CENTER;
+                document.Add(title);
 
-                doc.Add(new Paragraph(" ", new Font(Font.FontFamily.HELVETICA, 10)));
+                // Tabloyu oluştur
+                PdfPTable table = new PdfPTable(dataTable.Columns.Count);
 
-                if (data.Count > 0)
+                // Başlıkları ekle
+                foreach (DataColumn column in dataTable.Columns)
                 {
-                    PdfPTable table = new PdfPTable(data[0].Data.Keys.Count);
-
-                    Font boldFont = new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD);
-
-                    // Add table headers
-                    foreach (var key in data[0].Data.Keys)
-                    {
-                        table.AddCell(new PdfPCell(new Phrase(key, boldFont)));
-                    }
-
-                    // Add table rows
-                    foreach (var item in data)
-                    {
-                        foreach (var value in item.Data.Values)
-                        {
-                            table.AddCell(new Phrase(value?.ToString()));
-                        }
-                    }
-
-                    doc.Add(table);
+                    table.AddCell(column.ColumnName);
                 }
 
-                doc.Close();
+                // Veriyi tabloya ekle
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    foreach (var cell in row.ItemArray)
+                    {
+                        table.AddCell(cell.ToString());
+                    }
+                }
+
+                document.Add(table);
+                document.Close();
+
                 return ms.ToArray();
             }
         }

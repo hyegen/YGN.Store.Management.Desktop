@@ -74,7 +74,7 @@ namespace YGN.Store.Management.MailService
                 foreach (var key in mailKeys)
                 {
                     var info = ConfigManager.GetMailInformation(key);
-                    EventLog.WriteEntry($"Config Bilgileri: {info}", EventLogEntryType.Information); 
+                    EventLog.WriteEntry($"Config Bilgileri: {info}", EventLogEntryType.Information);
 
                     if (!string.IsNullOrEmpty(info))
                     {
@@ -106,7 +106,7 @@ namespace YGN.Store.Management.MailService
                 if (string.IsNullOrEmpty(config.SmtpServer) || string.IsNullOrEmpty(config.FromMailAddress) || string.IsNullOrEmpty(config.Password))
                 {
                     EventLog.WriteEntry("Incomplete mail configuration detected.", EventLogEntryType.Error);
-                    return null; 
+                    return null;
                 }
 
                 return config;
@@ -114,7 +114,7 @@ namespace YGN.Store.Management.MailService
             catch (Exception ex)
             {
                 EventLog.WriteEntry($"Error in GetMailInformation: {ex.Message}", EventLogEntryType.Error);
-                return null; 
+                return null;
             }
         }
         private byte[] GeneratePdf(string title, List<StockAmountView> data)
@@ -202,20 +202,26 @@ namespace YGN.Store.Management.MailService
 
             foreach (var email in emailsToSend)
             {
-                if ((DateTime.Now - email.LastSent).TotalMinutes >= email.Frequency)
-                {
-                    var data = reportManager.GetStockAmountEachItem();
-                    if (data == null)
-                    {
-                        writelog(string.Format("Sorgu içeriği boş geldi."),EventLogEntryType.Warning);
-                        return;
-                    }
+                //if ((DateTime.Now - email.LastSent).TotalMinutes >= email.Frequency)
+               // {
+                    //var data = reportManager.GetStockAmountEachItem();
+                    //if (data == null)
+                    //{
+                    //    writelog(string.Format("Sorgu içeriği boş geldi."), EventLogEntryType.Warning);
+                    //    return;
+                    //}
 
-                    var pdfAttachment = GeneratePdf(email.Subject, data);
+                    //var pdfAttachment = GeneratePdf(email.Subject, data);
+
+                    var pdfAttachment = (from r in dbContext.Reports
+                                        select r.BinaryData).FirstOrDefault();
+                    
+                    writelog(string.Format("Binary Data Count: {0}", pdfAttachment.Count().ToString()), EventLogEntryType.Error);
+                    writelog(string.Format("Binary Data: {0}", pdfAttachment.ToString()), EventLogEntryType.Error);
 
                     SendEmailWithAttachment(email.Recipient, email.Subject, email.Body, pdfAttachment);
                     email.LastSent = DateTime.Now;
-                }
+               // }
             }
 
             dbContext.SaveChanges();

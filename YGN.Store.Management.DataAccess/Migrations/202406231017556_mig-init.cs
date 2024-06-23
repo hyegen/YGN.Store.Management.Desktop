@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class miginitmaill : DbMigration
+    public partial class miginit : DbMigration
     {
         public override void Up()
         {
@@ -72,7 +72,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ReportName = c.String(maxLength: 100),
-                        ReportBinaryData = c.String(),
+                        BinaryData = c.Binary(),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -40,9 +40,10 @@ namespace YGN.Store.Management.DataAccess.Context
             modelBuilder.Entity<SendMailContent>()
                 .Property(p => p.Content)
                 .HasColumnType("varbinary(max)");
-            modelBuilder.Entity<SendMailContent>()
-                .HasRequired(smc => smc.Report)
-                .WithRequiredPrincipal(r => r.SendMailContent);
+
+            modelBuilder.Entity<Report>()
+              .Property(p => p.BinaryData)
+              .HasColumnType("varbinary(max)");
         }
 
         public DbSet<Item> Items { get; set; }

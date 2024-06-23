@@ -16,8 +16,6 @@ namespace YGN.Store.Management.Entities.Concrete
         [Column(TypeName = "varbinary(max)")]
         public byte[] Content { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int ReportId { get; set; }
-        public virtual Report Report { get; set; }
 
     }
 }
