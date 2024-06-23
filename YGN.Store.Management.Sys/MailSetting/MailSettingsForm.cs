@@ -192,7 +192,6 @@ namespace YGN.Store.Management.Sys.MailSetting
 
             if (sc != null)
             {
-
                 switch (sc.Status)
                 {
                     case ServiceControllerStatus.Running:
@@ -208,11 +207,7 @@ namespace YGN.Store.Management.Sys.MailSetting
                     default:
                         return "Varsayılan";
                 }
-
-
-
             }
-
             return "";
         }
         #endregion
