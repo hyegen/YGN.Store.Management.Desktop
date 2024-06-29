@@ -42,6 +42,8 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblIpAddress = new System.Windows.Forms.Label();
             this.lblDatabaseDescription = new System.Windows.Forms.Label();
+            this.lblBackupDatabaseFolderPath = new System.Windows.Forms.Label();
+            this.txtBackupDatabasePath = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBackupDatabasePath);
+            this.groupBox1.Controls.Add(this.lblBackupDatabaseFolderPath);
             this.groupBox1.Controls.Add(this.txtServerDescription);
             this.groupBox1.Controls.Add(this.lblServer);
             this.groupBox1.Controls.Add(this.txtDatabaseUserName);
@@ -94,7 +98,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(484, 197);
+            this.groupBox1.Size = new System.Drawing.Size(484, 232);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bilgiler";
@@ -143,7 +147,7 @@
             // txtIpAddress
             // 
             this.txtIpAddress.Enabled = false;
-            this.txtIpAddress.Location = new System.Drawing.Point(189, 164);
+            this.txtIpAddress.Location = new System.Drawing.Point(189, 193);
             this.txtIpAddress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIpAddress.Name = "txtIpAddress";
             this.txtIpAddress.ReadOnly = true;
@@ -184,7 +188,7 @@
             // lblIpAddress
             // 
             this.lblIpAddress.AutoSize = true;
-            this.lblIpAddress.Location = new System.Drawing.Point(21, 167);
+            this.lblIpAddress.Location = new System.Drawing.Point(21, 196);
             this.lblIpAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIpAddress.Name = "lblIpAddress";
             this.lblIpAddress.Size = new System.Drawing.Size(97, 15);
@@ -201,11 +205,30 @@
             this.lblDatabaseDescription.TabIndex = 4;
             this.lblDatabaseDescription.Text = "Veritabanı:";
             // 
+            // lblBackupDatabaseFolderPath
+            // 
+            this.lblBackupDatabaseFolderPath.AutoSize = true;
+            this.lblBackupDatabaseFolderPath.Location = new System.Drawing.Point(21, 163);
+            this.lblBackupDatabaseFolderPath.Name = "lblBackupDatabaseFolderPath";
+            this.lblBackupDatabaseFolderPath.Size = new System.Drawing.Size(157, 15);
+            this.lblBackupDatabaseFolderPath.TabIndex = 14;
+            this.lblBackupDatabaseFolderPath.Text = "Veritabanı Yedekleme Yolu:";
+            // 
+            // txtBackupDatabasePath
+            // 
+            this.txtBackupDatabasePath.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBackupDatabasePath.Enabled = false;
+            this.txtBackupDatabasePath.Location = new System.Drawing.Point(189, 163);
+            this.txtBackupDatabasePath.Name = "txtBackupDatabasePath";
+            this.txtBackupDatabasePath.ReadOnly = true;
+            this.txtBackupDatabasePath.Size = new System.Drawing.Size(261, 21);
+            this.txtBackupDatabasePath.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 304);
+            this.ClientSize = new System.Drawing.Size(511, 339);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -237,5 +260,7 @@
         private System.Windows.Forms.TextBox txtDatabaseName;
         private System.Windows.Forms.TextBox txtServerDescription;
         private System.Windows.Forms.Label lblServer;
+        private System.Windows.Forms.TextBox txtBackupDatabasePath;
+        private System.Windows.Forms.Label lblBackupDatabaseFolderPath;
     }
 }

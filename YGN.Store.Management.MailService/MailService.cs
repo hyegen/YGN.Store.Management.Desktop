@@ -35,10 +35,18 @@ namespace YGN.Store.Management.MailService
         #region constructor
         public MailService()
         {
-            this.ServiceName = "YGN-Mail-Service";
-            InitializeComponent();
-            dbContext = new YGNContext();
-            writelog("YGN Service Kuruldu");
+            try
+            {
+                this.ServiceName = "YGN-Mail-Service";
+                InitializeComponent();
+                dbContext = new YGNContext();
+                writelog("YGN Service Kuruldu");
+
+            }
+            catch (Exception ex)
+            {
+                writelog("Error in constructor: " + ex.ToString());
+            }
         }
         #endregion
 
@@ -203,25 +211,33 @@ namespace YGN.Store.Management.MailService
             foreach (var email in emailsToSend)
             {
                 //if ((DateTime.Now - email.LastSent).TotalMinutes >= email.Frequency)
-               // {
-                    //var data = reportManager.GetStockAmountEachItem();
-                    //if (data == null)
-                    //{
-                    //    writelog(string.Format("Sorgu içeriği boş geldi."), EventLogEntryType.Warning);
-                    //    return;
-                    //}
+                // {
+                try
+                {
+                    var data = reportManager.GetStockAmountEachItem();
+                    if (data == null)
+                    {
+                        writelog(string.Format("Sorgu içeriği boş geldi."), EventLogEntryType.Warning);
+                        return;
+                    }
 
-                    //var pdfAttachment = GeneratePdf(email.Subject, data);
+                    var pdfAttachment = GeneratePdf(email.Subject, data);
 
-                    var pdfAttachment = (from r in dbContext.Reports
-                                        select r.BinaryData).FirstOrDefault();
-                    
+                    //var pdfAttachment = (from r in dbContext.Reports
+                    //                    select r.BinaryData).FirstOrDefault();
+
                     writelog(string.Format("Binary Data Count: {0}", pdfAttachment.Count().ToString()), EventLogEntryType.Error);
                     writelog(string.Format("Binary Data: {0}", pdfAttachment.ToString()), EventLogEntryType.Error);
 
                     SendEmailWithAttachment(email.Recipient, email.Subject, email.Body, pdfAttachment);
                     email.LastSent = DateTime.Now;
-               // }
+                }
+                catch (Exception ex)
+                {
+                    writelog(string.Format("Hata {0}",ex.Message),EventLogEntryType.Warning);
+                }
+
+                // }
             }
 
             dbContext.SaveChanges();

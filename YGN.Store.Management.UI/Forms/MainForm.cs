@@ -159,8 +159,8 @@ namespace YGN.Store.Management.UI.Forms
         }
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            var a = backupManager.BackupDatabase();
-            MessageBox.Show(string.Format(a.Message), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var result = backupManager.BackupDatabase();
+            MessageBox.Show(string.Format(result.Message), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 

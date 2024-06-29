@@ -47,6 +47,14 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
                 txtDatabaseName.Text = value;
             }
         }
+        public string BackupFolderPath
+        {
+            get { return txtBackupDatabaseFolderPath.Text; }
+            set
+            {
+                txtBackupDatabaseFolderPath.Text = value;
+            }
+        }
         #endregion
 
         #region constructor
@@ -65,6 +73,7 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
                 ConfigManager.SaveDatabaseInformations("DatabaseUserName", DatabaseUserName);
                 ConfigManager.SaveDatabaseInformations("DatabasePassword", DatabasePassword);
                 ConfigManager.SaveDatabaseInformations("DatabaseDesc", DatabaseDesc);
+                ConfigManager.SaveDatabaseInformations("BackupFolderPath", BackupFolderPath);
 
                 MessageBox.Show("Sunucu ve Veritabanı Bilgileri başarıyla Configuration dosyasına kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -79,5 +88,25 @@ namespace YGN.Store.Management.Sys.DatabaseConfigurations
             this.Close();
         }
         #endregion
+
+        private void DatabaseSetting_Load(object sender, EventArgs e)
+        {
+            LoadDatabaseConfigurations();
+        }
+        private void LoadDatabaseConfigurations()
+        {
+            try
+            {
+                ServerDescription = ConfigManager.GetMailInformation("ServerDescription") ?? "Sunucu Bilgisi Giriniz.";
+                DatabaseUserName = ConfigManager.GetMailInformation("DatabaseUserName") ?? "Sunucu Kullanıcı Adı Giriniz.";
+                DatabasePassword = ConfigManager.GetMailInformation("DatabasePassword") ?? "Sunucu Şifresi Giriniz.";
+                DatabaseDesc = ConfigManager.GetMailInformation("DatabaseDesc") ?? "Veritabanı Açıklaması Giriniz.";
+                BackupFolderPath = ConfigManager.GetMailInformation("BackupFolderPath") ?? "Veritabanı Yedekleme Yolu Giriniz.";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

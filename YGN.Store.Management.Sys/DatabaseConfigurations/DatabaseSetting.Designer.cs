@@ -32,6 +32,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBackupDatabaseFolderPath = new System.Windows.Forms.TextBox();
+            this.lblBackupDatabaseFilePath = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.txtDatabaseName = new System.Windows.Forms.TextBox();
             this.txtServerUserName = new System.Windows.Forms.TextBox();
@@ -50,7 +52,7 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 67);
+            this.panel1.Size = new System.Drawing.Size(608, 67);
             this.panel1.TabIndex = 0;
             // 
             // btnClose
@@ -75,6 +77,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBackupDatabaseFolderPath);
+            this.groupBox1.Controls.Add(this.lblBackupDatabaseFilePath);
             this.groupBox1.Controls.Add(this.txtServerPassword);
             this.groupBox1.Controls.Add(this.txtDatabaseName);
             this.groupBox1.Controls.Add(this.txtServerUserName);
@@ -85,37 +89,53 @@
             this.groupBox1.Controls.Add(this.lblServer);
             this.groupBox1.Location = new System.Drawing.Point(12, 96);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 140);
+            this.groupBox1.Size = new System.Drawing.Size(608, 175);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Veritabanı Ayarla";
             // 
+            // txtBackupDatabaseFolderPath
+            // 
+            this.txtBackupDatabaseFolderPath.Location = new System.Drawing.Point(216, 137);
+            this.txtBackupDatabaseFolderPath.Name = "txtBackupDatabaseFolderPath";
+            this.txtBackupDatabaseFolderPath.Size = new System.Drawing.Size(373, 20);
+            this.txtBackupDatabaseFolderPath.TabIndex = 5;
+            // 
+            // lblBackupDatabaseFilePath
+            // 
+            this.lblBackupDatabaseFilePath.AutoSize = true;
+            this.lblBackupDatabaseFilePath.Location = new System.Drawing.Point(18, 140);
+            this.lblBackupDatabaseFilePath.Name = "lblBackupDatabaseFilePath";
+            this.lblBackupDatabaseFilePath.Size = new System.Drawing.Size(169, 13);
+            this.lblBackupDatabaseFilePath.TabIndex = 4;
+            this.lblBackupDatabaseFilePath.Text = "Veritabanı Yedekleme Klasör Yolu:";
+            // 
             // txtServerPassword
             // 
-            this.txtServerPassword.Location = new System.Drawing.Point(169, 80);
+            this.txtServerPassword.Location = new System.Drawing.Point(216, 80);
             this.txtServerPassword.Name = "txtServerPassword";
-            this.txtServerPassword.Size = new System.Drawing.Size(281, 20);
+            this.txtServerPassword.Size = new System.Drawing.Size(373, 20);
             this.txtServerPassword.TabIndex = 2;
             // 
             // txtDatabaseName
             // 
-            this.txtDatabaseName.Location = new System.Drawing.Point(169, 106);
+            this.txtDatabaseName.Location = new System.Drawing.Point(216, 106);
             this.txtDatabaseName.Name = "txtDatabaseName";
-            this.txtDatabaseName.Size = new System.Drawing.Size(281, 20);
+            this.txtDatabaseName.Size = new System.Drawing.Size(373, 20);
             this.txtDatabaseName.TabIndex = 3;
             // 
             // txtServerUserName
             // 
-            this.txtServerUserName.Location = new System.Drawing.Point(169, 54);
+            this.txtServerUserName.Location = new System.Drawing.Point(216, 54);
             this.txtServerUserName.Name = "txtServerUserName";
-            this.txtServerUserName.Size = new System.Drawing.Size(281, 20);
+            this.txtServerUserName.Size = new System.Drawing.Size(373, 20);
             this.txtServerUserName.TabIndex = 1;
             // 
             // txtServerDescription
             // 
-            this.txtServerDescription.Location = new System.Drawing.Point(169, 26);
+            this.txtServerDescription.Location = new System.Drawing.Point(216, 26);
             this.txtServerDescription.Name = "txtServerDescription";
-            this.txtServerDescription.Size = new System.Drawing.Size(281, 20);
+            this.txtServerDescription.Size = new System.Drawing.Size(373, 20);
             this.txtServerDescription.TabIndex = 0;
             // 
             // lblDatabaseName
@@ -158,12 +178,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 259);
+            this.ClientSize = new System.Drawing.Size(632, 280);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "DatabaseSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Veritabanı Ayarları";
+            this.Load += new System.EventHandler(this.DatabaseSetting_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -185,5 +206,7 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblServerUsername;
         private System.Windows.Forms.Label lblServer;
+        private System.Windows.Forms.TextBox txtBackupDatabaseFolderPath;
+        private System.Windows.Forms.Label lblBackupDatabaseFilePath;
     }
 }

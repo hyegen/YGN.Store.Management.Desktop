@@ -58,6 +58,14 @@ namespace YGN.Store.Management.Sys.MainForms
                 txtDatabaseName.Text = value;
             }
         }
+        public string BackupFolderPath
+        {
+            get { return txtBackupDatabasePath.Text; }
+            set
+            {
+                txtBackupDatabasePath.Text = value;
+            }
+        }
         #endregion
 
         #region consructor
@@ -93,6 +101,7 @@ namespace YGN.Store.Management.Sys.MainForms
                 DatabaseUserName = ConfigManager.GetMailInformation("DatabaseUserName") ?? "Sunucu Kullanıcı Adı Giriniz.";
                 DatabasePassword = ConfigManager.GetMailInformation("DatabasePassword") ?? "Sunucu Şifresi Giriniz.";
                 DatabaseDesc = ConfigManager.GetMailInformation("DatabaseDesc") ?? "Veritabanı Açıklaması Giriniz.";
+                BackupFolderPath = ConfigManager.GetMailInformation("BackupFolderPath") ?? "Veritabanı Yedekleme Yolu Giriniz.";
             }
             catch (Exception ex)
             {
